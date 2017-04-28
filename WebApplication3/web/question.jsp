@@ -66,11 +66,42 @@
             }
         %>
             
-    <center>
+    <div class="container">
+        <div class="row"><!--1--> 
+            <div class="col-xs-12 col-md-12 col-lg-12 jumbotron"><!--1.1--> 
+                <img src="resources/img/banner.jpg" alt="banner"/>
+            </div>
+        </div>
+        
+        <div class="row"  id="navigationbar"> <!--2--> 
+            <div class="col-md-8 col-md-push-1" id="breadcrumb"> <!--2.1--> 
+                <a href="#home">Home</a>
+            </div>
+            
+            <div class="col-md-2 col-md-push-1 col-md-pull-1" id="toequilibra"><!--2.2--> 
+                <a href="#home">back to EQUILIBRA</a>
+                
+                <!-- Code for google search engine is refered from "https://www.google.com/cse/tools/create_onthefly"-->      
+                <form id="icon" name="cse" action="http://www.google.com/search" target="_blank">
+                <table>
+                    <tr>
+                        <td>
+                            <input type="hidden" name="ie" value="utd-8">
+                            <input type="text"   name="q" size="20" maxlength="255" value="Google site search">
+                            <input type="submit" value="Go!">
+                        </td>
+                    </tr>
+                </table>
+		</form>
+            </div>       
+        </div>
+        
+        <div class="row"><!--3--> 
+            <div class="col-xs-12 col-md-12 col-lg-12"> <!--3.1 --> 
         <div class="panel panel-default">
         <div class="panel-heading"> <h1>Question List</h1></div>
         <div class="table-responsive">
-        <table class="table table-stripped table-hover">
+        <table class="table table-stripped table-hover" data-ng-controller="more">
             <thead>
                 <tr>
                     <th id="no" scope="col" >No.</th>
@@ -111,8 +142,10 @@
         </div>
         </div>
                     
-        <p><a href="index.html">Back To Topic</a></p>    
-    </center>
+        <p><a href="index.html">Back To Topic</a></p> 
+            </div>
+        </div>
+    </div>
 
    
 <!-- jQuery – required for Bootstrap's JavaScript plugins) -->

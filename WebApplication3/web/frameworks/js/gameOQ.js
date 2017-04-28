@@ -8,3 +8,12 @@ app.config(["$routeProvider", function ($routeProvider) {
 }]);
 
 
+
+
+//control for panel
+app.controller("more", function () {"use strict";
+    $('#myModal').on('show.bs.modal', function (e) {
+        $(this).find('.modal-title').html(e.relatedTarget.id);
+        $(this).find('.modal-body').html("Topic Bonus: <br/>" + e.relatedTarget.value); 
+    });
+    });

@@ -41,17 +41,20 @@
             }
         %>
     <center>
-        <h1>Add Details of Employee</h1>
+        <h1>Add New Topic</h1>
         <form id="addForm" action="" method="POST">
-            <table border="0" cellspacing="5" cellpadding="5">
+            <table cellspacing="5" cellpadding="5">
                 <tbody>
                     <tr>
-                        <td>Employee Name: </td>
+                        <td>New Topic: </td>
                         <td> <input type="text" name="txtName" id="txtName"/></td>
-                        <td><input type="text" name="txtBonus" id="txtBonus"/></td>
                     </tr>
                     <tr>
-                        <td><input type="submit" name="btnAdd" value="Add Employee" id="btnAdd"/></td>
+                        <td>Topic Bonus: </td>
+                        <td><textarea name="txtBonus" id="txtBonus"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" name="btnAdd" value="Add Topic" id="btnAdd"/></td>
                     </tr>
                 </tbody>
             </table>

@@ -8,19 +8,54 @@
 <%@page import="java.sql.*" %>
 <%@page import="java.util.*" %>
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
+<html data-ng-app="myApp">
+<head>   
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- Description: Game of Quiz -->
+<!-- Author: Eileen Kho, Leslie Ling, Ting Lee Ting -->
+<!-- Last update: 2017-->
+    
+<title>JSP Page</title>
+<meta name="viewport" content="width=device-width, initialscale=1.0"/>
+<!-- Bootstrap -->
+<link href="frameworks/css/bootstrap.min.css" rel="stylesheet" />   
+<!-- StyleSheet -->
+<link href="style.css" rel="stylesheet" />
+<!-- StyleSheet -->
+<link href="languages.min.css" rel="stylesheet" />
+    
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="js/html5shiv.js"></script>
+<script src="js/respond.min.js"></script>
+<![endif]-->
+</head>
+<body>
         <%!
             Connection conn;
             PreparedStatement pstmt;
+            Statement stmt;
             ResultSet result;
             String qry;
             Integer quizID;
         %>
+        <%-- READ function--%>
+        <%
+            try{
+                Class.forName("com.mysql.jdbc.Driver");
+                conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/quiz","root","");
+                stmt=conn.createStatement();
+                qry = "SELECT * FROM quiz";
+                result = stmt.executeQuery(qry);
+            }catch(ClassNotFoundException cnfe){
+                out.println("Class not Found Execption:-" + cnfe.toString());
+            }catch(SQLException sqle){
+                out.println("SQL Query Exception:- " + sqle);
+            }
+        %>
+        <%-- UPDATE function--%>
         <%
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/quiz","root","");
             if(request.getParameter("btnUpd")!=null){
@@ -64,30 +99,91 @@
             }
         %>
         
-    <center>
-        <h1>Update Topic & Topic Bonus</h1>
-        <form id="updForm" action="" method="POST">
-            <table cellspacing="5" cellpadding="5">
-                <tbody>
+    <div class="container">
+        <div class="row"><!--1--> 
+            <div class="col-xs-12 col-md-12 col-lg-12 jumbotron"><!--1.1--> 
+                <img src="resources/img/banner.jpg" alt="banner"/>
+            </div>
+        </div>
+        
+        <div class="row"  id="navigationbar"> <!--2--> 
+            <div class="col-md-8 col-md-push-1" id="breadcrumb"> <!--2.1--> 
+                <a href="#home">Home</a>
+            </div>
+            
+            <div class="col-md-2 col-md-push-1 col-md-pull-1" id="toequilibra"><!--2.2--> 
+                <a href="#home">back to EQUILIBRA</a>
+                
+                <!-- Code for google search engine is refered from "https://www.google.com/cse/tools/create_onthefly"-->      
+                <form id="icon" name="cse" action="http://www.google.com/search" target="_blank">
+                <table>
                     <tr>
-                        <td>Topic: </td>
                         <td>
-                            <input type="hidden" name="hiddenId" id="hiddenId" value="<%=quizID%>"/>
-                            <input type="text" name="txtName1" id="txtName" value="<%=result.getString("quizTopic")%>"/>
-                        </td>
-                        
-                        <td>Topic Bonus: </td>
-                        <td>
-                            <input type="text" name="txtName2" id="txtName" value="<%=result.getString("bonus")%>"/>
+                            <input type="hidden" name="ie" value="utd-8">
+                            <input type="text"   name="q" size="20" maxlength="255" value="Google site search">
+                            <input type="submit" value="Go!">
                         </td>
                     </tr>
-                    <tr>
-                        <td><input type="submit" name="btnUpd" value="Update Employee" id="btnUpd"/></td>
-                        <td><button type="button" href="index.html">Cancel</button></td>
-                    </tr>     
-                </tbody>
-            </table>
-        </form>             
-    </center>
-    </body>
+                </table>
+		</form>
+            </div>       
+        </div>
+        <h1>Update Topic & Topic Bonus</h1> 
+        <div class="row"><!--3--> 
+            <div class="col-xs-12 col-md-12 col-lg-12"> <!--3.1 --> 
+                <div class="row">
+                    <div class="col-xs-6 col-md-6 col-lg-6">
+                       <table>
+                           <caption>(Original)</caption>
+                            <tr>
+                                <td>Topic <%=quizID%>: </td>
+                                <td><%=result.getString("quizTopic")%></td>
+                            </tr>
+                            <tr>  
+                                <td>Topic Bonus: </td>
+                                <td><%=result.getString("bonus")%></td>
+                            </tr>    
+                        </table> 
+                    </div>
+                    <div class="col-xs-6 col-md-6 col-lg-6">
+                        <form id="updForm" action="" method="POST">
+                        <table>
+                            <caption>(Update here)</caption>
+                            <tr>
+                                <td>Topic: </td>
+                                <td>
+                                    <input type="hidden" name="hiddenId" id="hiddenId" value="<%=quizID%>"/>
+                                    <input type="text" name="txtName1" id="txtName" placeholder="<%=result.getString("quizTopic")%>"/>
+                                </td>
+                            </tr>
+                            <tr>  
+                                <td>Topic Bonus: </td>
+                                <td><textarea name="txtName2" id="txtName" placeholder="<%=result.getString("bonus")%>"></textarea></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><input type="submit" name="btnUpd" placeholder="Update Employee" id="btnUpd"/></td>
+                            </tr>     
+                        </table>
+                        </form> 
+                    </div>
+                </div> 
+            <a href="index.html">Return</a>
+            </div> 
+        </div>           
+    </div>
+<!-- jQuery – required for Bootstrap's JavaScript plugins -->
+<script src="frameworks/js/jquery.min.js"></script>
+
+<!-- All Bootstrap plug-ins file -->
+<script src="frameworks/js/bootstrap.min.js"></script>
+    
+<!-- Basic AngularJS-->
+<script src="frameworks/js/angular.js"></script>
+        
+<!-- Angular-route-->
+<script src="frameworks/js/angular-route.min.js"></script>  
+
+<!-- Configuration -->
+<script src="frameworks/js/gameOQ.js"></script> 
+</body>
 </html>

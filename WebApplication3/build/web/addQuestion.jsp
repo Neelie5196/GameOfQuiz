@@ -131,7 +131,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td><input type="submit" name="btnAdd" value="Save"  /> </td>
+                        <td><input type="submit" name="btnAdd" value="Save" /> </td>
                         <td><button type="button" href="question.jsp?id=<%=quizID%>">Cancel</button></td>
                     </tr>
                 </tbody>

@@ -8,11 +8,9 @@
 <%@page import="java.sql.*" %>
 <%@page import="java.util.*" %>
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-
+<html data-ng-app="myApp">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- Description: Game of Quiz -->
 <!-- Author: Eileen Kho, Leslie Ling, Ting Lee Ting -->
 <!-- Last update: 2017-->
@@ -26,7 +24,6 @@
 <!-- StyleSheet -->
 <link href="languages.min.css" rel="stylesheet" />
     
-
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -66,10 +63,40 @@
             }
         %>
         
-    <center>
-       
+    <div class="container">
+        <div class="row"><!--1--> 
+            <div class="col-xs-12 col-md-12 col-lg-12 jumbotron"><!--1.1--> 
+                <img src="resources/img/banner.jpg" alt="banner"/>
+            </div>
+        </div>
+        
+        <div class="row"  id="navigationbar"> <!--2--> 
+            <div class="col-md-8 col-md-push-1" id="breadcrumb"> <!--2.1--> 
+                <a href="#home">Home</a>
+            </div>
+            
+            <div class="col-md-2 col-md-push-1 col-md-pull-1" id="toequilibra"><!--2.2--> 
+                <a href="#home">back to EQUILIBRA</a>
+                
+                <!-- Code for google search engine is refered from "https://www.google.com/cse/tools/create_onthefly"-->      
+                <form id="icon" name="cse" action="http://www.google.com/search" target="_blank">
+                <table>
+                    <tr>
+                        <td>
+                            <input type="hidden" name="ie" value="utd-8">
+                            <input type="text"   name="q" size="20" maxlength="255" value="Google site search">
+                            <input type="submit" value="Go!">
+                        </td>
+                    </tr>
+                </table>
+		</form>
+            </div>       
+        </div>
+        <h3>All about Question <%=result.getInt("questionID")%></h3> 
+        <div class="row"><!--3--> 
+            <div class="col-xs-12 col-md-12 col-lg-12"> <!--3.1 --> 
+                
         <table>
-        <h3 class="modal-title">Question:<%=result.getInt("questionID")%></h3><hr/>
             <tr>
                 <td>Question:</td>
                 <td><%=result.getString("question") %></td>
@@ -78,13 +105,11 @@
             <tr>
                 <td>Hints:</td>
                 <td><%=result.getString("hints") %></td>
-            </tr>
-                    
+            </tr>            
             <tr>
                 <td>Type:</td>
                 <td><%=result.getString("type") %></td>
             </tr>
-            
             <tr>        
                 <td colspan="2">
                     <p><%=result.getString("input1") %></p>
@@ -95,9 +120,7 @@
                     <p>Answer: <%=result.getString("checked") %></p>              
 
                 </td>
-
             </tr>
-            
             <tr>
                 <td><a href="index.html">Seen</a></td>
 
@@ -108,8 +131,7 @@
            
             </table>
             
-    </center>
-    
+    </div> 
 <!-- jQuery – required for Bootstrap's JavaScript plugins -->
 <script src="frameworks/js/jquery.min.js"></script>
 
@@ -124,7 +146,5 @@
 
 <!-- Configuration -->
 <script src="frameworks/js/gameOQ.js"></script>    
-
-
 </body>
 </html>

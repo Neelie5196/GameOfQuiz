@@ -39,7 +39,7 @@
         <div class="panel-heading"><h1>Topic List</h1></div>
 
         <div class="table-responsive">
-        <table class="table table-stripped table-hover">
+        <table class="table table-stripped table-hover" data-ng-controller="more">
             <thead>
                 <tr>
                     <th id="no" scope="col" >No.</th>
@@ -58,10 +58,28 @@
                 <tr>
                     <td headers="no"><%=quizID%></td>
                     <td headers="topic"><a href="question.jsp?id=<%=quizID%>"><%=result.getString("quizTopic") %></a></td>
-                    <td headers="bonus"><a><%=result.getString("bonus") %></a></td>
+                    <td headers="bonus"><button data-toggle="modal" data-target="#myModal" id="<%=result.getString("quizTopic") %>" value="<%=result.getString("bonus") %>">Show more</button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"></button>
+                                <h4 class="modal-title"></h4>
+                            </div>
+                            <div class="modal-body">...</div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                        </div>
+                        </div>
+                    </td>       
                     <td headers="edit"><a class="glyphicon glyphicon-edit" href="updateTopic.jsp?id=<%=quizID%>"></a></td>
                     <td headers="del"><a class="glyphicon glyphicon-trash" href="deleteTopic.jsp?id=<%=quizID%>" onclick="return confirm('Once confirm, this topic <%=result.getString("quizTopic") %> will be removed. Confirm to delete?')"></a></td>
                 </tr>
+
+                       
 
                 <%
                     }
@@ -71,14 +89,14 @@
             <tfoot>
                 <tr>
                     <td colspan="5">
-                       <a class="glyphicon glyphicon-plus-sign" href="addTopic.jsp">ADD New Topic</a>
+                       <a class="glyphicon glyphicon-plus-sign" href="addTopic.jsp"> New Topic</a>
                     </td>
                 </tr>
             </tfoot>
-
+     
         </table>       
         </div>
-        </div>  
+        </div> 
     </center>
 </body>
 </html>
