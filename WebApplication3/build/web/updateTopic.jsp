@@ -20,7 +20,7 @@
 <!-- Bootstrap -->
 <link href="frameworks/css/bootstrap.min.css" rel="stylesheet" />   
 <!-- StyleSheet -->
-<link href="style.css" rel="stylesheet" />
+<link href="frameworks/css/style.css" rel="stylesheet" />
 <!-- StyleSheet -->
 <link href="languages.min.css" rel="stylesheet" />
     
@@ -120,7 +120,7 @@
                     <tr>
                         <td>
                             <input type="hidden" name="ie" value="utd-8">
-                            <input type="text"   name="q" size="20" maxlength="255" value="Google site search">
+                            <input type="text" name="q" size="20" maxlength="255" value="Google site search">
                             <input type="submit" value="Go!">
                         </td>
                     </tr>
@@ -128,37 +128,57 @@
 		</form>
             </div>       
         </div>
-        <h1>Update Topic & Topic Bonus</h1> 
         <div class="row"><!--3--> 
-            <div class="col-xs-12 col-md-12 col-lg-12"> <!--3.1 --> 
-                <div class="row">
-                    <div class="col-xs-6 col-md-6 col-lg-6">
-                       <table>
-                           <caption>(Original)</caption>
-                            <tr>
-                                <td>Topic <%=quizID%>: </td>
-                                <td><%=result.getString("quizTopic")%></td>
-                            </tr>
-                            <tr>  
-                                <td>Topic Bonus: </td>
-                                <td><%=result.getString("bonus")%></td>
-                            </tr>    
-                        </table> 
+            <div class="col-xs-12 col-md-12 col-lg-12"><!--3.1--> 
+                <i>press "Backspace to return previous page"</i>
+                <h1>Update Topic & Topic Bonus</h1> 
+
+                <button data-toggle="modal" data-target="#note">Note*</button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="note" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Rules</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>I) It is compulsory to fill in all the blank if any changes made else do not click UPDATE button</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Understood</button>
+                        </div>
                     </div>
-                    <div class="col-xs-6 col-md-6 col-lg-6">
+                    </div>
+                    </div>
+                <div class="row update"><!--3.1.1--> 
+                    <div class="col-xs-12 col-md-6 col-lg-6 border"><!--3.1.1.1-->
+                        <ul class="showforupdate">
+                            <p class="right">(Original)</p>
+                            <li><h3>Topic <%=quizID%></h3></li>
+                            <li class="showdata"><%=result.getString("quizTopic")%></li>
+                            <li><h3>Topic Bonus</h3></li>
+                            <li class="showdata"><%=result.getString("bonus")%></li>
+                        </ul>    
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-lg-6"><!--3.1.1.2-->
+                        <p>(Update here)</p>
                         <form id="updForm" action="" method="POST">
                         <table>
-                            <caption>(Update here)</caption>
                             <tr>
-                                <td>Topic: </td>
+                                <td><h3>Topic <%=quizID%></h3></td>
+                            </tr>
+                            <tr> 
                                 <td>
                                     <input type="hidden" name="hiddenId" id="hiddenId" value="<%=quizID%>"/>
-                                    <input type="text" name="txtName1" id="txtName" placeholder="<%=result.getString("quizTopic")%>"/>
+
+                                    <input type="text" name="txtName1" class="form-control" id="txtName" placeholder="<%=result.getString("quizTopic")%>" size="70"/>
                                 </td>
                             </tr>
                             <tr>  
-                                <td>Topic Bonus: </td>
-                                <td><textarea name="txtName2" id="txtName" placeholder="<%=result.getString("bonus")%>"></textarea></td>
+                                <td><h3>Topic Bonus</h3></td>
+                            </tr>
+                            <tr> 
+                                <td><textarea name="txtName2" class="form-control" id="txtName" placeholder="<%=result.getString("bonus")%>" rows="3" cols="70"></textarea></td>
                             </tr>
                             <tr>
                                 <td colspan="2"><input type="submit" name="btnUpd" placeholder="Update Employee" id="btnUpd"/></td>
@@ -166,11 +186,11 @@
                         </table>
                         </form> 
                     </div>
-                </div> 
-            <a href="index.html">Return</a>
-            </div> 
-        </div>           
-    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+     
 <!-- jQuery – required for Bootstrap's JavaScript plugins -->
 <script src="frameworks/js/jquery.min.js"></script>
 

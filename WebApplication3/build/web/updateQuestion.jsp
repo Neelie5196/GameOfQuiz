@@ -20,7 +20,7 @@
 <!-- Bootstrap -->
 <link href="frameworks/css/bootstrap.min.css" rel="stylesheet" />   
 <!-- StyleSheet -->
-<link href="style.css" rel="stylesheet" />
+<link href="frameworks/css/style.css" rel="stylesheet" />
 <!-- StyleSheet -->
 <link href="languages.min.css" rel="stylesheet" />
     
@@ -136,7 +136,7 @@
                     <tr>
                         <td>
                             <input type="hidden" name="ie" value="utd-8">
-                            <input type="text"   name="q" size="20" maxlength="255" value="Google site search">
+                            <input type="text" name="q" size="20" maxlength="255" value="Google site search">
                             <input type="submit" value="Go!">
                         </td>
                     </tr>
@@ -144,133 +144,94 @@
 		</form>
             </div>       
         </div>
-        <h1>Update Question</h1> 
-        <em>Note*: </em>
-        <em>I) This question will remain same format.</em><br/>
-        <em>II) It is compulsory to fill in all the blank if any changes made else do not click UPDATE button</em>
-        <div class="row"><!--3--> 
-            <div class="col-xs-12 col-md-12 col-lg-12"> <!--3.1 --> 
-                <div class="row">
-                    <div class="col-xs-6 col-md-6 col-lg-6">
-                        <table data-ng-controller="more">
-                            <caption>Question:<%=result.getInt("questionID")%> (Original)</caption>
-                            <tr>
-                                <td>Question:</td>
-                                <td><%=result.getString("question") %></td>
-                            </tr>
-                            <tr>
-                                <td>Hints:</td>
-                                <td><%=result.getString("hints") %></td>
-                            </tr>
-                            <tr>
-                                <td>Type:</td>
-                                <td><%=result.getString("type") %></td>
-                            </tr>
-                            <tr>        
-                                <td colspan="2">
-                                    <p>A. <%=result.getString("input1") %></p>
-                                    <p>B. <%=result.getString("input2") %></p>
-                                    <p>C. <%=result.getString("input3") %></p>
-                                    <p>D. <%=result.getString("input4") %></p>
-                                    
-                                    <p>Answer: <%=result.getString("checked") %></p>              
-                                </td>
+        <i>press "Backspace" to return previous page</i>
+        <h1>Update Topic <%=result.getInt("quizID")%> Question <%=result.getInt("questionID")%></h1> 
+        
+            <button data-toggle="modal" data-target="#note">Note*</button>
+            <!-- Modal -->
+            <div class="modal fade" id="note" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Rules</h4>
+                </div>
+                <div class="modal-body">
+                    <p>I) This question will remain same format.</p><br/>
+                    <p>II) It is compulsory to fill in all the blank if any changes made else do not click UPDATE button</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Understood</button>
+                </div>
+            </div>
+            </div>
+            </div>
 
-                            </tr>
-                    </table>
-                    </div>
-                    <div class="col-xs-6 col-md-6 col-lg-6">
-                        <form id="updForm" action="" method="POST">
-                        <table data-ng-controller="lol">
-                            <caption>Update Question</caption>
-                            <input type="hidden" name="hiddenId" id="hiddenId" value="<%=questionID%>"/>
-                            <tbody>
-                                <tr>
-                                    <td>Question:</td>
-                                    <td><textarea name="txtquestion" class="form-control" placeholder="<%=result.getString("question") %>"></textarea></td>
-                                </tr>
-
-                                <tr>
-                                    <td>Hints</td>
-                                    <td><input type="text" name="txthints" class="form-control" placeholder="<%=result.getString("hints") %>"/></td>
-                                </tr>
-
-                                <tr>
-                                    <td>Type:</td>
-                                    <td><p><%=result.getString("type") %></p></td>
-                                </tr>
-                                <tr>        
-                                <!--    <td colspan="2">
-                                        <div class="form-group" data-ng-show="show===1" > 
-                                            <div class="form-group" >         
-                                                A. <input type="text" name="txtinput1" />
-                                            </div>
-                                            <div class="form-group" >         
-                                                B.<input type="text" name="txtinput2" />
-                                            </div>
-                                            <div class="form-group" >         
-                                                C.<input type="text" name="txtinput3" />
-                                            </div>
-                                            <div class="form-group" >        
-                                                D.<input type="text" name="txtinput4" />
-                                            </div>
-
-                                            <div class="form-group">       
-                                                <label>Correct Answer:</label> 
-                                                <select class="form control" name="txtchecked">
-                                                    <option selected hidden value="NA">Choose here</option>
-                                                    <option value="A">A</option>
-                                                    <option value="B">B</option>
-                                                    <option value="C">C</option>
-                                                    <option value="D">D</option>
-                                                </select>
-                                            </div> 
-                                        </div>
-                                        <div class="form-group" data-ng-show="show===2 ">
-                                            <div class="form-group" >         
-                                                <input type="text" name="txtinput1" placeholder="True/False"/>
-                                            </div>
-                                        </div>
-                                        <div class="form-group" data-ng-show="show===3 ">
-                                            <div class="form-group" >         
-                                                <input type="text" name="txtinput1" placeholder="Answer"/>
-                                            </div>
-                                        </div> 
-                            </td>  -->
-                                    <td colspan="2">             
-                                        <div class="form-group" >         
-                                            A. <input type="text" name="txtinput1" placeholder="<%=result.getString("input1") %>"/>
-                                        </div>
-                                        <div class="form-group" >         
-                                            B.<input type="text" name="txtinput2" placeholder="<%=result.getString("input2") %>"/>
-                                        </div>
-                                         <div class="form-group" >              
-                                            C.<input type="text" name="txtinput3" placeholder="<%=result.getString("input3") %>"/>
-                                        </div>
-                                        <div class="form-group" >      
-                                            D.<input type="text" name="txtinput4" placeholder="<%=result.getString("input4") %>"/>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Answer:</td>
-                                    <td><input type="text" name="txtchecked" placeholder="<%=result.getString("checked") %>"/></td>
-                                </tr>
-                                <tr>
-                                    <td><input type="submit" name="btnUpd" value="Update Question" id="btnUpd"/></td>
-                                    <td><button type="button" href="topic.jsp">Cancel</button></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        </form> 
-                    </div>
+        <div class="row update"><!--3--> 
+            <div class="col-xs-12 col-md-6 col-lg-6 border"><!--3.1-->
+                <p class="right">(Original)</p>
+                <ul class="showforupdate">
+                    <li><h3>Question</h3></li>
+                    <li class="showdata"><%=result.getString("question") %></li>
+                    <li><h3>Hints</h3></li>
+                    <li class="showdata"><%=result.getString("hints") %></li>
+                    <li><h3>Type:</h3></li>
+                    <li class="showdata"><%=result.getString("type") %></li>
+                    <li><h3>Selection</h3></li>
+                    <li>
+                        <p class="showdata"><%=result.getString("input1") %></p>
+                        <p class="showdata"><%=result.getString("input2") %></p>
+                        <p class="showdata"><%=result.getString("input3") %></p>
+                        <p class="showdata"><%=result.getString("input4") %></p>
+                    </li>
+                    <li><h3>Answer</h3></li>
+                    <li class="showdata"><%=result.getString("checked") %></li>
+                </ul>        
+            </div>
             
-        </div>
-
+            <div class="col-xs-6 col-md-6 col-lg-6"><!--3.2-->
+                <p>(Update here)</p>
+                <form id="updForm" action="" method="POST">
+                <table>
+                    <input type="hidden" name="hiddenId" id="hiddenId" value="<%=questionID%>"/>    
+                    <tr>
+                        <td><h3>Question</h3></td>
+                    </tr>
+                    <tr>
+                        <td><textarea name="txtquestion" class="form-control" placeholder="<%=result.getString("question") %>" cols="70"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td><h3>Hints</h3></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" name="txthints" class="form-control" placeholder="<%=result.getString("hints") %>" size="70"/></td>
+                        </td>
+                    </tr>
+                    <tr>        
+                        <td><h3>Selection</h3></td>
+                    </tr>
+                    <tr> 
+                        <td>
+                            <input type="text" class="form-control" name="txtinput1" placeholder="<%=result.getString("input1") %>" size="70"/>
+                            <input type="text" class="form-control" name="txtinput2" placeholder="<%=result.getString("input2") %>" size="70"/>
+                            <input type="text" class="form-control" name="txtinput3" placeholder="<%=result.getString("input3") %>" size="70"/>
+                            <input type="text" class="form-control" name="txtinput4" placeholder="<%=result.getString("input4") %>" size="70"/>
+                        </td> 
+                    </tr>
+                    <tr>
+                        <td><h3>Answer</h3></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="txtchecked" class="form-control" placeholder="<%=result.getString("checked") %>" size="70"/></td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" name="btnUpd" value="Update Question" id="btnUpd"/></td>
+                        <td><button type="button" href="topic.jsp">Cancel</button></td>
+                    </tr>        
+                </table>
+                </form> 
             </div>
         </div>
-
-                  
     </div>
     
 <!-- jQuery – required for Bootstrap's JavaScript plugins -->

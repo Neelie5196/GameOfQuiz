@@ -20,7 +20,7 @@
 <!-- Bootstrap -->
 <link href="frameworks/css/bootstrap.min.css" rel="stylesheet" />
 <!-- StyleSheet -->
-<link href="style.css" rel="stylesheet" />
+<link href="frameworks/css/style.css" rel="stylesheet" />
 <!-- StyleSheet -->
 <link href="languages.min.css" rel="stylesheet" />
 
@@ -72,73 +72,105 @@
                 response.sendRedirect("./question.jsp");
             }
         %>
-    <center>
-        <h3 class="modal-title">Add New Question</h3><hr/>
-        <form id="addForm" action="" method="POST">
-            <table>
-                <tbody>
-                    <tr>
-                        <td>Question:</td>
-                        <td><textarea name="txtquestion" class="form-control" placeholder="question" ></textarea></td>
-                    </tr>
-                    <tr>
-                        <td>Hints</td>
-                        <td><input type="text" name="txthints" class="form-control" placeholder="Add Hints here"/></td>
-                    </tr>
+    <div class="container">
+        <div class="row"><!--1--> 
+            <div class="col-xs-12 col-md-12 col-lg-12 jumbotron"><!--1.1--> 
+                <img src="resources/img/banner.jpg" alt="banner"/>
+            </div>
+        </div>
+        
+        <div class="row"  id="navigationbar"> <!--2--> 
+            <div class="col-md-8 col-md-push-1" id="breadcrumb"> <!--2.1--> 
+                <a href="#home">Home</a>
+            </div>
+            
+            <div class="col-md-2 col-md-push-1 col-md-pull-1" id="toequilibra"><!--2.2--> 
+                <a href="#home">back to EQUILIBRA</a>
+                
+                <!-- Code for google search engine is refered from "https://www.google.com/cse/tools/create_onthefly"-->      
+                <form id="icon" name="cse" action="http://www.google.com/search" target="_blank">
+                <table>
                     <tr>
                         <td>
-                           <em>Select a type for question and continue</em> 
-                        </td>
-                        <td>
-                            <ul>
-                                <li><input type="radio" name="txttype" value="M" data-ng-click="show = 1" />Multiple choice</li>
-                                <li><input type="radio" name="txttype" value="T" data-ng-click="show = 2" />True and false</li>
-                                <li><input type="radio" name="txttype" value="B" data-ng-click="show = 3" />Fill in Blank</li>
-                            </ul>
+                            <input type="hidden" name="ie" value="utd-8">
+                            <input type="text" name="q" size="20" maxlength="255" value="Google site search">
+                            <input type="submit" value="Go!">
                         </td>
                     </tr>
-                    <tr>
-                        <td colspan="2">                     
-                            <div class="form-group" data-ng-show="show===1" > 
-                                <div class="form-group" >         
-                                    A. <input type="text" name="txtinput1" />
-                                </div>
-                                <div class="form-group" >         
-                                    B.<input type="text" name="txtinput2" />
-                                </div>
-                                <div class="form-group" >         
-                                    C.<input type="text" name="txtinput3" />
-                                </div>
-                                <div class="form-group" >        
-                                    D.<input type="text" name="txtinput4" />
-                                </div>
-                                
-                                <div class="form-group" >         
-                                    <input type="text" name="txtchecked" placeholder="A? B? C? D? "/>
-                                </div>
-                                
-                            </div>
-                            <div class="form-group" data-ng-show="show===2 ">
-                                <div class="form-group" >         
-                                    <input type="text" name="txtchecked" placeholder="True/False"/>
-                                </div>
-                            </div>
-                            <div class="form-group" data-ng-show="show===3 ">
-                                <div class="form-group" >         
-                                    <input type="text" name="txtchecked" placeholder="Answer"/>
-                                </div>
-                            </div>  
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><input type="submit" name="btnAdd" value="Save" /> </td>
-                        <td><button type="button" href="question.jsp?id=<%=quizID%>">Cancel</button></td>
-                    </tr>
-                </tbody>
-            </table>
-        </form>
-    </center>
-                   
+                </table>
+		</form>
+            </div>       
+        </div>
+        <div class="row"><!--3--> 
+            <div class="col-xs-12 col-md-12 col-lg-12"><!--3.1--> 
+                <i>press "Backspace" to return previous page</i>
+                <h3 class="modal-title">Add New Question</h3><hr/>
+                <form id="addForm" action="" method="POST">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>Question:</td>
+                                <td><textarea name="txtquestion" class="form-control" placeholder="question" ></textarea></td>
+                            </tr>
+                            <tr>
+                                <td>Hints</td>
+                                <td><input type="text" name="txthints" class="form-control" placeholder="Add Hints here"/></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                   <em>Select a type for question and continue</em> 
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li><input type="radio" name="txttype" value="M" data-ng-click="show = 1" />Multiple choice</li>
+                                        <li><input type="radio" name="txttype" value="T" data-ng-click="show = 2" />True and false</li>
+                                        <li><input type="radio" name="txttype" value="B" data-ng-click="show = 3" />Fill in Blank</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">                     
+                                    <div class="form-group" data-ng-show="show===1" > 
+                                        <div class="form-group" >         
+                                            A.<input class="form-control" type="text" name="txtinput1" />
+                                        </div>
+                                        <div class="form-group" >         
+                                            B.<input class="form-control" type="text" name="txtinput2" />
+                                        </div>
+                                        <div class="form-group" >         
+                                            C.<input class="form-control" type="text" name="txtinput3" />
+                                        </div>
+                                        <div class="form-group" >        
+                                            D.<input class="form-control" type="text" name="txtinput4" />
+                                        </div>
+
+                                        <div class="form-group" >         
+                                            <input class="form-control" type="text" name="txtchecked" placeholder="A? B? C? D? "/>
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group" data-ng-show="show===2 ">
+                                        <div class="form-group" >         
+                                            <input class="form-control" type="text" name="txtchecked" placeholder="True/False"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" data-ng-show="show===3 ">
+                                        <div class="form-group" >         
+                                            <input class="form-control" type="text" name="txtchecked" placeholder="Answer"/>
+                                        </div>
+                                    </div>  
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="submit" name="btnAdd" value="Save" /> </td>
+                                <td><button type="button" href="question.jsp?id=<%=quizID%>">Cancel</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>                
 <!-- jQuery – required for Bootstrap's JavaScript plugins -->
 <script src="frameworks/js/jquery.min.js"></script>
 
@@ -153,8 +185,5 @@
 
 <!-- Config-->
 <script src="frameworks/js/gameOQ.js"></script>  
-
-
-
 </body>
 </html>

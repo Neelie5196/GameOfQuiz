@@ -20,7 +20,7 @@
 <!-- Bootstrap -->
 <link href="frameworks/css/bootstrap.min.css" rel="stylesheet" />   
 <!-- StyleSheet -->
-<link href="style.css" rel="stylesheet" />
+<link href="frameworks/css/style.css" rel="stylesheet" />
 <!-- StyleSheet -->
 <link href="languages.min.css" rel="stylesheet" />
     
@@ -84,7 +84,7 @@
                     <tr>
                         <td>
                             <input type="hidden" name="ie" value="utd-8">
-                            <input type="text"   name="q" size="20" maxlength="255" value="Google site search">
+                            <input type="text" name="q" size="20" maxlength="255" value="Google site search">
                             <input type="submit" value="Go!">
                         </td>
                     </tr>
@@ -92,45 +92,30 @@
 		</form>
             </div>       
         </div>
-        <h3>All about Question <%=result.getInt("questionID")%></h3> 
+
         <div class="row"><!--3--> 
             <div class="col-xs-12 col-md-12 col-lg-12"> <!--3.1 --> 
+                <i>press "Backspace" to return previous page</i>
+                <h3>All about Question <%=result.getInt("questionID")%></h3> 
+                <ul>
+                    <li><b>Question:</b> <%=result.getString("question") %></li>
+                    <li><b>Hints:</b> <%=result.getString("hints") %></li>
+                    <li><b>Type:</b> <%=result.getString("type") %></li>
+                    <li><b>Selection:</b></li>
+                    <li>
+                        <p><%=result.getString("input1") %></p>
+                        <p><%=result.getString("input2") %></p>
+                        <p><%=result.getString("input3") %></p>
+                        <p><%=result.getString("input4") %></p>
+                    </li>
+                    <li><b>Answer</b>: <%=result.getString("checked") %></li>
+                </ul>
                 
-        <table>
-            <tr>
-                <td>Question:</td>
-                <td><%=result.getString("question") %></td>
-            </tr>
+                <a class="glyphicon glyphicon-edit" href="updateQuestion.jsp?id=<%=result.getInt("questionID")%>"></a>
+                <a class="glyphicon glyphicon-trash" href="deleteQuestion.jsp?id=<%=result.getInt("questionID")%>" onclick="return confirm('Once confirm, question <%=result.getString("questionID") %> will be removed. Confirm to delete?')"></a>
 
-            <tr>
-                <td>Hints:</td>
-                <td><%=result.getString("hints") %></td>
-            </tr>            
-            <tr>
-                <td>Type:</td>
-                <td><%=result.getString("type") %></td>
-            </tr>
-            <tr>        
-                <td colspan="2">
-                    <p><%=result.getString("input1") %></p>
-                    <p><%=result.getString("input2") %></p>
-                    <p><%=result.getString("input3") %></p>
-                    <p><%=result.getString("input4") %></p>
-
-                    <p>Answer: <%=result.getString("checked") %></p>              
-
-                </td>
-            </tr>
-            <tr>
-                <td><a href="index.html">Seen</a></td>
-
-                <td headers="edit"><a class="glyphicon glyphicon-edit" href="updateQuestion.jsp?id=<%=result.getInt("questionID")%>"></a></td>
-                <td headers="del"><a class="glyphicon glyphicon-trash" href="deleteQuestion.jsp?id=<%=result.getInt("questionID")%>" onclick="return confirm('Once confirm, question <%=result.getString("questionID") %> will be removed. Confirm to delete?')"></a></td>
-
-            </tr>
-           
-            </table>
-            
+            </div>
+        </div>   
     </div> 
 <!-- jQuery – required for Bootstrap's JavaScript plugins -->
 <script src="frameworks/js/jquery.min.js"></script>

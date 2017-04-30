@@ -1,0 +1,56 @@
+/*control navigation bar*/
+#navigationbar{
+    border: solid 1px;
+}
+
+
+/*jumbotron */
+.jumbotron {
+    background-color: #353A49;
+    color: #fff;
+}
+
+.jumbotron img{
+    width: 100%;
+}
+
+.modal-header{
+    background-color: #000099;
+    color: #fff;
+}
+
+#toequilibra{
+    text-align: right;
+}
+
+.border{
+    border-right-style: double;
+}
+
+ ul{
+   list-style-type: none;
+     
+ }
+ 
+.update td, .showforupdate{
+    text-align: center;
+    margin: 2%;
+    
+}
+.right{
+    text-align: right;
+}
+
+
+.showdata{
+    border: 1px solid;
+    padding: 2%;
+}
+
+/*control for user module*/
+#hint{
+    border: 1px solid;
+    background-color: #686868;
+    color: aliceblue;
+}
+

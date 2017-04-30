@@ -21,7 +21,7 @@
 <!-- Bootstrap -->
 <link href="frameworks/css/bootstrap.min.css" rel="stylesheet" />
 <!-- StyleSheet -->
-<link href="style.css" rel="stylesheet" />
+<link href="frameworks/css/style.css" rel="stylesheet" />
 <!-- StyleSheet -->
 <link href="languages.min.css" rel="stylesheet" />
 
@@ -87,7 +87,7 @@
                     <tr>
                         <td>
                             <input type="hidden" name="ie" value="utd-8">
-                            <input type="text"   name="q" size="20" maxlength="255" value="Google site search">
+                            <input type="text" name="q" size="20" maxlength="255" value="Google site search">
                             <input type="submit" value="Go!">
                         </td>
                     </tr>
@@ -97,7 +97,8 @@
         </div>
         
         <div class="row"><!--3--> 
-            <div class="col-xs-12 col-md-12 col-lg-12"> <!--3.1 --> 
+            <div class="col-xs-12 col-md-12 col-lg-12"> <!--3.1 -->
+                
         <div class="panel panel-default">
         <div class="panel-heading"> <h1>Question List</h1></div>
         <div class="table-responsive">
@@ -161,9 +162,6 @@
 <script src="frameworks/js/angular-route.min.js"></script>   
 
 <!-- Configuration-->
-<script src="frameworks/js/gameOQ.js"></script>    
-
- 
-
+<script src="frameworks/js/gameOQ.js"></script>
 </body>
 </html>
