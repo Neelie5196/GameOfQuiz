@@ -98,52 +98,51 @@
         
         <div class="row"><!--3--> 
             <div class="col-xs-12 col-md-12 col-lg-12"> <!--3.1 -->
-                
-        <div class="panel panel-default">
-        <div class="panel-heading"> <h1>Question List</h1></div>
-        <div class="table-responsive">
-        <table class="table table-stripped table-hover" data-ng-controller="more">
-            <thead>
-                <tr>
-                    <th id="no" scope="col" >No.</th>
-                    <th id="quez" scope="col" >Question</th>
-                    <th id="typeq" scope="col" >Type</th>
-                    <th id="more" scope="col">Show More</th>
-                    <th id="edit" scope="col" >Edit</th>
-                    <th id="delete" scope="col" >delete</th>
-                </tr>
-            </thead>                      
-            <tbody>      
-                <%
-                    while(result.next()) {
-                        quizID = result.getInt("quizID");
-                %>
+                <div class="panel panel-default">
+                <div class="panel-heading"> <h1>Question List</h1></div>
+                <div class="table-responsive">
+                <table class="table table-stripped table-hover" data-ng-controller="more">
+                    <thead>
+                        <tr>
+                            <th id="no" scope="col" >No.</th>
+                            <th id="quez" scope="col" >Question</th>
+                            <th id="typeq" scope="col" >Type</th>
+                            <th id="more" scope="col">Show More</th>
+                            <th id="edit" scope="col" >Edit</th>
+                            <th id="delete" scope="col" >delete</th>
+                        </tr>
+                    </thead>                      
+                    <tbody>      
+                        <%
+                            while(result.next()) {
+                                quizID = result.getInt("quizID");
+                        %>
 
-                <tr>
-                    <td headers="no"><%=result.getInt("questionID") %></td>
-                    <td headers="quez"><%=result.getString("question") %></td>
-                    <td headers="typeq"><%=result.getString("type") %></td>
-                    <td headers="more"><a class="glyphicon glyphicon-eye-open" href="showQuestion.jsp?id=<%=result.getInt("questionID")%>"></a></td>
-                    <td headers="edit"><a class="glyphicon glyphicon-edit" href="updateQuestion.jsp?id=<%=result.getInt("questionID")%>"></a></td>
-                    <td headers="del"><a class="glyphicon glyphicon-trash" href="deleteQuestion.jsp?id=<%=result.getInt("questionID")%>" onclick="return confirm('Once confirm, question <%=result.getString("questionID") %> will be removed. Confirm to delete?')"></a></td>
-                </tr>
+                        <tr>
+                            <td headers="no"><%=result.getInt("questionID") %></td>
+                            <td headers="quez"><%=result.getString("question") %></td>
+                            <td headers="typeq"><%=result.getString("type") %></td>
+                            <td headers="more"><a class="glyphicon glyphicon-eye-open" href="showQuestion.jsp?id=<%=result.getInt("questionID")%>"></a></td>
+                            <td headers="edit"><a class="glyphicon glyphicon-edit" href="updateQuestion.jsp?id=<%=result.getInt("questionID")%>"></a></td>
+                            <td headers="del"><a class="glyphicon glyphicon-trash" href="deleteQuestion.jsp?id=<%=result.getInt("questionID")%>" onclick="return confirm('Once confirm, question <%=result.getString("questionID") %> will be removed. Confirm to delete?')"></a></td>
+                        </tr>
 
-                <%
-                    }
-                %>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td colspan="6">
-                        <a class="glyphicon glyphicon-plus-sign" href="addQuestion.jsp?id=<%=quizID%>">ADD</a>
-                    </td>
-                </tr>
-            </tfoot>
-        </table>
-        </div>
-        </div>
+                        <%
+                            }
+                        %>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="6">
+                                <a class="glyphicon glyphicon-plus-sign" href="addQuestion.jsp?id=<%=quizID%>">ADD</a>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+                </div>
+                </div>
                     
-        <p><a href="index.html">Back To Topic</a></p> 
+                <p><a href="index.html">Back To Topic</a></p> 
             </div>
         </div>
     </div>

@@ -94,19 +94,17 @@
                 <h1>Add New Topic</h1>
                 <form id="addForm" action="" method="POST">
                     <table cellspacing="5" cellpadding="5">
-                        <tbody>
-                            <tr>
-                                <td>New Topic: </td>
-                                <td><input type="text" name="txtName" id="txtName"/></td>
-                            </tr>
-                            <tr>
-                                <td>Topic Bonus: </td>
-                                <td><textarea name="txtBonus" id="txtBonus"></textarea></td>
-                            </tr>
-                            <tr>
-                                <td><input type="submit" name="btnAdd" value="Add Topic" id="btnAdd"/></td>
-                            </tr>
-                        </tbody>
+                        <tr>
+                            <td>New Topic: </td>
+                            <td><input type="text" name="txtName" id="txtName"/></td>
+                        </tr>
+                        <tr>
+                            <td>Topic Bonus: </td>
+                            <td><textarea name="txtBonus" id="txtBonus"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td><input type="submit" name="btnAdd" value="Add Topic" id="btnAdd"/></td>
+                        </tr>
                     </table>
                 </form>
             </div>

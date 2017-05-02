@@ -118,22 +118,23 @@
                 <form id="icon" name="cse" action="http://www.google.com/search" target="_blank">
                 <table>
                     <tr>
-                        <td>
-                            <input type="hidden" name="ie" value="utd-8">
+                        <li>
+                            <input type="hidden" name="ie" value="uli-8">
                             <input type="text" name="q" size="20" maxlength="255" value="Google site search">
                             <input type="submit" value="Go!">
-                        </td>
+                        </li>
                     </tr>
                 </table>
 		</form>
             </div>       
         </div>
         <div class="row"><!--3--> 
-            <div class="col-xs-12 col-md-12 col-lg-12"><!--3.1--> 
+            <div class="col-xs-10 col-md-10 col-lg-10"><!--3.1--> 
                 <i>press "Backspace to return previous page"</i>
-                <h1>Update Topic & Topic Bonus</h1> 
-
-                <button data-toggle="modal" data-target="#note">Note*</button>
+                <h1>Update Topic & Topic Bonus</h1>  
+            </div>
+            <div class="col-xs-2 col-md-2 col-lg-2"><!--3.2-->
+                 <button data-toggle="modal" data-target="#note" class="right">Note*</button> 
                     <!-- Modal -->
                     <div class="modal fade" id="note" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -150,47 +151,39 @@
                     </div>
                     </div>
                     </div>
-                <div class="row update"><!--3.1.1--> 
-                    <div class="col-xs-12 col-md-6 col-lg-6 border"><!--3.1.1.1-->
-                        <ul class="showforupdate">
-                            <p class="right">(Original)</p>
-                            <li><h3>Topic <%=quizID%></h3></li>
-                            <li class="showdata"><%=result.getString("quizTopic")%></li>
-                            <li><h3>Topic Bonus</h3></li>
-                            <li class="showdata"><%=result.getString("bonus")%></li>
-                        </ul>    
-                    </div>
-                    <div class="col-xs-12 col-md-6 col-lg-6"><!--3.1.1.2-->
-                        <p>(Update here)</p>
-                        <form id="updForm" action="" method="POST">
-                        <table>
-                            <tr>
-                                <td><h3>Topic <%=quizID%></h3></td>
-                            </tr>
-                            <tr> 
-                                <td>
-                                    <input type="hidden" name="hiddenId" id="hiddenId" value="<%=quizID%>"/>
-
-                                    <input type="text" name="txtName1" class="form-control" id="txtName" placeholder="<%=result.getString("quizTopic")%>" size="70"/>
-                                </td>
-                            </tr>
-                            <tr>  
-                                <td><h3>Topic Bonus</h3></td>
-                            </tr>
-                            <tr> 
-                                <td><textarea name="txtName2" class="form-control" id="txtName" placeholder="<%=result.getString("bonus")%>" rows="3" cols="70"></textarea></td>
-                            </tr>
-                            <tr>
-                                <td colspan="2"><input type="submit" name="btnUpd" placeholder="Update Employee" id="btnUpd"/></td>
-                            </tr>     
-                        </table>
-                        </form> 
-                    </div>
-                </div>
             </div>
         </div>
-    </div> 
-     
+                    
+        <div class="row update"><!--4--> 
+            <div class="col-xs-12 col-md-6 col-lg-6 border"><!--4.1-->
+                <p class="right">(Original)</p>
+                <ul class="showforupdate">
+                    <li><h3>Topic <%=quizID%></h3></li>
+                    <li class="showdata"><%=result.getString("quizTopic")%></li>
+                    <li><h3>Topic Bonus</h3></li>
+                    <li class="showdata"><%=result.getString("bonus")%></li>
+                </ul>    
+            </div>
+            <div class="col-xs-12 col-md-6 col-lg-6"><!--4.2-->
+                <p>(Update here)</p>
+                <form id="updForm" action="" method="POST">
+                    <ul>
+                        <li><h3>Topic <%=quizID%></h3></li>
+                        <li>
+                            <input type="hidden" name="hiddenId" id="hiddenId" value="<%=quizID%>"/>
+
+                            <input type="text" name="txtName1" class="form-control" id="txtName" placeholder="<%=result.getString("quizTopic")%>" size="70"/>
+                        </li>
+                        <li><h3>Topic Bonus</h3></li>
+                        <li><textarea name="txtName2" class="form-control" id="txtName" placeholder="<%=result.getString("bonus")%>" rows="3" cols="70"></textarea></li>
+                        <li colspan="2"><input type="submit" name="btnUpd" placeholder="Update Topic" id="btnUpd"/></li>
+                    </ul>
+                </form> 
+            </div>
+        </div>
+    </div>
+       
+                        
 <!-- jQuery – required for Bootstrap's JavaScript plugins -->
 <script src="frameworks/js/jquery.min.js"></script>
 

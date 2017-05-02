@@ -92,28 +92,47 @@
 		</form>
             </div>       
         </div>
-
+      
         <div class="row"><!--3--> 
-            <div class="col-xs-12 col-md-12 col-lg-12"> <!--3.1 --> 
+            <div class="col-xs-10 col-md-10 col-lg-10"><!--3.1--> 
                 <i>press "Backspace" to return previous page</i>
                 <h3>All about Question <%=result.getInt("questionID")%></h3> 
+            </div>
+            <div class="col-xs-1 col-md-1 col-lg-1"> <!--3.2--> 
+                <button class="btn btn-sm btn-primary glyphicon glyphicon-edit" href="updateQuestion.jsp?id=<%=result.getInt("questionID")%>"> Edit</button>
+            </div>
+            <div class="col-xs-1 col-md-1 col-lg-1"> <!--3.3--> 
+                <button class="btn btn-sm btn-danger glyphicon glyphicon-trash" href="deleteQuestion.jsp?id=<%=result.getInt("questionID")%>" onclick="return confirm('Once confirm, question <%=result.getString("questionID") %> will be removed. Confirm to delete?')"> Delete</button>
+            </div>
+        </div>
+        <div class="row"><!--4--> 
+            <div class="col-xs-12 col-md-12 col-lg-12"> <!--4.1 --> 
                 <ul>
                     <li><b>Question:</b> <%=result.getString("question") %></li>
                     <li><b>Hints:</b> <%=result.getString("hints") %></li>
-                    <li><b>Type:</b> <%=result.getString("type") %></li>
-                    <li><b>Selection:</b></li>
+                 
+                    <!-- Format for multiple choice -->
+                    <div data-ng-if="'<%=result.getString("type")%>' === 'M'">
+                    <li><b>Multiple choice</b></li>
+                    <li>A. <%=result.getString("input1") %></li>
+                    <li>B. <%=result.getString("input2") %></li>
+                    <li>C. <%=result.getString("input3") %></li>
+                    <li>D. <%=result.getString("input4") %></li>
+                    </div>
+                    
+                    <!-- Format for fill in the blank -->
+                    <div data-ng-if="'<%=result.getString("type")%>' === 'B'">
+                    <li><b>Selection</b></li>
                     <li>
-                        <p><%=result.getString("input1") %></p>
-                        <p><%=result.getString("input2") %></p>
-                        <p><%=result.getString("input3") %></p>
-                        <p><%=result.getString("input4") %></p>
+                        <%=result.getString("input1") %>
+                        <%=result.getString("input2") %>
+                        <%=result.getString("input3") %>
+                        <%=result.getString("input4") %>
                     </li>
+                    </div>
+                    
                     <li><b>Answer</b>: <%=result.getString("checked") %></li>
                 </ul>
-                
-                <a class="glyphicon glyphicon-edit" href="updateQuestion.jsp?id=<%=result.getInt("questionID")%>"></a>
-                <a class="glyphicon glyphicon-trash" href="deleteQuestion.jsp?id=<%=result.getInt("questionID")%>" onclick="return confirm('Once confirm, question <%=result.getString("questionID") %> will be removed. Confirm to delete?')"></a>
-
             </div>
         </div>   
     </div> 

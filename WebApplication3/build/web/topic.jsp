@@ -77,9 +77,7 @@
                     <td headers="edit"><a class="glyphicon glyphicon-edit" href="updateTopic.jsp?id=<%=quizID%>"></a></td>
                     <td headers="del"><a class="glyphicon glyphicon-trash" href="deleteTopic.jsp?id=<%=quizID%>" onclick="return confirm('Once confirm, this topic <%=result.getString("quizTopic") %> will be removed. Confirm to delete?')"></a></td>
                 </tr>
-
-                       
-
+                
                 <%
                     }
                 %>
@@ -92,7 +90,6 @@
                     </td>
                 </tr>
             </tfoot>
-     
         </table>       
         </div>
         </div> 

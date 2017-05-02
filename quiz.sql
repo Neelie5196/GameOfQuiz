@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 30, 2017 at 03:43 PM
+-- Generation Time: May 02, 2017 at 12:40 PM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -36,9 +36,9 @@ CREATE TABLE IF NOT EXISTS `question` (
   `input2` varchar(50) NOT NULL,
   `input3` varchar(50) NOT NULL,
   `input4` varchar(50) NOT NULL,
-  `checked` varchar(5) NOT NULL,
+  `checked` varchar(20) NOT NULL,
   PRIMARY KEY (`questionID`,`quizID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
 
 --
 -- Dumping data for table `question`
@@ -50,7 +50,16 @@ INSERT INTO `question` (`quizID`, `questionID`, `question`, `type`, `hints`, `in
 (1, 3, 'Best synonym for frustration', 'M', 'none', 'upset feeling', 'first feeling', 'successful feeling', 'cold feeling', 'A'),
 (2, 4, '___ he play baseball after school', 'B', 'none', 'Has', 'Does', 'Do', 'Is', 'Does'),
 (1, 5, 'Best synonym for employer', 'M', 'none', 'legal professional', 'waitress', 'boss', 'farmer', 'C'),
-(2, 6, 'Please be quiet ___ the teacher is talking', 'B', 'none', 'during', 'while', '', '', 'while');
+(2, 6, 'Please be quiet ___ the teacher is talking', 'B', 'none', 'during', 'while', '', '', 'while'),
+(1, 16, 'sfbsf', 'B', 'fsbb', '', '', '', '', ''),
+(1, 17, 'trht', 'M', '', '', '', '', '', ''),
+(1, 18, 'thtr', 'B', 't', 'tht', '', '', '', ''),
+(1, 19, 'rh', 'T', '', '', '', '', '', ''),
+(1, 20, 'rgeg', 'M', 'regre', 'reggr', 'erggr', 'erg', 'eg', 'erg'),
+(1, 21, 'erg', 'T', 'erg', '', '', '', '', 'er'),
+(1, 22, 'erg', 'B', 'reg', 'erg', '', 'erg', 'erg', 'erg'),
+(1, 23, 'erg', 'B', 'erg', 'erg', 'reg', 'erg', 'erg', 'erg'),
+(1, 24, 'dfbdbfdbf', 'M', 'bfdb', 'dfbfdbdfb', '', '', '', 'dbdfb');
 
 -- --------------------------------------------------------
 
@@ -63,7 +72,7 @@ CREATE TABLE IF NOT EXISTS `quiz` (
   `quizTopic` varchar(50) NOT NULL,
   `bonus` varchar(1000) NOT NULL,
   PRIMARY KEY (`quizID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `quiz`
@@ -72,7 +81,8 @@ CREATE TABLE IF NOT EXISTS `quiz` (
 INSERT INTO `quiz` (`quizID`, `quizTopic`, `bonus`) VALUES
 (1, 'Volcabulary', 'You know more than you think. TRUST yourself. - Dr.Benjamin Mclane Spock'),
 (2, 'Grammar', 'The best proof of love is trust. - Dr.Joyce Brothers'),
-(3, 'AngularJS', 'To succeed in your mission you must have single-minded devotion to your goal. - A.P.J. Abdul Kalam');
+(3, 'AngularJS', 'To succeed in your mission you must have single-minded devotion to your goal. - A.P.J. Abdul Kalam'),
+(6, 'kpkp', 'kpkp');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

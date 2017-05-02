@@ -1,0 +1,65 @@
+/*control navigation bar*/
+#navigationbar{
+    border: solid 1px;
+}
+
+
+/*jumbotron */
+.jumbotron {
+    background-color: #353A49;
+    color: #fff;
+}
+
+.jumbotron img{
+    width: 100%;
+}
+
+
+#toequilibra{
+    text-align: right;
+}
+
+
+table, table th{
+    text-align: center;
+}
+
+
+ ul{
+   list-style-type: none; 
+ }
+ 
+ 
+#hint, #fiblank{
+    background-color: #fff;
+    color: #1E88E5;
+}
+
+.showdata{
+    border: 1px solid;
+    padding: 2%;
+}
+
+.right{
+    align: right;
+}
+
+.tab{
+    padding-left: 10%;
+}
+
+.btn-lg{
+    margin-top: 5%;
+}
+
+.section {
+    padding: 5%;
+    color: #fff;
+    background-color: #1E88E5;
+    margin-bottom: 8%;
+  
+  }
+
+  input{
+    color: #000;  
+  }

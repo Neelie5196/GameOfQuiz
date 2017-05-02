@@ -107,15 +107,14 @@
                 <h3 class="modal-title">Add New Question</h3><hr/>
                 <form id="addForm" action="" method="POST">
                     <table>
-                        <tbody>
-                            <tr>
-                                <td>Question:</td>
-                                <td><textarea name="txtquestion" class="form-control" placeholder="question" ></textarea></td>
-                            </tr>
-                            <tr>
-                                <td>Hints</td>
-                                <td><input type="text" name="txthints" class="form-control" placeholder="Add Hints here"/></td>
-                            </tr>
+                        <tr>
+                            <td>Question:</td>
+                            <td><textarea name="txtquestion" class="form-control" placeholder="question" ></textarea></td>
+                        </tr>
+                        <tr>
+                            <td>Hints</td>
+                            <td><input type="text" name="txthints" class="form-control" placeholder="Add Hints here"/></td>
+                        </tr>
                             <tr>
                                 <td>
                                    <em>Select a type for question and continue</em> 
@@ -129,43 +128,43 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="2">                     
-                                    <div class="form-group" data-ng-show="show===1" > 
+                                <td colspan="2">
+                                           <!-- Format for multiple choice & fill in the blank -->
+                            <div class="form-group" data-ng-show="show===1 || show===3" > 
                                         <div class="form-group" >         
-                                            A.<input class="form-control" type="text" name="txtinput1" />
+                                            <input class="form-control" type="text" name="txtinput1" placeholder="Choice 1"/>
                                         </div>
                                         <div class="form-group" >         
-                                            B.<input class="form-control" type="text" name="txtinput2" />
+                                            <input class="form-control" type="text" name="txtinput2" placeholder="Choice 2"/>
                                         </div>
                                         <div class="form-group" >         
-                                            C.<input class="form-control" type="text" name="txtinput3" />
+                                            <input class="form-control" type="text" name="txtinput3" placeholder="Choice 3"/>
                                         </div>
                                         <div class="form-group" >        
-                                            D.<input class="form-control" type="text" name="txtinput4" />
+                                            <input class="form-control" type="text" name="txtinput4" placeholder="Choice 4"/>
                                         </div>
-
+                                    
+                            </div>
+ </td>
+                            </tr>
+                            <tr><td>
+                                    <p>Answer</p></td>
+                                
+                                        <td>
                                         <div class="form-group" >         
-                                            <input class="form-control" type="text" name="txtchecked" placeholder="A? B? C? D? "/>
+                                            <input class="form-control" type="text" name="txtchecked"/>
                                         </div>
-
-                                    </div>
-                                    <div class="form-group" data-ng-show="show===2 ">
-                                        <div class="form-group" >         
-                                            <input class="form-control" type="text" name="txtchecked" placeholder="True/False"/>
-                                        </div>
-                                    </div>
-                                    <div class="form-group" data-ng-show="show===3 ">
-                                        <div class="form-group" >         
-                                            <input class="form-control" type="text" name="txtchecked" placeholder="Answer"/>
-                                        </div>
-                                    </div>  
+                            
+                                    
+                             
+                                    
                                 </td>
                             </tr>
                             <tr>
                                 <td><input type="submit" name="btnAdd" value="Save" /> </td>
                                 <td><button type="button" href="question.jsp?id=<%=quizID%>">Cancel</button></td>
                             </tr>
-                        </tbody>
+                  
                     </table>
                 </form>
             </div>
