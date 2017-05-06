@@ -3,6 +3,9 @@
     border: solid 1px;
 }
 
+.panel{
+    width: 80%;
+}
 
 /*jumbotron */
 .jumbotron {

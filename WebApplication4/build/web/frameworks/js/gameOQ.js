@@ -1,3 +1,5 @@
+
+
 var app = angular.module("myApp", ["ngRoute"]);
 app.config(["$routeProvider", function ($routeProvider) {
     'use strict';
@@ -8,26 +10,22 @@ app.config(["$routeProvider", function ($routeProvider) {
 }]);
 
 
+function checkansSound(){
+    var audio = new Audio('sound/Bing-sound.mp3');
+    audio.play();
+}
 
+function giveupSound(){
+    var audio = new Audio('sound/Fail-trombone.mp3');
+    audio.play();
+}
 
-//control for panel
-app.controller("more", function () {"use strict";
-    $('#myModal').on('show.bs.modal', function (e) {
-        $(this).find('.modal-title').html(e.relatedTarget.id);
-        $(this).find('.modal-body').html("Topic Bonus: <br/>" + e.relatedTarget.value); 
-    });
-    });
-    
-    
-    
-app.filter("pagination", function () {"use strict";
-    return function (input, start) {
-        //check if input exists o nt
-        if (!input || !input.length) {
-            return;
-        }
-        start = +start; //parse to int
-        return input.slice(start);
-    };
-    });
+function bonusSound(){
+    var audio = new Audio('sound/Heavengate-angelic-transition.mp3');
+    audio.play();
+}
 
+function meowSound(){
+    var audio = new Audio('sound/Cat-meow-sound-2.mp3');
+    audio.play();
+}

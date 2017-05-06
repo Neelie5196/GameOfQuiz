@@ -56,7 +56,7 @@
         <div class="panel-heading"><h1>Welcome to Game Of Quiz</h1></div>
 
         <div class="table-responsive">
-        <table class="table table-stripped table-hover" data-ng-controller="more">
+        <table class="table table-stripped table-hover">
             <thead>
                 <tr>
                     <th id="topic" scope="col" >Topic</th>
@@ -69,7 +69,7 @@
                 %>
 
                 <tr>
-                    <td headers="topic"><a href="question.jsp?id=<%=quizID%>"><%=result.getString("quizTopic") %>  <span class="glyphicon glyphicon-play-circle"></span></a></td>
+                    <td headers="topic" class="topic"><a href="question.jsp?id=<%=quizID%>"><%=result.getString("quizTopic") %>  <span class="glyphicon glyphicon-play-circle"></span></a></td>
                 </tr>
                 <%
                     }

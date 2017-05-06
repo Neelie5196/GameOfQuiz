@@ -176,7 +176,7 @@
                         </li>
                         <li><h3>Topic Bonus</h3></li>
                         <li><textarea name="txtName2" class="form-control" id="txtName" placeholder="<%=result.getString("bonus")%>" rows="3" cols="70"></textarea></li>
-                        <li colspan="2"><input type="submit" name="btnUpd" placeholder="Update Topic" id="btnUpd"/></li>
+                        <li colspan="2"><button name="btnUpd" id="btnUpd"/>update</li>
                     </ul>
                 </form> 
             </div>
