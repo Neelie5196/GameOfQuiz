@@ -87,7 +87,7 @@
             quizID = result.getInt("quizID");  
             z++;
         %> 
-  
+        
         <!--display quiz question-->
         <div id="<%=result.getInt("questionID") %>" class="questioncontainer">
             <h2> Question <% out.println(z); %></h2> <hr/>
@@ -99,22 +99,26 @@
             <div data-ng-if="'<%=result.getString("type")%>' === 'M'">
                 <form name="form1">
                     <ul class="left answercontainer">
-                        <li><input type="radio" data-ng-model="checkeds" value="A" required/> <%=result.getString("input1") %></li>
-                        <li><input type="radio" data-ng-model="checkeds" value="B" /> <%=result.getString("input2") %></li>
-                        <li><input type="radio" data-ng-model="checkeds" value="C" /> <%=result.getString("input3") %></li>
-                        <li><input type="radio" data-ng-model="checkeds" value="D" /> <%=result.getString("input4") %></li>
+                        <li class="testing" ><input type="radio" data-ng-model="checkeds" value="A" name="multiradio" required/> <%=result.getString("input1") %></li>
+                        <li class="testing" ><input type="radio" data-ng-model="checkeds" value="B" name="multiradio" /> <%=result.getString("input2") %></li>
+                        <li class="testing" ><input type="radio" data-ng-model="checkeds" value="C" name="multiradio" /> <%=result.getString("input3") %></li>
+                        <li class="testing" ><input type="radio" data-ng-model="checkeds" value="D" name="multiradio" /> <%=result.getString("input4") %></li>
                     </ul>
                     
-                    <p class="hint" data-ng-show="scopeVar"><%=result.getString("hints") %></p>
-                    <a class="glyphicon glyphicon-eye-open pull-right" type="button" data-ng-click="scopeVar=scopeVar!==true">Hints</a><br/>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-12 col-lg-12 hintrow">
+                            <p class="hint" data-ng-show="scopeVar"><%=result.getString("hints") %></p>
+                            <a class="hinticon glyphicon glyphicon glyphicon-search" type="button" data-ng-click="scopeVar=scopeVar!==true"></a><br/>
+                        </div>
+                    </div>
                     
                     <div class="row"><!--4.1.1--> 
-                        <div class="col-xs-6 col-md-6 col-lg-6 " ><!--4.1.2--> 
-                            <button class="btn btn-block full-width" data-ng-click="show = 1; count = count+1" data-ng-init="0" data-ng-disabled="form1.$invalid" onClick="checkansSound()">Check</button>
+                        <div class="col-xs-6 col-md-6 col-lg-6 full-width1" ><!--4.1.2--> 
+                            <button class="btn btn-primary btn-lg givecheckbutton" data-ng-click="show = 1; count = count+1" data-ng-init="0" data-ng-disabled="form1.$invalid" onClick="checkansSound()">Check</button>
                         </div>
                         
-                        <div class="col-xs-6 col-md-6 col-lg-6 "><!--4.1.3-->
-                            <button class="btn btn-block full-width" data-ng-click="show = 2" onClick="giveupSound()">Give Up</button>  
+                        <div class="col-xs-6 col-md-6 col-lg-6 full-width2"><!--4.1.3-->
+                            <button class="btn btn-danger btn-lg givecheckbutton" data-ng-click="show = 2" onClick="giveupSound()">Give Up</button>  
                         </div> 
                     </div>    
                 </form>  
@@ -161,20 +165,26 @@
             <!-- User input for Fill in the Blank & True False -->
             <div data-ng-if="'<%=result.getString("type")%>' === 'B' || '<%=result.getString("type")%>' === 'T'">
                 <form name="form2">
+                    <div class="testing">
                     <h4>Answer:</h4>
                     <input type="text" name="answer" data-ng-model="checkeds" required/><br/>
-                    
-                    <p class="hint" data-ng-show="scopeVar"><%=result.getString("hints") %></p>
-                    <a class="glyphicon glyphicon-eye-open pull-right" type="button" data-ng-click="scopeVar=scopeVar!==true">Hints</a><br/>
-
-                    <div class="row"><!--4.1.1--> 
-                        <div class="col-xs-6 col-md-6 col-lg-6 " ><!--4.1.2--> 
-                            <button class="btn btn-block full-width" data-ng-click="show = 3; count = count+1" data-ng-disabled="form2.$invalid" onClick="checkansSound()">Check</button>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-12 col-lg-12 hintrow">
+                            <p class="hint" data-ng-show="scopeVar"><%=result.getString("hints") %></p>
+                            <a class="hinticon glyphicon glyphicon glyphicon-search" type="button" data-ng-click="scopeVar=scopeVar!==true"></a><br/>
                         </div>
-                        <div class="col-xs-6 col-md-6 col-lg-6 "><!--4.1.3-->
-                            <button class="btn btn-block full-width" data-ng-click="show = 4" onClick="giveupSound()">Give Up</button>  
+                    </div>
+                    
+                    <div class="row""><!--4.1.1--> 
+                        <div class="col-xs-6 col-md-6 col-lg-6 full-width1" ><!--4.1.2--> 
+                            <button class="btn btn-primary btn-lg givecheckbutton" data-ng-click="show = 1; count = count+1" data-ng-init="0" data-ng-disabled="form1.$invalid" onClick="checkansSound()">Check</button>
+                        </div>
+                        
+                        <div class="col-xs-6 col-md-6 col-lg-6 full-width2"><!--4.1.3-->
+                            <button class="btn btn-danger btn-lg givecheckbutton" data-ng-click="show = 2" onClick="giveupSound()">Give Up</button>  
                         </div> 
-                    </div>                 
+                    </div>                  
                 </form>
                     
                 <!-- check answer-->
@@ -201,6 +211,7 @@
 
             </div> 
         </div>
+        
         <%
             } 
         %>
