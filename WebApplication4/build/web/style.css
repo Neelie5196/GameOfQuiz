@@ -80,6 +80,8 @@ ul{
 
 .answercontainer{
     padding: 0px;
+    text-align: left;
+    font-size:20px;
 }
 
 .yellow, hr.correct{
@@ -95,7 +97,7 @@ hr.correct, hr.incorrect{
     width: 80%;
 }
 
-.checkanswer, .showanswer{
+.checkshowanswer{
    padding-top: 2%; 
 }
 
@@ -103,26 +105,21 @@ hr.correct, hr.incorrect{
     border-style: double;
     margin: 3% 15% 2% 15%;
     color: #1E88E5;
-}
-
-.left{
- 
-    text-align: left;
-    font-size:20px;    
+    text-align: center;
+    width: auto;
 }
 
 .tab{
     padding-left: 10%;
 }
-
 input{
     color: #000;  
 }
   
 .cat{
-    margin-top: -35%;
-    width:250px; 
-    height:200px; 
+    margin-top: -25%;
+    width:50%; 
+    height:50%;  
 }
   
 .catpawn{
@@ -130,6 +127,7 @@ input{
 }
 
 .catpawn img{
+    margin-top: -20%;
     width:80%; 
     height:80%; 
 }
@@ -140,20 +138,7 @@ input{
     background-color: #f5f5f5;
 }
 
-.report{
-    position: fixed;
-    top: 95%;
-    right:0pt;
-    margin-right: 5%;
-}
-.back{
-    position: fixed;
-    top: 95%;
-    left:0pt;
-    margin-left: 5%;
-}
-
-.testing{
+.rowinput{
     border: solid 1px #ffffff;
     border-radius: 15px;
     background: linear-gradient(to right, #ffffff, rgba(200, 210, 233, 0.5));
@@ -164,12 +149,8 @@ input{
     font-weight: normal;
 }
 
-.testing:hover{
+.rowinput:hover{
     border-style: inset;
-}
-
-.full-width{
-    border: solid 1px black;
 }
 
 .full-width1{
@@ -204,4 +185,8 @@ input{
 
 .hintrow{
     padding: 2% 5%;
+}
+
+.answer{
+    color: #228B22;
 }

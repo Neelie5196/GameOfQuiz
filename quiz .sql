@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 06, 2017 at 04:59 PM
+-- Generation Time: May 09, 2017 at 05:04 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -37,20 +37,24 @@ CREATE TABLE IF NOT EXISTS `question` (
   `input3` varchar(50) NOT NULL,
   `input4` varchar(50) NOT NULL,
   `checked` varchar(20) NOT NULL,
+  `explanation` varchar(100) NOT NULL,
   PRIMARY KEY (`questionID`,`quizID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `question`
 --
 
-INSERT INTO `question` (`quizID`, `questionID`, `question`, `type`, `hints`, `input1`, `input2`, `input3`, `input4`, `checked`) VALUES
-(1, 1, 'Best synonym for warn', 'M', 'none', 'feel sleepy', 'write', 'get closer', 'tell of danger', 'D'),
-(1, 2, 'Best synonym for bold', 'M', 'none', 'brave', 'strong', 'made up', 'ancient', 'A'),
-(1, 3, 'Best synonym for frustration', 'M', 'none', 'upset feeling', 'first feeling', 'successful feeling', 'cold feeling', 'A'),
-(2, 4, '___ he play baseball after school', 'B', 'none', 'Has', 'Does', 'Do', 'Is', 'Does'),
-(1, 5, 'Best synonym for employer', 'M', 'none', 'legal professional', 'waitress', 'boss', 'farmer', 'C'),
-(2, 6, 'Please be quiet ___ the teacher is talking', 'B', 'none', 'during', 'while', 'when', 'meanwhile', 'while');
+INSERT INTO `question` (`quizID`, `questionID`, `question`, `type`, `hints`, `input1`, `input2`, `input3`, `input4`, `checked`, `explanation`) VALUES
+(1, 1, 'Best synonym for warn', 'M', 'none', 'feel sleepy', 'write', 'get closer', 'tell of danger', 'D', 'Go find it Yourself la'),
+(1, 2, 'Best synonym for bold', 'M', 'none', 'brave', 'strong', 'made up', 'ancient', 'A', 'Go find it Yourself la'),
+(1, 3, 'Best synonym for frustration', 'M', 'none', 'upset feeling', 'first feeling', 'successful feeling', 'cold feeling', 'A', 'Go find it Yourself la'),
+(2, 4, '___ he play baseball after school', 'B', 'none', 'Has', 'Does', 'Do', 'Is', 'Does', 'Go find it Yourself la'),
+(1, 5, 'Best synonym for employer', 'M', 'none', 'legal professional', 'waitress', 'boss', 'farmer', 'C', ''),
+(2, 6, 'Please be quiet ___ the teacher is talking', 'B', 'none', 'during', 'while', 'when', 'meanwhile', 'while', ''),
+(1, 8, 've', 'T', '', '', '', '', '', 'er', 'e'),
+(1, 9, 'ryh', 'M', '', '', '', '', '', '', 'ryyrj'),
+(1, 10, 'fd', 'B', '', '', '', '', '', '', 'vfd');
 
 -- --------------------------------------------------------
 
@@ -72,8 +76,7 @@ CREATE TABLE IF NOT EXISTS `quiz` (
 INSERT INTO `quiz` (`quizID`, `quizTopic`, `bonus`) VALUES
 (1, 'Volcabulary', 'You know more than you think. TRUST yourself. - Dr.Benjamin Mclane Spock'),
 (2, 'Grammar', 'The best proof of love is trust. - Dr.Joyce Brothers'),
-(3, 'AngularJS', 'To succeed in your mission you must have single-minded devotion to your goal. - A.P.J. Abdul Kalam'),
-(6, 'ergwerr', 'rweheh');
+(3, 'AngularJS', 'To succeed in your mission you must have single-minded devotion to your goal. - A.P.J. Abdul Kalam');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

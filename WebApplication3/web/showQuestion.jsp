@@ -99,7 +99,7 @@
                 <h3>All about Question <%=result.getInt("questionID")%></h3> 
             </div>
             <div class="col-xs-1 col-md-1 col-lg-1"> <!--3.2--> 
-                <button class="btn btn-sm btn-primary glyphicon glyphicon-edit" href="updateQuestion.jsp?id=<%=result.getInt("questionID")%>"> Edit</button>
+                <a class="btn btn-sm btn-primary glyphicon glyphicon-edit" href="updateQuestion.jsp?id=<%=result.getInt("quizID")%>">Edit</a>
             </div>
             <div class="col-xs-1 col-md-1 col-lg-1"> <!--3.3--> 
                 <button class="btn btn-sm btn-danger glyphicon glyphicon-trash" href="deleteQuestion.jsp?id=<%=result.getInt("questionID")%>" onclick="return confirm('Once confirm, question <%=result.getString("questionID") %> will be removed. Confirm to delete?')"> Delete</button>
@@ -132,6 +132,7 @@
                     </div>
                     
                     <li><b>Answer</b>: <%=result.getString("checked") %></li>
+                    <li><b>Explanation</b>: <%=result.getString("explanation") %></li>
                 </ul>
             </div>
         </div>   

@@ -49,7 +49,7 @@
                     try{
                         Class.forName("com.mysql.jdbc.Driver");
 
-                        qry = "INSERT INTO question(quizID, question, type,hints, input1, input2, input3, input4, checked) VALUES(?,?,?,?,?,?,?,?,?)";
+                        qry = "INSERT INTO question(quizID, question, type,hints, input1, input2, input3, input4, checked, explanation) VALUES(?,?,?,?,?,?,?,?,?,?)";
                         pstmt = conn.prepareStatement(qry);
                         pstmt.setInt(1, quizID);
                         pstmt.setString(2,request.getParameter("txtquestion"));
@@ -60,6 +60,8 @@
                         pstmt.setString(7,request.getParameter("txtinput3"));
                         pstmt.setString(8,request.getParameter("txtinput4")); 
                         pstmt.setString(9,request.getParameter("txtchecked"));
+                        pstmt.setString(10,request.getParameter("txtexplain"));
+                        
                         pstmt.executeUpdate();
                         response.sendRedirect("./question.jsp");
                     }catch(ClassNotFoundException cnfe){
@@ -115,56 +117,57 @@
                             <td>Hints</td>
                             <td><input type="text" name="txthints" class="form-control" placeholder="Add Hints here"/></td>
                         </tr>
-                            <tr>
-                                <td>
+                        <tr>
+                            <td>
                                    <em>Select a type for question and continue</em> 
-                                </td>
-                                <td>
-                                    <ul>
-                                        <li><input type="radio" name="txttype" value="M" data-ng-click="show = 1" />Multiple choice</li>
-                                        <li><input type="radio" name="txttype" value="T" data-ng-click="show = 2" />True and false</li>
-                                        <li><input type="radio" name="txttype" value="B" data-ng-click="show = 3" />Fill in Blank</li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">
-                                           <!-- Format for multiple choice & fill in the blank -->
-                            <div class="form-group" data-ng-show="show===1 || show===3" > 
-                                        <div class="form-group" >         
-                                            <input class="form-control" type="text" name="txtinput1" placeholder="Choice 1"/>
-                                        </div>
-                                        <div class="form-group" >         
-                                            <input class="form-control" type="text" name="txtinput2" placeholder="Choice 2"/>
-                                        </div>
-                                        <div class="form-group" >         
-                                            <input class="form-control" type="text" name="txtinput3" placeholder="Choice 3"/>
-                                        </div>
-                                        <div class="form-group" >        
-                                            <input class="form-control" type="text" name="txtinput4" placeholder="Choice 4"/>
-                                        </div>
-                                    
-                            </div>
- </td>
-                            </tr>
-                            <tr><td>
-                                    <p>Answer</p></td>
-                                
-                                        <td>
-                                        <div class="form-group" >         
-                                            <input class="form-control" type="text" name="txtchecked"/>
-                                        </div>
-                            
-                                    
-                             
-                                    
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><input type="submit" name="btnAdd" value="Save" /> </td>
-                                <td><button type="button" href="question.jsp?id=<%=quizID%>">Cancel</button></td>
-                            </tr>
-                  
+                            </td>
+                            <td>
+                                <ul>
+                                    <li><input type="radio" name="txttype" value="M" data-ng-click="show = 1" />Multiple choice</li>
+                                    <li><input type="radio" name="txttype" value="T" data-ng-click="show = 2" />True and false</li>
+                                    <li><input type="radio" name="txttype" value="B" data-ng-click="show = 3" />Fill in Blank</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <!-- Format for multiple choice & fill in the blank -->
+                                <div class="form-group" data-ng-show="show===1 || show===3" > 
+                                    <div class="form-group" >         
+                                        <input class="form-control" type="text" name="txtinput1" placeholder="Choice 1"/>
+                                    </div>
+                                    <div class="form-group" >         
+                                        <input class="form-control" type="text" name="txtinput2" placeholder="Choice 2"/>
+                                    </div>
+                                    <div class="form-group" >         
+                                        <input class="form-control" type="text" name="txtinput3" placeholder="Choice 3"/>
+                                    </div>
+                                    <div class="form-group" >        
+                                        <input class="form-control" type="text" name="txtinput4" placeholder="Choice 4"/>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><p>Answer</p></td>
+                            <td>
+                                <div class="form-group" >         
+                                    <input class="form-control" type="text" name="txtchecked"/>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><p>Explanation</p></td>
+                            <td>
+                                <div class="form-group" >         
+                                    <input class="form-control" type="text" name="txtexplain"/>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="submit" name="btnAdd" value="Save" /> </td>
+                            <td><button type="button" href="question.jsp?id=<%=quizID%>">Cancel</button></td>
+                        </tr>
                     </table>
                 </form>
             </div>

@@ -98,11 +98,11 @@
             <!-- Format for multiple choice -->
             <div data-ng-if="'<%=result.getString("type")%>' === 'M'">
                 <form name="form1">
-                    <ul class="left answercontainer">
-                        <li class="testing" ><input type="radio" data-ng-model="checkeds" value="A" name="multiradio" required/> <%=result.getString("input1") %></li>
-                        <li class="testing" ><input type="radio" data-ng-model="checkeds" value="B" name="multiradio" /> <%=result.getString("input2") %></li>
-                        <li class="testing" ><input type="radio" data-ng-model="checkeds" value="C" name="multiradio" /> <%=result.getString("input3") %></li>
-                        <li class="testing" ><input type="radio" data-ng-model="checkeds" value="D" name="multiradio" /> <%=result.getString("input4") %></li>
+                    <ul class="answercontainer">
+                        <li class="rowinput" ><input type="radio" data-ng-model="checkeds" value="A" name="multiradio" required/> <%=result.getString("input1") %></li>
+                        <li class="rowinput" ><input type="radio" data-ng-model="checkeds" value="B" name="multiradio" /> <%=result.getString("input2") %></li>
+                        <li class="rowinput" ><input type="radio" data-ng-model="checkeds" value="C" name="multiradio" /> <%=result.getString("input3") %></li>
+                        <li class="rowinput" ><input type="radio" data-ng-model="checkeds" value="D" name="multiradio" /> <%=result.getString("input4") %></li>
                     </ul>
                     
                     <div class="row">
@@ -124,15 +124,16 @@
                 </form>  
                  
                 <!-- check answer-->
-                <div data-ng-show="show === 1" class="checkanswer">
+                <div data-ng-show="show === 1" class="checkshowanswer">
                     <div data-ng-if="checkeds === '<%=result.getString("checked")%>'" >
                         <span class="glyphicon glyphicon-star yellow"></span>
                         <hr class="correct">
-                        <span class="yellow"><h3>Correct</h3></span> 
+                        <span class="yellow"><h3>Correct</h3></span>
+                        <b>Explanation in detail:</b>
+                        <p><%=result.getString("explanation")%></p>
                         <div data-ng-if="count === 5 ">
-                            <p>Congratulation!!! Heres your topic (Quote) bonus!!</p>
+                            <b>Congratulation!!! Here is your topic (Quote) bonus!!</b>
                             <button data-toggle="modal" data-target="#BonusModal">Quote Bonus</button>
-
                         </div> 
                     </div>
                     <div data-ng-if="checkeds !== '<%=result.getString("checked")%>'">
@@ -143,8 +144,10 @@
                 </div>
                         
                 <!-- Show answer -->
-                <div data-ng-show="show === 2" class="showanswer">
-                    <b>Answer: <%=result.getString("checked")%></b>
+                <div data-ng-show="show === 2" class="checkshowanswer">
+                    <b class="answer">Answer: <%=result.getString("checked")%></b><br/>
+                    <b>Explanation in detail:</b>
+                    <p><%=result.getString("explanation")%></p>
                 </div> 
                 
               
@@ -152,7 +155,7 @@
                 
             <!-- Format for Fill in the Blank -->
             <div data-ng-if="'<%=result.getString("type")%>' === 'B'">
-                <ul class=" hint answercontainer">
+                <ul class="hint answercontainer">
                     <li>
                         <span><%=result.getString("input1") %></span>
                         <span class="tab"><%=result.getString("input2") %></span>
@@ -165,7 +168,7 @@
             <!-- User input for Fill in the Blank & True False -->
             <div data-ng-if="'<%=result.getString("type")%>' === 'B' || '<%=result.getString("type")%>' === 'T'">
                 <form name="form2">
-                    <div class="testing">
+                    <div class="rowinput">
                     <h4>Answer:</h4>
                     <input type="text" name="answer" data-ng-model="checkeds" required/><br/>
                     </div>
@@ -176,24 +179,27 @@
                         </div>
                     </div>
                     
-                    <div class="row""><!--4.1.1--> 
+                    <div class="row"><!--4.1.1--> 
                         <div class="col-xs-6 col-md-6 col-lg-6 full-width1" ><!--4.1.2--> 
-                            <button class="btn btn-primary btn-lg givecheckbutton" data-ng-click="show = 1; count = count+1" data-ng-init="0" data-ng-disabled="form1.$invalid" onClick="checkansSound()">Check</button>
+                            <button class="btn btn-primary btn-lg givecheckbutton" data-ng-click="show = 3; count = count+1" data-ng-init="0" data-ng-disabled="form2.$invalid" onClick="checkansSound()">Check</button>
                         </div>
                         
                         <div class="col-xs-6 col-md-6 col-lg-6 full-width2"><!--4.1.3-->
-                            <button class="btn btn-danger btn-lg givecheckbutton" data-ng-click="show = 2" onClick="giveupSound()">Give Up</button>  
+                            <button class="btn btn-danger btn-lg givecheckbutton" data-ng-click="show = 4" onClick="giveupSound()">Give Up</button>  
                         </div> 
                     </div>                  
                 </form>
                     
                 <!-- check answer-->
-                <div data-ng-show="show === 3" class="checkanswer">
+                <div data-ng-show="show === 3" class="checkshowanswer">
                     <div data-ng-if="checkeds === '<%=result.getString("checked")%>'" >
                         <span class="glyphicon glyphicon-star yellow"></span>
                         <hr class="correct">
                         <span class="yellow"><h3>Correct</h3></span>
+                        <b>Explanation in detail:</b>
+                        <p><%=result.getString("explanation")%></p>
                         <div data-ng-if="count === 5 ">
+                            <b>Congratulation!!! Here is your topic (Quote) bonus!!</b>
                             <button>Claim reward</button>
                         </div>
                     </div>
@@ -205,10 +211,11 @@
                 </div>
                         
                 <!-- Show answer -->
-                <div data-ng-show="show === 4" class="showanswer">
-                    <b>Answer: <%=result.getString("checked")%></b>
+                <div data-ng-show="show === 4" class="checkshowanswer">
+                    <b class="answer">Answer: <%=result.getString("checked")%></b><br/>
+                    <b>Explanation in detail:</b>
+                    <p><%=result.getString("explanation")%></p>
                 </div>
-
             </div> 
         </div>
         
@@ -220,7 +227,7 @@
       
     <div class="row"><!--5--> 
         <div class="col-xs-4 col-md-4 col-lg-4"> <!--5.1 --> 
-            <a href="index.html" class="back">Back To Topic</a>
+            <a href="index.html">Back To Topic</a>
         </div>
         <div class="col-xs-4 col-md-4 col-lg-4"><!--5.2 -->
             <a data-toggle="modal" data-target="#myModal" >
@@ -231,11 +238,9 @@
             <div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
             <div class="modal-content catnote">
-                
                 <b>Thanks for noticing me human!</b><br/><br/>
                 <h3 class="yellow"><span class="glyphicon glyphicon-star-empty yellow"</span> Reward <span class="glyphicon glyphicon-star-empty yellow"</span></h3><br/>
                 <b>Go answer any quiz and click the check button for</b><p>exactly V times</p><b>You will get what you</b><br/><br/><b> DESERVED</b>
-               
                 <div class="catpawn">
                 <p>Regards,</p>
                 <img src="resources/img/catpawn.png"></div>
@@ -244,7 +249,7 @@
             </div>
         </div>
         <div class="col-xs-4 col-md-4 col-lg-4"><!--5.3 --> 
-            <a class="glyphicon glyphicon-hand-up pull-right report" data-ng-click="report=report!==true">Report a problem</a>
+            <a class="glyphicon glyphicon-hand-up pull-right" data-ng-click="report=report!==true">Report a problem</a>
             
             <!--mayb make it as modal?c1st-->     
             <div data-ng-show="report">

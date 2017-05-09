@@ -67,6 +67,7 @@
         %>
             
     <div class="container">
+        <center>
         <div class="row"><!--1--> 
             <div class="col-xs-12 col-md-12 col-lg-12 jumbotron"><!--1.1--> 
                 <img src="resources/img/banner.jpg" alt="banner"/>
@@ -145,6 +146,7 @@
                 <p><a href="index.html">Back To Topic</a></p> 
             </div>
         </div>
+        </center>
     </div>
 
    

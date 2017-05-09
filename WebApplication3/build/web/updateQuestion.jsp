@@ -62,7 +62,7 @@
                 out.println("SQL Query Exception:- " + sqle);
             } 
             }else{
-                response.sendRedirect("./employees.jsp");
+                response.sendRedirect("./question.jsp");
             }
         %>
         
@@ -75,7 +75,7 @@
                 try{
                 Class.forName("com.mysql.jdbc.Driver");
 
-                qry = "UPDATE question SET question = ?, hints= ?, input1= ?, input2= ?, input3= ?, input4= ?, checked= ? WHERE questionID = ?";
+                qry = "UPDATE question SET question = ?, hints= ?, input1= ?, input2= ?, input3= ?, input4= ?, checked= ?, explanation= ? WHERE questionID = ?";
                 pstmt = conn.prepareStatement(qry);
                 pstmt.setString(1,request.getParameter("txtquestion"));
                 pstmt.setString(2,request.getParameter("txthints"));
@@ -84,7 +84,8 @@
                 pstmt.setString(5,request.getParameter("txtinput3"));
                 pstmt.setString(6,request.getParameter("txtinput4")); 
                 pstmt.setString(7,request.getParameter("txtchecked"));
-                pstmt.setInt(8, questionID);
+                pstmt.setString(8,request.getParameter("txtexplain"));
+                pstmt.setInt(9, questionID);
                 pstmt.executeUpdate();
                 response.sendRedirect("./question.jsp");
                 
@@ -112,7 +113,7 @@
                 out.println("SQL Query Exception:- " + sqle);
             } 
             }else{
-                response.sendRedirect("./employees.jsp");
+                response.sendRedirect("./question.jsp");
             }
         %>
         
@@ -211,6 +212,8 @@
   
                     <li><h3>Answer</h3></li>
                     <li class="showdata"><%=result.getString("checked") %></li>
+                    <li><h3>Explanation</h3></li>
+                    <li class="showdata"><%=result.getString("explanation") %></li>
                 </ul>        
             </div>
             
@@ -239,7 +242,7 @@
                         <!-- Format for fill in the blank -->
                         <div data-ng-if="'<%=result.getString("type")%>' === 'B'">        
                             <li><h3>Choices for blank</h3></li>
-                            <li>
+                            <li >
                                 <input type="text" class="form-control" name="txtinput1" placeholder="<%=result.getString("input1") %>" size="70"/>
                                 <input type="text" class="form-control" name="txtinput2" placeholder="<%=result.getString("input2") %>" size="70"/>
                                 <input type="text" class="form-control" name="txtinput3" placeholder="<%=result.getString("input3") %>" size="70"/>
@@ -248,12 +251,22 @@
                         </div>
                         
                         <!-- Format for true/false -->
-                        <div data-ng-if="'<%=result.getString("type")%>' === 'B'">        
+                        <div data-ng-if="'<%=result.getString("type")%>' === 'T'">        
                             <li><h3>True / False</h3></li>
+                            <li> 
+                                <input type="hidden" class="form-control" name="txtinput1" placeholder="<%=result.getString("input1") %>" size="70"/>
+                                <input type="hidden" class="form-control" name="txtinput2" placeholder="<%=result.getString("input2") %>" size="70"/>
+                                <input type="hidden" class="form-control" name="txtinput3" placeholder="<%=result.getString("input3") %>" size="70"/>
+                                <input type="hidden" class="form-control" name="txtinput4" placeholder="<%=result.getString("input4") %>" size="70"/>
+                            </li>
                         </div>
 
                         <li><h3>Answer</h3></li>
                         <li><input type="text" name="txtchecked" class="form-control" placeholder="<%=result.getString("checked") %>" size="70"/></li>
+                        
+                        <li><h3>Explanation</h3></li>
+                        <li><input type="text" name="txtexplain" class="form-control" placeholder="<%=result.getString("explanation") %>" size="70"/></li>
+                        
                         <li><input type="submit" name="btnUpd" value="Update Question" id="btnUpd"/></li>
                     </ul>
               <!-- maybe add reset?-->

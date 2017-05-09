@@ -91,6 +91,7 @@
         
         <div class="row"><!--3--> 
             <div class="col-xs-12 col-md-12 col-lg-12"><!--3.1--> 
+                <center>
                 <h1>Add New Topic</h1>
                 <form id="addForm" action="" method="POST">
                     <table cellspacing="5" cellpadding="5">
@@ -107,6 +108,7 @@
                         </tr>
                     </table>
                 </form>
+                </center>
             </div>
         </div>
     </div>
