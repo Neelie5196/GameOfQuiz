@@ -38,12 +38,14 @@
             ResultSet result;
             String qry;
             Integer questionID;
+            Integer z = 0;
         %>
         <%
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/quiz","root","");
  
             if(request.getParameter("id") != null && request.getParameter("id")!= ""){  
                 questionID = Integer.parseInt(request.getParameter("id"));
+                
                 try{
                 Class.forName("com.mysql.jdbc.Driver");
 
@@ -52,6 +54,7 @@
                 pstmt.setInt(1,questionID);
                 result = pstmt.executeQuery();
                 result.first();
+                z++;
                 
             }catch(ClassNotFoundException cnfe){
                 out.println("Class not Found Execption:-" + cnfe.toString());
@@ -95,48 +98,58 @@
       
         <div class="row"><!--3--> 
             <div class="col-xs-10 col-md-10 col-lg-10"><!--3.1--> 
-                <i>press "Backspace" to return previous page</i>
-                <h3>All about Question <%=result.getInt("questionID")%></h3> 
+                <i>press "Backspace" to return previous page or ctrl + <- left arrow</i>
             </div>
             <div class="col-xs-1 col-md-1 col-lg-1"> <!--3.2--> 
-                <a class="btn btn-sm btn-primary glyphicon glyphicon-edit" href="updateQuestion.jsp?id=<%=result.getInt("quizID")%>">Edit</a>
+                <a class="btn btn-sm btn-primary glyphicon glyphicon-edit" href="updateQuestion.jsp?id=<%=questionID%>">Edit</a>
             </div>
             <div class="col-xs-1 col-md-1 col-lg-1"> <!--3.3--> 
                 <button class="btn btn-sm btn-danger glyphicon glyphicon-trash" href="deleteQuestion.jsp?id=<%=result.getInt("questionID")%>" onclick="return confirm('Once confirm, question <%=result.getString("questionID") %> will be removed. Confirm to delete?')"> Delete</button>
             </div>
         </div>
         <div class="row"><!--4--> 
-            <div class="col-xs-12 col-md-12 col-lg-12"> <!--4.1 --> 
-                <ul>
-                    <li><b>Question:</b> <%=result.getString("question") %></li>
-                    <li><b>Hints:</b> <%=result.getString("hints") %></li>
-                 
-                    <!-- Format for multiple choice -->
-                    <div data-ng-if="'<%=result.getString("type")%>' === 'M'">
-                    <li><b>Multiple choice</b></li>
-                    <li>A. <%=result.getString("input1") %></li>
-                    <li>B. <%=result.getString("input2") %></li>
-                    <li>C. <%=result.getString("input3") %></li>
-                    <li>D. <%=result.getString("input4") %></li>
-                    </div>
-                    
-                    <!-- Format for fill in the blank -->
-                    <div data-ng-if="'<%=result.getString("type")%>' === 'B'">
-                    <li><b>Selection</b></li>
-                    <li>
-                        <%=result.getString("input1") %>
-                        <%=result.getString("input2") %>
-                        <%=result.getString("input3") %>
-                        <%=result.getString("input4") %>
-                    </li>
-                    </div>
-                    
-                    <li><b>Answer</b>: <%=result.getString("checked") %></li>
-                    <li><b>Explanation</b>: <%=result.getString("explanation") %></li>
+            <div class="col-xs-12 col-md-12 col-lg-12"><!--4.1 -->
+            <!--display quiz question-->
+            <div id="<%=result.getInt("questionID") %>" class="questioncontainer">
+                <h2> Question <% out.println(z); %></h2> <hr/>
+                <h3><%=result.getString("question") %></h3>
+            </div>
+            
+            <div class="container2">
+            <!-- Format for multiple choice -->
+            <div data-ng-if="'<%=result.getString("type")%>' === 'M'">
+                <ul class="answercontainer">
+                    <li class="rowinput" ><%=result.getString("input1") %></li>
+                    <li class="rowinput" ><%=result.getString("input2") %></li>
+                    <li class="rowinput" ><%=result.getString("input3") %></li>
+                    <li class="rowinput" ><%=result.getString("input4") %></li>
                 </ul>
             </div>
-        </div>   
+                
+            <!-- Format for Fill in the Blank -->
+            <div data-ng-if="'<%=result.getString("type")%>' === 'B'">
+                <ul class="choice answercontainer">
+                    <li>
+                        <span><%=result.getString("input1") %></span>
+                        <span class="tab"><%=result.getString("input2") %></span>
+                        <span class="tab"><%=result.getString("input3") %></span>
+                        <span class="tab"><%=result.getString("input4") %></span>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Show hint-->
+            <span class="hinticon glyphicon glyphicon-search"></span><b>Hint:</b> <%=result.getString("hints") %>           
+        
+            <!-- Show answer -->
+            <div class="checkshowanswer">
+                <b>Answer: </b> <%=result.getString("checked")%><br/>
+                <b>Explanation in detail:</b> <%=result.getString("explanation")%>
+            </div>
+            </div>   
+        </div>
     </div> 
+                           
 <!-- jQuery – required for Bootstrap's JavaScript plugins -->
 <script src="frameworks/js/jquery.min.js"></script>
 

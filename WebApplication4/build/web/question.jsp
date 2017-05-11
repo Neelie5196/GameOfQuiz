@@ -33,25 +33,20 @@
 <script src="js/respond.min.js"></script>
 <![endif]-->
 
-<style>
-    
-    
-</style>
-
 </head>
 
 <body>
        <%!
-            Connection conn;
-            PreparedStatement pstmt;
+            Connection conn,conn1;
+            PreparedStatement pstmt,pstmt1;
             Statement stmt;
-            ResultSet result,result1;
+            ResultSet result;
             String qry,qry1;
             Integer quizID;
             Integer z = 0;  
         %>
 
-        <%-- READ function--%>
+        <%-- READ function for question--%>
         <%
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/quiz","root","");
             if(request.getParameter("id") != null && request.getParameter("id")!= ""){  
@@ -62,6 +57,7 @@
                 pstmt = conn.prepareStatement(qry);
                 pstmt.setInt(1,quizID);
                 result = pstmt.executeQuery();
+                z++;
             }catch(ClassNotFoundException cnfe){
                 out.println("Class not Found Execption:-" + cnfe.toString());
             }catch(SQLException sqle){
@@ -71,165 +67,35 @@
                 response.sendRedirect("./index.html");
             }
         %>
-    
-    <div class="row"><!--3--> 
-        <div class="col-xs-12 col-md-12 col-lg-12 parallax"> <!--3.1--> 
-            <h1>PUSH YOURSELF <br/>BECAUSE <br/>NO ONE ELSE <br/>IS GOING TO <br/>DO IT FOR <br/>YOU</h1><hr/>
-            <p>SO TAKE THE QUIZ</p><br/>
-            <h2 class="glyphicon glyphicon-download"></h2>
-        </div>
-    </div>
- 
-    <div class="row"><!--4--> 
-        <div class="col-xs-12 col-md-12 col-lg-12"><!--4.1--> 
-        <%
-        while(result.next() ) {
-            quizID = result.getInt("quizID");  
-            z++;
-        %> 
         
-        <!--display quiz question-->
-        <div id="<%=result.getInt("questionID") %>" class="questioncontainer">
-            <h2> Question <% out.println(z); %></h2> <hr/>
-            <h3><%=result.getString("question") %></h3>
-        </div> 
-    
-        <div class="container2">
-            <!-- Format for multiple choice -->
-            <div data-ng-if="'<%=result.getString("type")%>' === 'M'">
-                <form name="form1">
-                    <ul class="answercontainer">
-                        <li class="rowinput" ><input type="radio" data-ng-model="checkeds" value="A" name="multiradio" required/> <%=result.getString("input1") %></li>
-                        <li class="rowinput" ><input type="radio" data-ng-model="checkeds" value="B" name="multiradio" /> <%=result.getString("input2") %></li>
-                        <li class="rowinput" ><input type="radio" data-ng-model="checkeds" value="C" name="multiradio" /> <%=result.getString("input3") %></li>
-                        <li class="rowinput" ><input type="radio" data-ng-model="checkeds" value="D" name="multiradio" /> <%=result.getString("input4") %></li>
-                    </ul>
-                    
-                    <div class="row">
-                        <div class="col-xs-12 col-md-12 col-lg-12 hintrow">
-                            <p class="hint" data-ng-show="scopeVar"><%=result.getString("hints") %></p>
-                            <a class="hinticon glyphicon glyphicon glyphicon-search" type="button" data-ng-click="scopeVar=scopeVar!==true"></a><br/>
-                        </div>
-                    </div>
-                    
-                    <div class="row"><!--4.1.1--> 
-                        <div class="col-xs-6 col-md-6 col-lg-6 full-width1" ><!--4.1.2--> 
-                            <button class="btn btn-primary btn-lg givecheckbutton" data-ng-click="show = 1; count = count+1" data-ng-init="0" data-ng-disabled="form1.$invalid" onClick="checkansSound()">Check</button>
-                        </div>
-                        
-                        <div class="col-xs-6 col-md-6 col-lg-6 full-width2"><!--4.1.3-->
-                            <button class="btn btn-danger btn-lg givecheckbutton" data-ng-click="show = 2" onClick="giveupSound()">Give Up</button>  
-                        </div> 
-                    </div>    
-                </form>  
-                 
-                <!-- check answer-->
-                <div data-ng-show="show === 1" class="checkshowanswer">
-                    <div data-ng-if="checkeds === '<%=result.getString("checked")%>'" >
-                        <span class="glyphicon glyphicon-star yellow"></span>
-                        <hr class="correct">
-                        <span class="yellow"><h3>Correct</h3></span>
-                        <b>Explanation in detail:</b>
-                        <p><%=result.getString("explanation")%></p>
-                        <div data-ng-if="count === 5 ">
-                            <b>Congratulation!!! Here is your topic (Quote) bonus!!</b>
-                            <button data-toggle="modal" data-target="#BonusModal">Quote Bonus</button>
-                        </div> 
-                    </div>
-                    <div data-ng-if="checkeds !== '<%=result.getString("checked")%>'">
-                        <span class="glyphicon glyphicon-star"></span>
-                        <hr class="incorrect">
-                        <span><p>Incorrect</p></span>
-                    </div>
-                </div>
-                        
-                <!-- Show answer -->
-                <div data-ng-show="show === 2" class="checkshowanswer">
-                    <b class="answer">Answer: <%=result.getString("checked")%></b><br/>
-                    <b>Explanation in detail:</b>
-                    <p><%=result.getString("explanation")%></p>
-                </div> 
-                
-              
-            </div>
-                
-            <!-- Format for Fill in the Blank -->
-            <div data-ng-if="'<%=result.getString("type")%>' === 'B'">
-                <ul class="hint answercontainer">
-                    <li>
-                        <span><%=result.getString("input1") %></span>
-                        <span class="tab"><%=result.getString("input2") %></span>
-                        <span class="tab"><%=result.getString("input3") %></span>
-                        <span class="tab"><%=result.getString("input4") %></span>
-                    </li>
-                </ul>
-            </div>
-                
-            <!-- User input for Fill in the Blank & True False -->
-            <div data-ng-if="'<%=result.getString("type")%>' === 'B' || '<%=result.getString("type")%>' === 'T'">
-                <form name="form2">
-                    <div class="rowinput">
-                    <h4>Answer:</h4>
-                    <input type="text" name="answer" data-ng-model="checkeds" required/><br/>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12 col-md-12 col-lg-12 hintrow">
-                            <p class="hint" data-ng-show="scopeVar"><%=result.getString("hints") %></p>
-                            <a class="hinticon glyphicon glyphicon glyphicon-search" type="button" data-ng-click="scopeVar=scopeVar!==true"></a><br/>
-                        </div>
-                    </div>
-                    
-                    <div class="row"><!--4.1.1--> 
-                        <div class="col-xs-6 col-md-6 col-lg-6 full-width1" ><!--4.1.2--> 
-                            <button class="btn btn-primary btn-lg givecheckbutton" data-ng-click="show = 3; count = count+1" data-ng-init="0" data-ng-disabled="form2.$invalid" onClick="checkansSound()">Check</button>
-                        </div>
-                        
-                        <div class="col-xs-6 col-md-6 col-lg-6 full-width2"><!--4.1.3-->
-                            <button class="btn btn-danger btn-lg givecheckbutton" data-ng-click="show = 4" onClick="giveupSound()">Give Up</button>  
-                        </div> 
-                    </div>                  
-                </form>
-                    
-                <!-- check answer-->
-                <div data-ng-show="show === 3" class="checkshowanswer">
-                    <div data-ng-if="checkeds === '<%=result.getString("checked")%>'" >
-                        <span class="glyphicon glyphicon-star yellow"></span>
-                        <hr class="correct">
-                        <span class="yellow"><h3>Correct</h3></span>
-                        <b>Explanation in detail:</b>
-                        <p><%=result.getString("explanation")%></p>
-                        <div data-ng-if="count === 5 ">
-                            <b>Congratulation!!! Here is your topic (Quote) bonus!!</b>
-                            <button>Claim reward</button>
-                        </div>
-                    </div>
-                    <div data-ng-if="checkeds !== '<%=result.getString("checked")%>'">
-                        <span class="glyphicon glyphicon-star"></span>
-                        <hr class="incorrect">
-                        <span><p>Incorrect</p></span>
-                    </div>
-                </div>
-                        
-                <!-- Show answer -->
-                <div data-ng-show="show === 4" class="checkshowanswer">
-                    <b class="answer">Answer: <%=result.getString("checked")%></b><br/>
-                    <b>Explanation in detail:</b>
-                    <p><%=result.getString("explanation")%></p>
-                </div>
-            </div> 
-        </div>
-        
+        <%-- CREATE function for feeback--%>
         <%
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/quiz","root","");
+            quizID = Integer.parseInt(request.getParameter("id"));
+            if(request.getParameter("btnAdd") != null){
+                try{
+                    Class.forName("com.mysql.jdbc.Driver");
+
+                    qry = "INSERT INTO feedback(quizID, select, feedback) VALUES(?,?,?)";
+                    pstmt = conn.prepareStatement(qry);
+                    pstmt.setInt(1, quizID);
+                    pstmt.setString(2,request.getParameter("txtselect"));
+                    pstmt.setString(3,request.getParameter("txtfeedback"));
+                    
+                    pstmt.executeUpdate();
+                    response.sendRedirect("./question.jsp");
+                }catch(ClassNotFoundException cnfe){
+                    out.println("Class not Found Execption:-" + cnfe.toString());
+                }catch(SQLException sqle){
+                    out.println("SQL Query Exception:- " + sqle);
+                }
             } 
         %>
-        </div> 
-    </div>  
-      
-    <div class="row"><!--5--> 
-        <div class="col-xs-4 col-md-4 col-lg-4"> <!--5.1 --> 
-            <a href="index.html">Back To Topic</a>
-        </div>
-        <div class="col-xs-4 col-md-4 col-lg-4"><!--5.2 -->
+    
+    <div class="row"><!--1--> 
+        <div class="col-xs-12 col-md-12 col-lg-12 parallax"> <!--1.1--> 
+            <h1>PUSH YOURSELF <br/>BECAUSE <br/>NO ONE ELSE <br/>IS GOING TO <br/>DO IT FOR <br/>YOU</h1><hr/>
+            <p>SO TAKE THE QUIZ</p><br/>
             <a data-toggle="modal" data-target="#myModal" >
                 <!-- image obtained from http://misstingtingwu.blogspot.my/ --> 
                 <img src="resources/img/cat.gif" class="cat" alt="click me" onClick="meowSound()"/>
@@ -248,27 +114,166 @@
             </div>
             </div>
         </div>
-        <div class="col-xs-4 col-md-4 col-lg-4"><!--5.3 --> 
+    </div>
+ 
+    <div class="row"><!--2--> 
+        <div class="col-xs-12 col-md-12 col-lg-12"><!--2.1--> 
+        <%
+            while(result.next() ) {
+                quizID = result.getInt("quizID");  
+        %> 
+        
+        <!--display quiz question-->
+        <div id="<%=result.getInt("questionID") %>" class="questioncontainer">
+            <h2> Question <% out.println(z); %></h2> <hr/>
+            <h3><%=result.getString("question") %></h3>
+        </div> 
+    
+        <div class="container2">
+            <!-- Format for multiple choice -->
+            <div data-ng-if="'<%=result.getString("type")%>' === 'M'">
+                <form name="form1">
+                    <ul class="answercontainer">
+                        <li class="rowinput" ><input type="radio" data-ng-model="checkeds" value="A" name="multiradio" required/> <%=result.getString("input1") %></li>
+                        <li class="rowinput" ><input type="radio" data-ng-model="checkeds" value="B" name="multiradio" /> <%=result.getString("input2") %></li>
+                        <li class="rowinput" ><input type="radio" data-ng-model="checkeds" value="C" name="multiradio" /> <%=result.getString("input3") %></li>
+                        <li class="rowinput" ><input type="radio" data-ng-model="checkeds" value="D" name="multiradio" /> <%=result.getString("input4") %></li>
+                    </ul>
+
+                    <div class=" hintrow"> 
+                        <p class="hint" data-ng-show="scopeVar"><%=result.getString("hints") %></p>
+                        <a class="hinticon glyphicon glyphicon glyphicon-search" type="button" data-ng-click="scopeVar=scopeVar!==true"></a><br/>
+                    </div>
+                   
+                    <div class="row"><!--2.1.1-->
+                        <div class="col-xs-6 col-md-6 col-lg-6 full-width1" ><!--2.1.1.1-->
+                            <button class="btn btn-primary btn-lg givecheckbutton" data-ng-click="show = 1; count = count+1" data-ng-init="0" data-ng-disabled="form1.$invalid" onClick="checkansSound()">Check</button>
+                        </div>
+                        <div class="col-xs-6 col-md-6 col-lg-6 full-width2"><!--2.1.1.2-->
+                            <button class="btn btn-danger btn-lg givecheckbutton" data-ng-click="show = 2" onClick="giveupSound()">Give Up</button>  
+                        </div> 
+                    </div>    
+                </form>  
+                 
+                <!-- check answer-->
+                <div data-ng-show="show === 1" class="checkshowanswer">
+                    <!-- correct -->
+                    <div data-ng-if="checkeds === '<%=result.getString("checked")%>'" >
+                        <span class="glyphicon glyphicon-star yellow"></span>
+                        <hr class="correct">
+                        <span class="yellow"><h3>Correct</h3></span>
+                        <b>Explanation in detail:</b>
+                        <p><%=result.getString("explanation")%></p>
+                        <div data-ng-if="count === 5 ">
+                            <b>Congratulation!!! Here is your topic (Quote) bonus!!</b><br/>
+                            <a href="bonus.jsp?id=<%=quizID%>" data-ng-click="bonusSound()">Quote Bonus</a>
+                            <button onClick="bonusSound()">Quote Bonus</button>
+                        </div> 
+                    </div>
+                    <!-- incorrect -->
+                    <div data-ng-if="checkeds !== '<%=result.getString("checked")%>'">
+                        <span class="glyphicon glyphicon-star"></span>
+                        <hr class="incorrect">
+                        <p>Incorrect. You can try again</p>
+                    </div>
+                </div>
+                        
+                <!-- Show answer -->
+                <div data-ng-show="show === 2" class="checkshowanswer">
+                    <b class="answer">Answer: <%=result.getString("checked")%></b><br/>
+                    <b>Explanation in detail:</b>
+                    <p><%=result.getString("explanation")%></p>
+                </div> 
+            </div>
+                
+            <!-- Format for Fill in the Blank -->
+            <div data-ng-if="'<%=result.getString("type")%>' === 'B'">
+                <ul class="hint answercontainer">
+                    <li>
+                        <span><%=result.getString("input1") %></span>
+                        <span class="tab"><%=result.getString("input2") %></span>
+                        <span class="tab"><%=result.getString("input3") %></span>
+                        <span class="tab"><%=result.getString("input4") %></span>
+                    </li>
+                </ul>
+            </div>
+                
+            <!-- User input for Fill in the Blank & True False -->
+            <div data-ng-if="'<%=result.getString("type")%>' === 'B' || '<%=result.getString("type")%>' === 'T'">
+                <form name="form2">
+                    <div class="rowinput">
+                        <h4>Answer:</h4>
+                        <input type="text" name="answer" data-ng-model="checkeds" required/><br/>
+                    </div>
+                    <div class="hintrow">
+                        <p class="hint" data-ng-show="scopeVar"><%=result.getString("hints") %></p>
+                        <a class="hinticon glyphicon glyphicon glyphicon-search" type="button" data-ng-click="scopeVar=scopeVar!==true"></a><br/>      
+                    </div>
+                    
+                    <div class="row"><!--2.1.2-->
+                        <div class="col-xs-6 col-md-6 col-lg-6 full-width1"><!--2.1.2.1--> 
+                            <button class="btn btn-primary btn-lg givecheckbutton" data-ng-click="show = 3; count = count+1" data-ng-init="0" data-ng-disabled="form2.$invalid" onClick="checkansSound()">Check</button>
+                        </div>
+                        <div class="col-xs-6 col-md-6 col-lg-6 full-width2"><!--2.1.2.2-->
+                            <button class="btn btn-danger btn-lg givecheckbutton" data-ng-click="show = 4" onClick="giveupSound()">Give Up</button>  
+                        </div> 
+                    </div>                  
+                </form>
+                    
+                <!-- check answer-->
+                <div data-ng-show="show === 3" class="checkshowanswer">
+                    <!-- correct -->
+                    <div data-ng-if="checkeds === '<%=result.getString("checked")%>'" >
+                        <span class="glyphicon glyphicon-star yellow"></span>
+                        <hr class="correct">
+                        <span class="yellow"><h3>Correct</h3></span>
+                        <b>Explanation in detail:</b>
+                        <p><%=result.getString("explanation")%></p>
+                        <div data-ng-if="count === 5 ">
+                            <b>Congratulation!!! Here is your topic (Quote) bonus!!</b><br/>
+                            <a href="bonus.jsp?id=<%=quizID%>" data-ng-click="bonusSound()">Quote Bonus</a>
+                        </div>
+                    </div>
+                    <!-- incorrect -->
+                    <div data-ng-if="checkeds !== '<%=result.getString("checked")%>'">
+                        <span class="glyphicon glyphicon-star"></span>
+                        <hr class="incorrect">
+                        <p>Incorrect. You can try again</p>>
+                    </div>
+                </div>
+                        
+                <!-- Show answer -->
+                <div data-ng-show="show === 4" class="checkshowanswer">
+                    <b class="answer">Answer: <%=result.getString("checked")%></b><br/>
+                    <b>Explanation in detail:</b>
+                    <p><%=result.getString("explanation")%></p>
+                </div>
+            </div> 
+        </div>
+        <%
+            } 
+        %>
+        </div> 
+    </div>  
+      
+    <div class="row footer"><!--3--> 
+        <div class="col-xs-6 col-md-6 col-lg-6"> <!--3.1 --> 
+            <a href="index.html">Back To Topic</a>
+        </div>
+        <div class="col-xs-6 col-md-6 col-lg-6"><!--3.2 -->
             <a class="glyphicon glyphicon-hand-up pull-right" data-ng-click="report=report!==true">Report a problem</a>
             
             <!--mayb make it as modal?c1st-->     
             <div data-ng-show="report">
-            <form>
+            <form id="addForm" action="" method="POST">
+                <input type="hidden" name="hiddenId" id="hiddenId" value="<%=quizID%>"/> 
                 <legend>What's wrong?</legend>
-                <div class="form-group">
-                    <input type="checkbox" value="wrong Ans" />Wrong answer(s).
-                </div>
-                <div class="form-group">
-                    <input type="checkbox" value="hint is confusing/wrong" />Confusing/wrong hint(s).
-                </div>
-                <div class="form-group">
-                    <input type="checkbox" value="typo error" />Typo error(s).
-                </div> 
-                <div class="form-group">
-                    <p>others:</p><textarea name="field6" class="textarea-field"></textarea>
-                </div>
-
-                <label><span>&nbsp;</span><input type="submit" value="Submit" /></label>
+                    <input type="radio" name="txtselect" value="wrong Ans" />Wrong answer(s).
+                    <input type="radio" name="txtselect" value="confusing/wrong hints" />Confusing/wrong hint(s).
+                    <input type="radio" name="txtselect" value="typo error" />Typo error(s).
+                
+                <p>others:</p><textarea name="txtfeedback"></textarea>
+                <button type="submit" name="btnAdd">Submit</button>
             </form>
             </div>
         </div>

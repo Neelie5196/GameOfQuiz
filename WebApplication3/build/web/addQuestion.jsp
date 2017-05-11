@@ -74,6 +74,7 @@
                 response.sendRedirect("./question.jsp");
             }
         %>
+        
     <div class="container">
         <div class="row"><!--1--> 
             <div class="col-xs-12 col-md-12 col-lg-12 jumbotron"><!--1.1--> 
@@ -103,76 +104,94 @@
 		</form>
             </div>       
         </div>
+        
         <div class="row"><!--3--> 
             <div class="col-xs-12 col-md-12 col-lg-12"><!--3.1--> 
                 <i>press "Backspace" to return previous page</i>
                 <h3 class="modal-title">Add New Question</h3><hr/>
                 <form id="addForm" action="" method="POST">
-                    <table>
-                        <tr>
-                            <td>Question:</td>
-                            <td><textarea name="txtquestion" class="form-control" placeholder="question" ></textarea></td>
-                        </tr>
-                        <tr>
-                            <td>Hints</td>
-                            <td><input type="text" name="txthints" class="form-control" placeholder="Add Hints here"/></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                   <em>Select a type for question and continue</em> 
-                            </td>
-                            <td>
-                                <ul>
-                                    <li><input type="radio" name="txttype" value="M" data-ng-click="show = 1" />Multiple choice</li>
-                                    <li><input type="radio" name="txttype" value="T" data-ng-click="show = 2" />True and false</li>
-                                    <li><input type="radio" name="txttype" value="B" data-ng-click="show = 3" />Fill in Blank</li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <!-- Format for multiple choice & fill in the blank -->
-                                <div class="form-group" data-ng-show="show===1 || show===3" > 
-                                    <div class="form-group" >         
-                                        <input class="form-control" type="text" name="txtinput1" placeholder="Choice 1"/>
-                                    </div>
-                                    <div class="form-group" >         
-                                        <input class="form-control" type="text" name="txtinput2" placeholder="Choice 2"/>
-                                    </div>
-                                    <div class="form-group" >         
-                                        <input class="form-control" type="text" name="txtinput3" placeholder="Choice 3"/>
-                                    </div>
-                                    <div class="form-group" >        
-                                        <input class="form-control" type="text" name="txtinput4" placeholder="Choice 4"/>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><p>Answer</p></td>
-                            <td>
-                                <div class="form-group" >         
-                                    <input class="form-control" type="text" name="txtchecked"/>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><p>Explanation</p></td>
-                            <td>
-                                <div class="form-group" >         
-                                    <input class="form-control" type="text" name="txtexplain"/>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><input type="submit" name="btnAdd" value="Save" /> </td>
-                            <td><button type="button" href="question.jsp?id=<%=quizID%>">Cancel</button></td>
-                        </tr>
-                    </table>
+
+                    <!--quiz question add here-->
+                    <div class="questioncontainer">
+                        <div class="row">
+                        <div class="col-xs-4 col-md-4 col-lg-4 question">
+                            <b>Question:</b>  
+                        </div>
+                        <div class="col-xs-8 col-md-8 col-lg-8">
+                            <textarea name="txtquestion" class="form-control" placeholder="question" required></textarea>
+                        </div>
+                        </div>
+                    </div>
+
+                <div class="container2">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-12 col-lg-12">
+                            <em>Select a type for question and continue</em>
+                            <ul>
+                                <li>
+                                    <span><input type="radio" name="txttype" value="M" data-ng-click="show = 1" required/>Multiple choice</span>
+                                    <span class="tab"><input type="radio" name="txttype" value="T" data-ng-click="show = 2" />True and false</span>
+                                    <span class="tab"><input type="radio" name="txttype" value="B" data-ng-click="show = 3" />Fill in Blank</span>
+                                </li>
+                            </ul> 
+                        </div>
+                        <div class="col-xs-12 col-md-12 col-lg-12">
+                            <!-- Format for multiple choice -->
+                            <div class="form-group" data-ng-show="show===1">   
+                                <p>Multiple Choice</p>
+                                <input class="form-control" type="text" name="txtinput1" placeholder="A"/>
+                                <input class="form-control" type="text" name="txtinput2" placeholder="B"/>
+                                <input class="form-control" type="text" name="txtinput3" placeholder="C"/>
+                                <input class="form-control" type="text" name="txtinput4" placeholder="D"/>
+                            </div>
+                            <!-- Format for fill in the blank -->
+                            <div class="form-group" data-ng-show="show===3" > 
+                                <p>Choices</p>
+                                <input class="form-control" type="text" name="txtinput1" placeholder="Choice 1"/>
+                                <input class="form-control" type="text" name="txtinput2" placeholder="Choice 2"/>
+                                <input class="form-control" type="text" name="txtinput3" placeholder="Choice 3"/>
+                                <input class="form-control" type="text" name="txtinput4" placeholder="Choice 4"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- hint-->
+                    <div class="row">
+                        <div class="col-xs-4 col-md-4 col-lg-4">
+                            <span class="hinticon glyphicon glyphicon-search"></span><b>Hint:</b>  
+                        </div>
+                        <div class="col-xs-8 col-md-8 col-lg-8">
+                            <input type="text" name="txthints" class="form-control" required/>
+                        </div>
+                    </div>
+
+                    <!-- answer -->
+                    <div class="row">
+                        <div class="col-xs-4 col-md-4 col-lg-4">
+                            <b>Answer:</b>  
+                        </div>
+                        <div class="col-xs-8 col-md-8 col-lg-8">
+                            <input class="form-control" type="text" name="txtchecked" required/>
+                        </div>
+                    </div>
+  
+                    <!-- explanation -->
+                    <div class="row">
+                        <div class="col-xs-4 col-md-4 col-lg-4">
+                            <b>Explanation:</b>  
+                        </div>
+                        <div class="col-xs-8 col-md-8 col-lg-8">
+                            <textarea name="txtexplain" class="form-control" required></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" name="btnAdd" data-ng-disabled="addForm.$invalid">Save</button>
+                    <button type="button" href="question.jsp?id=<%=quizID%>">Cancel</button>
+                </div> 
                 </form>
             </div>
         </div>
-    </div>                
+    </div>
+             
 <!-- jQuery – required for Bootstrap's JavaScript plugins -->
 <script src="frameworks/js/jquery.min.js"></script>
 

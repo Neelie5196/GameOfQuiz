@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 09, 2017 at 05:04 AM
+-- Generation Time: May 11, 2017 at 01:10 PM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -19,6 +19,20 @@ SET time_zone = "+00:00";
 --
 -- Database: `quiz`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `feedback`
+--
+
+CREATE TABLE IF NOT EXISTS `feedback` (
+  `feedbackID` int(10) NOT NULL AUTO_INCREMENT,
+  `quizID` int(10) NOT NULL,
+  `select` varchar(20) NOT NULL,
+  `feedback` varchar(100) NOT NULL,
+  PRIMARY KEY (`feedbackID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -39,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `question` (
   `checked` varchar(20) NOT NULL,
   `explanation` varchar(100) NOT NULL,
   PRIMARY KEY (`questionID`,`quizID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
 
 --
 -- Dumping data for table `question`
@@ -51,10 +65,7 @@ INSERT INTO `question` (`quizID`, `questionID`, `question`, `type`, `hints`, `in
 (1, 3, 'Best synonym for frustration', 'M', 'none', 'upset feeling', 'first feeling', 'successful feeling', 'cold feeling', 'A', 'Go find it Yourself la'),
 (2, 4, '___ he play baseball after school', 'B', 'none', 'Has', 'Does', 'Do', 'Is', 'Does', 'Go find it Yourself la'),
 (1, 5, 'Best synonym for employer', 'M', 'none', 'legal professional', 'waitress', 'boss', 'farmer', 'C', ''),
-(2, 6, 'Please be quiet ___ the teacher is talking', 'B', 'none', 'during', 'while', 'when', 'meanwhile', 'while', ''),
-(1, 8, 've', 'T', '', '', '', '', '', 'er', 'e'),
-(1, 9, 'ryh', 'M', '', '', '', '', '', '', 'ryyrj'),
-(1, 10, 'fd', 'B', '', '', '', '', '', '', 'vfd');
+(2, 6, 'Please be quiet ___ the teacher is talking', 'B', 'none', 'during', 'while', 'when', 'meanwhile', 'while', '');
 
 -- --------------------------------------------------------
 
@@ -67,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `quiz` (
   `quizTopic` varchar(50) NOT NULL,
   `bonus` varchar(1000) NOT NULL,
   PRIMARY KEY (`quizID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `quiz`

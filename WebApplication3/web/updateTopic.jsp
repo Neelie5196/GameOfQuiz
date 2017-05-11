@@ -134,7 +134,7 @@
                 <h1>Update Topic & Topic Bonus</h1>  
             </div>
             <div class="col-xs-2 col-md-2 col-lg-2"><!--3.2-->
-                 <button data-toggle="modal" data-target="#note" class="right">Note*</button> 
+                 <button data-toggle="modal" data-target="#note" class="pull-right btn btn-warning">Note*</button> 
                     <!-- Modal -->
                     <div class="modal fade" id="note" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -143,7 +143,7 @@
                             <h4 class="modal-title">Rules</h4>
                         </div>
                         <div class="modal-body">
-                            <p>I) It is compulsory to fill in all the blank if any changes made else do not click UPDATE button</p>
+                            <p>It is compulsory to fill in all the blank if any changes made else do not click UPDATE button</p>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Understood</button>
@@ -155,16 +155,16 @@
         </div>
                     
         <div class="row update"><!--4--> 
-            <div class="col-xs-12 col-md-6 col-lg-6 border"><!--4.1-->
+            <div class="col-xs-12 col-md-6 col-lg-6"><!--4.1-->
                 <p class="right">(Original)</p>
-                <ul class="showforupdate">
-                    <li><h3>Topic <%=quizID%></h3></li>
-                    <li class="showdata"><%=result.getString("quizTopic")%></li>
-                    <li><h3>Topic Bonus</h3></li>
-                    <li class="showdata"><%=result.getString("bonus")%></li>
-                </ul>    
+                <ul>
+                    <li class="questioncontainer"><h2>Topic:</h2> </li>
+                    <li class="container2"><%=result.getString("quizTopic")%></li>
+                    <li class="questioncontainer"><h2>Topic Bonus:</h2> </li>
+                    <li class="container2"><%=result.getString("bonus")%></li>
+                </ul>
             </div>
-            <div class="col-xs-12 col-md-6 col-lg-6"><!--4.2-->
+            <div class="col-xs-12 col-md-6 col-lg-6 border"><!--4.2-->
                 <p>(Update here)</p>
                 <form id="updForm" action="" method="POST">
                     <ul>

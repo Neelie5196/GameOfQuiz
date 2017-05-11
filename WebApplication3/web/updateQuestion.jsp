@@ -39,6 +39,7 @@
             ResultSet result;
             String qry;
             Integer questionID;
+            Integer z=0;
         %>
         
         <%-- READ function--%>
@@ -55,6 +56,7 @@
                 pstmt.setInt(1,questionID);
                 result = pstmt.executeQuery();
                 result.first();
+                z++;
                 
             }catch(ClassNotFoundException cnfe){
                 out.println("Class not Found Execption:-" + cnfe.toString());
@@ -149,11 +151,11 @@
         </div>
         <div class="row update"><!--3--> 
             <div class="col-xs-10 col-md-10 col-lg-10"><!--3.1-->
-                <i>press "Backspace" to return previous page</i>
+                <i>press "Backspace" to return previous page or ctrl + <- left arrow</i>
                 <h1>Update Topic <%=result.getInt("quizID")%> Question <%=result.getInt("questionID")%></h1> 
             </div>
             <div class="col-xs-2 col-md-2 col-lg-2"><!--3.2-->    
-                <button data-toggle="modal" data-target="#note" class="right">Note*</button>
+                <button data-toggle="modal" data-target="#note" class="pull-right btn btn-warning">Note*</button>
                     <!-- Modal -->
                     <div class="modal fade" id="note" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -174,63 +176,62 @@
             </div>
         </div>
 
-        <div class="row update"><!--4--> 
-            <div class="col-xs-12 col-md-6 col-lg-6 border"><!--4.1-->
+        <div class="row"><!--4--> 
+            <div class="col-xs-12 col-md-6 col-lg-6"><!--4.1-->
                 <p class="right">(Original)</p>
-                <ul>
-                    <li><h3>Question</h3></li>
-                    <li class="showdata"><%=result.getString("question") %></li>
-                    <li><h3>Hints</h3></li>
-                    <li class="showdata"><%=result.getString("hints") %></li>
-                    
-                    <!-- Format for multiple choice -->
-                    <div data-ng-if="'<%=result.getString("type")%>' === 'M'">
-                    <li><h3>Multiple Choice</h3></li>
-                    <li>
-                        <p class="showdata">A. <%=result.getString("input1") %></p>
-                        <p class="showdata">B. <%=result.getString("input2") %></p>
-                        <p class="showdata">C. <%=result.getString("input3") %></p>
-                        <p class="showdata">D. <%=result.getString("input4") %></p>
-                    </li>
-                    </div>
-                    
-                    <!-- Format for fill in the blank -->
-                    <div data-ng-if="'<%=result.getString("type")%>' === 'B'">
-                    <li><h3>Choices for blank</h3></li>
-                    <li>
-                        <p class="showdata"><%=result.getString("input1") %></p>
-                        <p class="showdata"><%=result.getString("input2") %></p>
-                        <p class="showdata"><%=result.getString("input3") %></p>
-                        <p class="showdata"><%=result.getString("input4") %></p>
-                    </li>
-                    </div>
-                    
-                    <!-- Format for true / false -->
-                    <div data-ng-if="'<%=result.getString("type")%>' === 'T'">
-                    <li><h3>True / False</h3></li>
-                    </div>
-  
-                    <li><h3>Answer</h3></li>
-                    <li class="showdata"><%=result.getString("checked") %></li>
-                    <li><h3>Explanation</h3></li>
-                    <li class="showdata"><%=result.getString("explanation") %></li>
-                </ul>        
-            </div>
+
+                <!--display quiz question-->
+                <div id="<%=result.getInt("questionID") %>" class="questioncontainer">
+                    <h2> Question <% out.println(z); %></h2> <hr/>
+                    <h3><%=result.getString("question") %></h3>
+                </div>
+
+                <div class="container2">
+                <!-- Format for multiple choice -->
+                <div data-ng-if="'<%=result.getString("type")%>' === 'M'">
+                    <ul class="answercontainer">
+                        <li class="rowinput" ><%=result.getString("input1") %></li>
+                        <li class="rowinput" ><%=result.getString("input2") %></li>
+                        <li class="rowinput" ><%=result.getString("input3") %></li>
+                        <li class="rowinput" ><%=result.getString("input4") %></li>
+                    </ul>
+                </div>
+
+                <!-- Format for Fill in the Blank -->
+                <div data-ng-if="'<%=result.getString("type")%>' === 'B'">
+                    <ul class="choice answercontainer">
+                        <li>
+                            <span><%=result.getString("input1") %></span>
+                            <span class="tab"><%=result.getString("input2") %></span>
+                            <span class="tab"><%=result.getString("input3") %></span>
+                            <span class="tab"><%=result.getString("input4") %></span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Show hint-->
+                <span class="hinticon glyphicon glyphicon-search"></span><b>Hint:</b> <%=result.getString("hints") %>           
+
+                <!-- Show answer -->
+                <div class="checkshowanswer">
+                    <b>Answer: </b> <%=result.getString("checked")%><br/>
+                    <b>Explanation in detail:</b> <%=result.getString("explanation")%>
+                </div>
+                </div>         
+                </div>
             
-            <div class="col-xs-6 col-md-6 col-lg-6"><!--4.2-->
+            <div class="col-xs-6 col-md-6 col-lg-6 border"><!--4.2-->
                 <p>(Update here)</p>
                 <form id="updForm" action="" method="POST">
                     <ul>
                         <li><input type="hidden" name="hiddenId" id="hiddenId" value="<%=questionID%>"/> </li>
 
-                        <li><h3>Question</h3></li>
+                        <li><h4>Question</h4></li>
                         <li><textarea name="txtquestion" class="form-control" placeholder="<%=result.getString("question") %>" cols="70"></textarea></li>
-                        <li><h3>Hints</h3></li>
-                        <li><input type="text" name="txthints" class="form-control" placeholder="<%=result.getString("hints") %>" size="70"/></li>
-
+                        
                         <!-- Format for multiple choice -->
                         <div data-ng-if="'<%=result.getString("type")%>' === 'M'">        
-                            <li><h3>Multiple choice</h3></li>
+                            <li><h4>Multiple choice</h4></li>
                             <li>
                                 <input type="text" class="form-control" name="txtinput1" placeholder="A. <%=result.getString("input1") %>" size="70"/>
                                 <input type="text" class="form-control" name="txtinput2" placeholder="B. <%=result.getString("input2") %>" size="70"/>
@@ -241,7 +242,7 @@
                     
                         <!-- Format for fill in the blank -->
                         <div data-ng-if="'<%=result.getString("type")%>' === 'B'">        
-                            <li><h3>Choices for blank</h3></li>
+                            <li><h4>Choices for blank</h4></li>
                             <li >
                                 <input type="text" class="form-control" name="txtinput1" placeholder="<%=result.getString("input1") %>" size="70"/>
                                 <input type="text" class="form-control" name="txtinput2" placeholder="<%=result.getString("input2") %>" size="70"/>
@@ -252,7 +253,7 @@
                         
                         <!-- Format for true/false -->
                         <div data-ng-if="'<%=result.getString("type")%>' === 'T'">        
-                            <li><h3>True / False</h3></li>
+                            <li><h4>True / False</h4></li>
                             <li> 
                                 <input type="hidden" class="form-control" name="txtinput1" placeholder="<%=result.getString("input1") %>" size="70"/>
                                 <input type="hidden" class="form-control" name="txtinput2" placeholder="<%=result.getString("input2") %>" size="70"/>
@@ -260,11 +261,12 @@
                                 <input type="hidden" class="form-control" name="txtinput4" placeholder="<%=result.getString("input4") %>" size="70"/>
                             </li>
                         </div>
+                            
+                        <li><h4>Hints</h4><input type="text" name="txthints" class="form-control" placeholder="<%=result.getString("hints") %>" size="70"/></li>
 
-                        <li><h3>Answer</h3></li>
-                        <li><input type="text" name="txtchecked" class="form-control" placeholder="<%=result.getString("checked") %>" size="70"/></li>
+                        <li><h4>Answer</h4><input type="text" name="txtchecked" class="form-control" placeholder="<%=result.getString("checked") %>" size="70"/></li>
                         
-                        <li><h3>Explanation</h3></li>
+                        <li><h4>Explanation</h4></li>
                         <li><input type="text" name="txtexplain" class="form-control" placeholder="<%=result.getString("explanation") %>" size="70"/></li>
                         
                         <li><input type="submit" name="btnUpd" value="Update Question" id="btnUpd"/></li>

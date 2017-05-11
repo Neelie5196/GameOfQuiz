@@ -34,26 +34,9 @@
             }
         %>
     <center>
-        <button data-toggle="modal" data-target="#disclaimer">Disclaimer</button>
-            <!-- Modal -->
-            <div class="modal fade" id="disclaimer" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">For your Info</h4>
-                </div>
-                <div class="modal-body">
-                    <p>Relax, your result will not be recorded. Have fun with Game of Quiz!!!</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Understood</button>
-                </div>
-            </div>
-            </div>
-            </div>
-                            
+                 
         <div class="panel panel-default">
-        <div class="panel-heading"><h1>Welcome to Game Of Quiz</h1></div>
+        <div class="panel-heading"><h1>Welcome to Game Of Quiz</h1><p>Relax, your result will not b recorded</p></div>
 
         <div class="table-responsive">
         <table class="table table-stripped table-hover">
@@ -67,9 +50,9 @@
                     while(result.next()) {
                         quizID = result.getInt("quizID");
                 %>
-
                 <tr>
                     <td headers="topic" class="topic"><a href="question.jsp?id=<%=quizID%>"><%=result.getString("quizTopic") %>  <span class="glyphicon glyphicon-play-circle"></span></a></td>
+
                 </tr>
                 <%
                     }

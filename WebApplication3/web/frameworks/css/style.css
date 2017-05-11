@@ -1,4 +1,4 @@
-/*control navigation bar*/
+/*general control*/
 #navigationbar{
     border: solid 1px;
 }
@@ -7,43 +7,113 @@
     width: 80%;
 }
 
-/*jumbotron */
 .jumbotron {
     background-color: #353A49;
     color: #fff;
 }
-
 .jumbotron img{
     width: 100%;
-}
-
-.modal-header{
-    background-color: #000099;
-    color: #fff;
 }
 
 #toequilibra{
     text-align: right;
 }
 
-.border{
-    border-right-style: double;
-}
-
- ul{
+ul{
    list-style-type: none; 
  }
- 
-.update td, .showforupdate{
-    text-align: center;
-    margin: 2%;
-}
-.right{
-    text-align: right;
+
+/*topic.jsp*/
+.modal-header{
+    background-color: #3d5998;
+    color: #fff;
 }
 
+/*updateQuestion.jsp*/
+.border{
+    border-left-style: double;
+}
+
+
+/*updateTopic.jsp*/
 .showdata{
     border: 1px solid;
     padding: 2%;
 }
 
+
+/*showQuestion.jsp & updateQuestion.jsp*/
+.right{
+    text-align: right;
+}
+
+.questioncontainer{
+    text-align: center;
+    background-color: #3d5998;
+    border: solid #3d5998;
+    margin: 5% auto 0% auto;
+    width: 80%;
+    color: #fff;
+}
+
+/*wrap up answer container and buttons*/
+.container2{
+    text-align: center;
+    width: 80%;
+    align-content: center;
+    margin: 0% auto 10% auto;
+    border-width: 5px;
+    border-style: solid;
+    -webkit-border-image: 
+      -webkit-gradient(linear, 0 0, 0 100%, from(#3d5998), to(rgba(0, 0, 0, 0))) 1 100%;
+    -webkit-border-image: 
+      -webkit-linear-gradient(#3d5998, rgba(0, 0, 0, 0)) 1 100%;
+    -moz-border-image:
+      -moz-linear-gradient(#3d5998, rgba(0, 0, 0, 0)) 1 100%;    
+    -o-border-image:
+      -o-linear-gradient(#3d5998, rgba(0, 0, 0, 0)) 1 100%;
+    border-image:
+      linear-gradient(to bottom, #3d5998, rgba(0, 0, 0, 0)) 1 100%;
+}
+
+.answercontainer{
+    padding: 0px;
+    text-align: left;
+    font-size:20px;
+}
+
+.choice{
+    border-style: double;
+    margin: 3% 15% 2% 15%;
+    color: #1E88E5;
+    text-align: center;
+    width: auto;
+}
+
+.hinticon{
+    font-size: 15px;
+}
+
+.tab{
+    padding-left: 10%;
+}
+
+.rowinput{
+    border: solid 1px #ffffff;
+    border-radius: 15px;
+    background: linear-gradient(to right, #ffffff, rgba(200, 210, 233, 0.5));
+    padding: 2%;
+    padding-left: 5%;
+    margin: 0.2% 0%;
+    width: 100%;
+    font-weight: normal;
+}
+
+.rowinput:hover{
+    border-style: inset;
+}
+
+
+.question{
+    margin-top: 1%;
+}

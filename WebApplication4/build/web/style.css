@@ -45,7 +45,6 @@ ul{
     background-size: cover;   
     color: #fff;
     text-align: center; 
-    padding: 10%;
 }
 
 /*wrap up for question*/
@@ -54,14 +53,14 @@ ul{
     background-color: #3d5998;
     border: solid #3d5998;
     margin: 5% auto 0% auto;
-    width: 80%;
+    width: 50%;
     color: #fff;
 }
 
 /*wrap up answer container and buttons*/
 .container2{
     text-align: center;
-    width: 80%;
+    width: 50%;
     align-content: center;
     margin: 0% auto 10% auto;
     border-width: 5px;
@@ -117,9 +116,9 @@ input{
 }
   
 .cat{
-    margin-top: -25%;
-    width:50%; 
-    height:50%;  
+
+    width:20%; 
+    height:20%;  
 }
   
 .catpawn{
@@ -135,7 +134,8 @@ input{
 .catnote{
     text-align: center;
     padding: 2%;
-    background-color: #f5f5f5;
+    background-color: #FDEFE6;
+    color: #000;
 }
 
 .rowinput{
@@ -189,4 +189,16 @@ input{
 
 .answer{
     color: #228B22;
+}
+
+.footer{
+    margin: 2%;
+}
+
+.forbonus{
+   background-color: #FDEFE6;
+}
+
+#txtObj{
+    width: 20%;
 }

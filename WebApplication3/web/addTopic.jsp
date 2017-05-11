@@ -93,20 +93,15 @@
             <div class="col-xs-12 col-md-12 col-lg-12"><!--3.1--> 
                 <center>
                 <h1>Add New Topic</h1>
-                <form id="addForm" action="" method="POST">
-                    <table cellspacing="5" cellpadding="5">
-                        <tr>
-                            <td>New Topic: </td>
-                            <td><input type="text" name="txtName" id="txtName"/></td>
-                        </tr>
-                        <tr>
-                            <td>Topic Bonus: </td>
-                            <td><textarea name="txtBonus" id="txtBonus"></textarea></td>
-                        </tr>
-                        <tr>
-                            <td><input type="submit" name="btnAdd" value="Add Topic" id="btnAdd"/></td>
-                        </tr>
-                    </table>
+                <form id="addForm" action="" method="POST">  
+                <ul>
+                    <li class="questioncontainer"><h2>New Topic:</h2> </li>
+                    <li class="container2"><input type="text" name="txtName" id="txtName" size="70%"/></li>
+                    <li class="questioncontainer"><h2>Topic Bonus:</h2> </li>
+                    <li class="container2"><textarea name="txtBonus" id="txtBonus"></textarea></li>
+                    
+                    <li><input type="submit" name="btnAdd" value="Add Topic" id="btnAdd" size="70%"/></li>
+                </ul>
                 </form>
                 </center>
             </div>
