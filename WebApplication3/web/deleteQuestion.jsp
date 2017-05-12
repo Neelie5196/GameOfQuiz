@@ -19,9 +19,11 @@
             PreparedStatement pstmt;
             String qry;
             Integer questionID;
+            Integer quizID;
         %>
         <%
             if(request.getParameter("id") != null && request.getParameter("id")!= ""){
+                quizID = Integer.parseInt(request.getParameter("quiz"));
                 questionID = Integer.parseInt(request.getParameter("id"));
                 try{
                     Class.forName("com.mysql.jdbc.Driver");
@@ -31,7 +33,7 @@
                     pstmt = conn.prepareStatement(qry);
                     pstmt.setInt(1, questionID);
                     pstmt.executeUpdate();
-                    response.sendRedirect("./question.jsp");
+                    response.sendRedirect("./question.jsp?id=" + quizID);
                 
                 }catch(ClassNotFoundException cnfe){
                     out.println("Class not Found Execption:-" + cnfe.toString());

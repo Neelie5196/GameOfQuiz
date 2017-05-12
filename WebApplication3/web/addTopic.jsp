@@ -18,6 +18,8 @@
 <title>JSP Page</title>
 <meta name="viewport" content="width=device-width, initialscale=1.0"/>
 <!-- Bootstrap -->
+<link href="<%=request.getContextPath()%>/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+
 <link href="frameworks/css/bootstrap.min.css" rel="stylesheet" />   
 <!-- StyleSheet -->
 <link href="frameworks/css/style.css" rel="stylesheet" />
@@ -101,6 +103,7 @@
                     <li class="container2"><textarea name="txtBonus" id="txtBonus"></textarea></li>
                     
                     <li><input type="submit" name="btnAdd" value="Add Topic" id="btnAdd" size="70%"/></li>
+                    <li><a class="btn btn-primary" href="index.html">Cancel</a></li>
                 </ul>
                 </form>
                 </center>

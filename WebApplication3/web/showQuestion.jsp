@@ -39,11 +39,13 @@
             String qry;
             Integer questionID;
             Integer z = 0;
+            Integer quizID;
         %>
         <%
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/quiz","root","");
  
             if(request.getParameter("id") != null && request.getParameter("id")!= ""){  
+                quizID = Integer.parseInt(request.getParameter("id"));
                 questionID = Integer.parseInt(request.getParameter("id"));
                 
                 try{
@@ -62,7 +64,7 @@
                 out.println("SQL Query Exception:- " + sqle);
             } 
             }else{
-                response.sendRedirect("./employees.jsp");
+                response.sendRedirect("./question.jsp?id=" + quizID);
             }
         %>
         
@@ -146,6 +148,7 @@
                 <b>Answer: </b> <%=result.getString("checked")%><br/>
                 <b>Explanation in detail:</b> <%=result.getString("explanation")%>
             </div>
+            <a class="btn btn-primary" href="question.jsp?id=<%=quizID%>">Back</a>
             </div>   
         </div>
     </div> 

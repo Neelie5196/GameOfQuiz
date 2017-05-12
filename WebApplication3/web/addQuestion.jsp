@@ -18,6 +18,8 @@
 <title>JSP Page</title>
 <meta name="viewport" content="width=device-width, initialscale=1.0"/>
 <!-- Bootstrap -->
+<link href="<%=request.getContextPath()%>/frameworks/css/bootstrap.min.css" rel="stylesheet" media="screen">
+
 <link href="frameworks/css/bootstrap.min.css" rel="stylesheet" />
 <!-- StyleSheet -->
 <link href="frameworks/css/style.css" rel="stylesheet" />
@@ -63,7 +65,7 @@
                         pstmt.setString(10,request.getParameter("txtexplain"));
                         
                         pstmt.executeUpdate();
-                        response.sendRedirect("./question.jsp");
+                        response.sendRedirect("./question.jsp?id=" + quizID);
                     }catch(ClassNotFoundException cnfe){
                         out.println("Class not Found Execption:-" + cnfe.toString());
                     }catch(SQLException sqle){
@@ -71,7 +73,7 @@
                     }
                 } 
             }else{
-                response.sendRedirect("./question.jsp");
+                response.sendRedirect("./question.jsp?id=" + quizID);
             }
         %>
         
@@ -184,8 +186,8 @@
                             <textarea name="txtexplain" class="form-control" required></textarea>
                         </div>
                     </div>
-                    <button type="submit" name="btnAdd" data-ng-disabled="addForm.$invalid">Save</button>
-                    <button type="button" href="question.jsp?id=<%=quizID%>">Cancel</button>
+                    <button type="submit" name="btnAdd" class="btn btn-primary" data-ng-disabled="addForm.$invalid">Save</button>
+                    <a class="btn btn-primary" href="question.jsp?id=<%=quizID%>">Cancel</a>
                 </div> 
                 </form>
             </div>

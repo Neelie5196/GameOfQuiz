@@ -176,7 +176,8 @@
                         </li>
                         <li><h3>Topic Bonus</h3></li>
                         <li><textarea name="txtName2" class="form-control" id="txtName" placeholder="<%=result.getString("bonus")%>" rows="3" cols="70"></textarea></li>
-                        <li colspan="2"><button name="btnUpd" id="btnUpd"/>update</li>
+                        <li colspan="2"><button class="btn btn-primary" name="btnUpd" id="btnUpd"/>Update Topic</li>
+                        <li><a class="btn btn-primary" href="index.html">Cancel</a></li>
                     </ul>
                 </form> 
             </div>

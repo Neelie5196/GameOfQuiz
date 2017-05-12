@@ -40,13 +40,16 @@
             String qry;
             Integer questionID;
             Integer z=0;
+            Integer quizID;
         %>
         
         <%-- READ function--%>
         <%
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/quiz","root","");
  
+            
             if(request.getParameter("id") != null && request.getParameter("id")!= ""){  
+                quizID = Integer.parseInt(request.getParameter("quiz"));
                 questionID = Integer.parseInt(request.getParameter("id"));
                 try{
                 Class.forName("com.mysql.jdbc.Driver");
@@ -64,7 +67,7 @@
                 out.println("SQL Query Exception:- " + sqle);
             } 
             }else{
-                response.sendRedirect("./question.jsp");
+                response.sendRedirect("./question.jsp?id=" + quizID);
             }
         %>
         
@@ -89,7 +92,8 @@
                 pstmt.setString(8,request.getParameter("txtexplain"));
                 pstmt.setInt(9, questionID);
                 pstmt.executeUpdate();
-                response.sendRedirect("./question.jsp");
+                response.sendRedirect("./question.jsp?id=" + quizID);
+                return;
                 
             }catch(ClassNotFoundException cnfe){
                 out.println("Class not Found Execption:-" + cnfe.toString());
@@ -115,7 +119,7 @@
                 out.println("SQL Query Exception:- " + sqle);
             } 
             }else{
-                response.sendRedirect("./question.jsp");
+                response.sendRedirect("./question.jsp?id=" + quizID);
             }
         %>
         
@@ -269,7 +273,8 @@
                         <li><h4>Explanation</h4></li>
                         <li><input type="text" name="txtexplain" class="form-control" placeholder="<%=result.getString("explanation") %>" size="70"/></li>
                         
-                        <li><input type="submit" name="btnUpd" value="Update Question" id="btnUpd"/></li>
+                        <li><button class="btn btn-primary" type="submit" name="btnUpd" id="btnUpd">Update Question</button></li>
+                        <li><a class="btn btn-primary" href="question.jsp?id=<%=quizID%>">Cancel</a></li>
                     </ul>
               <!-- maybe add reset?-->
                 </form>
