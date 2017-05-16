@@ -202,3 +202,13 @@ input{
 #txtObj{
     width: 20%;
 }
+
+.videobanner{
+    background-color: #175fb4;
+    text-align: left;
+    font-family: serif;
+}
+
+.videocontainer{
+    text-align: left;
+}

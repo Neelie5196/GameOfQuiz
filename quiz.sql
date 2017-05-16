@@ -77,6 +77,7 @@ CREATE TABLE IF NOT EXISTS `quiz` (
   `quizID` int(11) NOT NULL AUTO_INCREMENT,
   `quizTopic` varchar(50) NOT NULL,
   `bonus` varchar(1000) NOT NULL,
+  `videoID` int(10) NOT NULL,
   PRIMARY KEY (`quizID`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
@@ -88,6 +89,29 @@ INSERT INTO `quiz` (`quizID`, `quizTopic`, `bonus`) VALUES
 (1, 'Volcabulary', 'You know more than you think. TRUST yourself. - Dr.Benjamin Mclane Spock'),
 (2, 'Grammar', 'The best proof of love is trust. - Dr.Joyce Brothers'),
 (3, 'AngularJS', 'To succeed in your mission you must have single-minded devotion to your goal. - A.P.J. Abdul Kalam');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `video`
+--
+
+CREATE TABLE IF NOT EXISTS `video` (
+  `videoID` int(10) NOT NULL AUTO_INCREMENT,
+  `videoName` varchar(100) NOT NULL,
+  `category` varchar(15) NOT NULL,
+  `videoPath` varchar(1000) NOT NULL,
+  PRIMARY KEY (`videoID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `quiz`
+--
+
+INSERT INTO `video` (`videoID`, `videoName`, `category`, `videoPath`) VALUES
+(1, 'Biology Ep1', 'Biology', 'resources/vid/BiologiEp1.mp4'),
+(2, 'Biology Ep2', 'Biology', 'resources/vid/BiologiEp2.mp4'),
+(3, 'Biology Ep3', 'Biology', 'resources/vid/BiologiEp3.mp4');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
