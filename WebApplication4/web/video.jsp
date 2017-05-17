@@ -62,38 +62,59 @@
         %>
         
     <div class="container">
-        <center>
-            <div class="row"> 
-                <div class="videobanner jumbotron"> 
-                    <p>EQUILIBRA</p>
-                </div>
+        <div class="row"> 
+            <div class="videobanner jumbotron"> 
+                <p>EQUILIBRA</p>
+            </div>
 
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-md-12 col-lg-12 catbuttoncontainer">
+                <button ng-click="biology=true; english=false" class="catbtn btn-lg">Biology</button>
+                <button ng-click="english=true; biology=false" class="catbtn btn-lg">English</button>
             </div>
-            
-            <div class="row">
-                <div class="col-xs-12 col-md-12 col-lg-12">
-                    
-                </div>
-            </div>
-            
-            <div class="row">
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-md-12 col-lg-12" ng-show="biology">
                 <%
-                        while(result.next()) {
+                        while(result.next() && (result.getString("category").toLowerCase().equalsIgnoreCase("biology"))) {
                 %>
-                
-                    <div class="col-xs-12 col-md-12 col-lg-12 videocontainer">
-                    
+
+                <div class="videocontainer">
                     <!--display videos-->
                     <h2><%=result.getString("videoName") %></h2>
                     <video width="320" height="240" controls>
                         <source src="<%=result.getString("videoPath") %>" type="video/mp4">
                     </video>
+                    <a href="index.html"><button class="btn-lg btnplay">Play quiz</button></a>
+                </div>
+
                 <%
                         }
                 %>
-                </div>
             </div>
-        </center>
+            
+            <div class="col-xs-12 col-md-12 col-lg-12" ng-show="english">
+                <%
+                        while(result.next() && (result.getString("category").toLowerCase().equalsIgnoreCase("english"))) {
+                %>
+
+                <div class="videocontainer">
+                    <!--display videos-->
+                    <h2><%=result.getString("videoName") %></h2>
+                    <video width="320" height="240" controls>
+                        <source src="<%=result.getString("videoPath") %>" type="video/mp4">
+                    </video>
+                    <button class="btn-lg btnplay">Play quiz</button>
+                </div>
+
+                <%
+                        }
+                %>
+            </div>
+        </div>
     </div>
 
 <!-- jQuery – required for Bootstrap's JavaScript plugins) -->

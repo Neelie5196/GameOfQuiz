@@ -111,7 +111,12 @@ CREATE TABLE IF NOT EXISTS `video` (
 INSERT INTO `video` (`videoID`, `videoName`, `category`, `videoPath`) VALUES
 (1, 'Biology Ep1', 'Biology', 'resources/vid/BiologiEp1.mp4'),
 (2, 'Biology Ep2', 'Biology', 'resources/vid/BiologiEp2.mp4'),
-(3, 'Biology Ep3', 'Biology', 'resources/vid/BiologiEp3.mp4');
+(3, 'Biology Ep3', 'Biology', 'resources/vid/BiologiEp3.mp4'),
+(4, 'Acronyms', 'English', 'resources/vid/Acronyms.m4v'),
+(5, 'Exchange Contact Information', 'English', 'resources/vid/Contact.m4v'),
+(6, 'Idioms', 'English', 'resources/vid/Idioms.m4v'),
+(7, 'Words with Strange Plural Forms', 'English', 'resources/vid/StrangePluran.m4v'),
+(8, 'Words with Weird Silent Letters', 'English', 'resources/vid/WeirdSilentLetter.m4v');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
