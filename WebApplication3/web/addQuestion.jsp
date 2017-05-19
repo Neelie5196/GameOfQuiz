@@ -113,7 +113,7 @@
                         </tr>
                     </table>
                   </form>
-                    <li><a href="#">Back to EQUILIBRA</a></li>
+                    <li><a href="video.jsp">Back to EQUILIBRA</a></li>
                   </ul>
                 </div>
               </div>

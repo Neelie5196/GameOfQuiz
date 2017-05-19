@@ -86,7 +86,7 @@
             <tfoot>
                 <tr>
                     <td colspan="5">
-                       <a class="glyphicon glyphicon-plus-sign" href="addTopic.jsp"> New Topic</a>
+                        <span class="glyphicon glyphicon-plus-sign"/><a href="addTopic.jsp"> New Topic</a>
                     </td>
                 </tr>
             </tfoot>

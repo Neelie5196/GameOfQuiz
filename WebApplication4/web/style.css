@@ -1,7 +1,12 @@
 /*topic.jsp*/
 /*control navigation bar*/
-#navigationbar{
-    border: solid 1px;
+.breadcrumb
+{
+    margin:0px;
+}
+
+.panel{
+    width: 80%;
 }
 
 /*jumbotron */
@@ -237,4 +242,24 @@ input{
     bottom: 5%;
     right: 1%;
     color: #000000;
+}
+
+body{
+    background: url('../../resources/img/bg.jpg') repeat fixed 0% 0%;
+    /*background-image: url('background.jpg');
+	background-repeat: repeat;
+    background-position: left top;
+    background-attachment: scroll;
+	vertical-align:text-top;
+	background-size: cover !important;
+	background-attachment: fixed !important; IN CASE A CHANGE OF A BACKGROUND IMAGE*/
+	font-family: 'Open Sans', Lato, Helvetica,Arial,sans-serif;
+	font-size: 12px;
+	line-height: 17px;
+	color: #676767;
+	overflow-x: hidden;    
+}
+
+img{
+    width:100%;
 }
