@@ -63,7 +63,7 @@
         
     <div class="container">
         <div class="row"> 
-            <div class="videobanner jumbotron"> 
+            <div class="jumbotron"> 
                 <p>EQUILIBRA</p>
             </div>
 

@@ -63,7 +63,7 @@
         
     <div class="container">
         <div class="row"> 
-            <div class="videobanner jumbotron"> 
+            <div class="jumbotron"> 
                 <p>EQUILIBRA</p>
             </div>
 
@@ -71,13 +71,13 @@
 
         <div class="row">
             <div class="col-xs-12 col-md-12 col-lg-12 catbuttoncontainer">
-                <button ng-click="biology=true; english=false" class="catbtn btn-lg">Biology</button>
-                <button ng-click="english=true; biology=false" class="catbtn btn-lg">English</button>
+                <button data-ng-click="biology=true; english=false" class="catbtn btn-lg">Biology</button>
+                <button data-ng-click="english=true; biology=false" class="catbtn btn-lg">English</button>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-xs-12 col-md-12 col-lg-12" ng-show="biology">
+            <div class="col-xs-12 col-md-12 col-lg-12" data-ng-show="biology">
                 <%
                         while(result.next() && (result.getString("category").toLowerCase().equalsIgnoreCase("biology"))) {
                 %>
@@ -96,7 +96,7 @@
                 %>
             </div>
             
-            <div class="col-xs-12 col-md-12 col-lg-12" ng-show="english">
+            <div class="col-xs-12 col-md-12 col-lg-12" data-ng-show="english">
                 <%
                         while(result.next() && (result.getString("category").toLowerCase().equalsIgnoreCase("english"))) {
                 %>
