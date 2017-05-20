@@ -118,12 +118,7 @@
                 
             </div>
             
-            <div class="col-xs-1 col-md-1 col-lg-1"> <!--3.2--> 
-                <a class="btn btn-sm btn-primary glyphicon glyphicon-edit" href="updateQuestion.jsp?id=<%=result.getInt("questionID")%>&quiz=<%=result.getInt("quizID")%>">Edit</a>
-            </div>
-            <div class="col-xs-1 col-md-1 col-lg-1"> <!--3.3--> 
-                <button class="btn btn-sm btn-danger glyphicon glyphicon-trash" href="deleteQuestion.jsp?id=<%=result.getInt("questionID")%>&quiz=<%=result.getInt("quizID")%>" onclick="return confirm('Once confirm, question <%=result.getString("questionID") %> will be removed. Confirm to delete?')"> Delete</button>
-            </div>
+           
         </div><hr/>
         <div class="row"><!--4--> 
             <div class="col-xs-12 col-md-12 col-lg-12"><!--4.1 -->
@@ -164,8 +159,15 @@
                 <b>Answer: </b> <%=result.getString("checked")%><br/>
                 <b>Explanation in detail:</b> <%=result.getString("explanation")%>
             </div>
-            <a class="btn btn-primary" href="question.jsp?id=<%=quizID%>">Back</a>
+            
+                <div class="form-group">
+                    <a class="btn btn-primary " href="updateQuestion.jsp?id=<%=result.getInt("questionID")%>&quiz=<%=result.getInt("quizID")%>">Edit</a>
+                    <button class="btn btn-primary href="deleteQuestion.jsp?id=<%=result.getInt("questionID")%>&quiz=<%=result.getInt("quizID")%>" onclick="return confirm('Once confirm, question <%=result.getString("questionID") %> will be removed. Confirm to delete?')"> Delete</button>
+                    <a class="btn btn-primary" href="question.jsp?id=<%=quizID%>">Back</a>
+                </div>
             </div>   
+            
+            
         </div>
     </div> 
                            

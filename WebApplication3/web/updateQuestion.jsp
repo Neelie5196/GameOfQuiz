@@ -286,9 +286,12 @@
                         
                         <li><h4>Explanation</h4></li>
                         <li><input type="text" name="txtexplain" class="form-control" placeholder="<%=result.getString("explanation") %>" size="70"/></li>
+                        <div class="form-group">
+                            <br/>
+                            <button class="btn btn-primary" type="submit" name="btnUpd" id="btnUpd">Update Question</button>
+                            <a class="btn btn-primary" href="question.jsp?id=<%=quizID%>">Cancel</a>
+                        </div>
                         
-                        <li><button class="btn btn-primary" type="submit" name="btnUpd" id="btnUpd">Update Question</button></li>
-                        <li><a class="btn btn-primary" href="question.jsp?id=<%=quizID%>">Cancel</a></li>
                     </ul>
               <!-- maybe add reset?-->
                 </form>

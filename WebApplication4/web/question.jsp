@@ -119,13 +119,14 @@
     <div class="row"><!--2--> 
         <div class="col-xs-12 col-md-12 col-lg-12"><!--2.1--> 
         <%
+            Integer questionNo = 1;
             while(result.next() ) {
                 quizID = result.getInt("quizID");  
         %> 
         
         <!--display quiz question-->
         <div id="<%=result.getInt("questionID") %>" class="questioncontainer">
-            <h2> Question <% out.println(z); %></h2> <hr/>
+            <h2> Question <%=questionNo%></h2> <hr/>
             <h3><%=result.getString("question") %></h3>
         </div> 
     
@@ -251,6 +252,7 @@
             </div> 
         </div>
         <%
+            questionNo++;
             } 
         %>
         </div> 
@@ -258,10 +260,10 @@
       
     <div class="row footer"><!--3--> 
         <div class="col-xs-6 col-md-6 col-lg-6"> <!--3.1 --> 
-            <a href="index.html">Back To Topic</a>
+            <a href="index.html" class="btn btn-primary">Back To Topic</a>
         </div>
         <div class="col-xs-6 col-md-6 col-lg-6"><!--3.2 -->
-            <a class="glyphicon glyphicon-hand-up pull-right" data-ng-click="report=report!==true">Report a problem</a>
+            <a class=" pull-right btn btn-primary" data-ng-click="report=report!==true">Report a problem</a>
             
             <!--mayb make it as modal?c1st-->     
             <div data-ng-show="report">

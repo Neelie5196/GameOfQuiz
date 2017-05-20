@@ -199,7 +199,7 @@
                         <div class="col-xs-8 col-md-8 col-lg-8">
                             <textarea name="txtexplain" class="form-control" required></textarea>
                         </div>
-                    </div>
+                    </div><br/>
                     <button type="submit" name="btnAdd" class="btn btn-primary" data-ng-disabled="addForm.$invalid">Save</button>
                     <a class="btn btn-primary" href="question.jsp?id=<%=quizID%>">Cancel</a>
                 </div> 

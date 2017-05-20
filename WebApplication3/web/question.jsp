@@ -35,6 +35,7 @@
 </head>
 
 <body>
+    
        <%!
             Connection conn;
             PreparedStatement pstmt;
@@ -123,17 +124,18 @@
                             <th id="typeq" scope="col" >Type</th>
                             <th id="more" scope="col">Show More</th>
                             <th id="edit" scope="col" >Edit</th>
-                            <th id="delete" scope="col" >delete</th>
+                            <th id="delete" scope="col" >Delete</th>
                         </tr>
                     </thead>                      
                     <tbody>      
                         <%
+                            Integer questionNo = 1;
                             while(result.next()) {
                                 quizID = result.getInt("quizID");
                         %>
 
                         <tr>
-                            <td headers="no"><%=result.getInt("questionID") %></td>
+                            <td headers="no"><%=questionNo%></td>
                             <td headers="quez"><%=result.getString("question") %></td>
                             <td headers="typeq"><%=result.getString("type") %></td>
                             <td headers="more"><a class="glyphicon glyphicon-eye-open" href="showQuestion.jsp?id=<%=result.getInt("questionID")%>&quiz=<%=result.getInt("quizID")%>"></a></td>
@@ -142,13 +144,14 @@
                         </tr>
 
                         <%
+                            questionNo++;
                             }
                         %>
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td colspan="6">
-                                <a class="glyphicon glyphicon-plus-sign" href="addQuestion.jsp?id=<%=quizID%>">ADD</a>
+                            <td colspan="5">
+                                <span class="glyphicon glyphicon-plus-sign" /><a style="font-family:'Open Sans', Lato, Helvetica,Arial,sans-serif" href="addQuestion.jsp?id=<%=quizID%>">New Question</a>
                             </td>
                         </tr>
                     </tfoot>
@@ -156,7 +159,7 @@
                 </div>
                 </div>
                     
-                <p><a href="index.html">Back To Topic</a></p> 
+                <p><a href="index.html" class="btn btn-primary">Back To Topic</a></p> 
             </div>
         </div>
         </center>
