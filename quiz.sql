@@ -59,13 +59,7 @@ CREATE TABLE IF NOT EXISTS `question` (
 -- Dumping data for table `question`
 --
 
-INSERT INTO `question` (`quizID`, `questionID`, `question`, `type`, `hints`, `input1`, `input2`, `input3`, `input4`, `checked`, `explanation`) VALUES
-(1, 1, 'Best synonym for warn', 'M', 'none', 'feel sleepy', 'write', 'get closer', 'tell of danger', 'D', 'Go find it Yourself la'),
-(1, 2, 'Best synonym for bold', 'M', 'none', 'brave', 'strong', 'made up', 'ancient', 'A', 'Go find it Yourself la'),
-(1, 3, 'Best synonym for frustration', 'M', 'none', 'upset feeling', 'first feeling', 'successful feeling', 'cold feeling', 'A', 'Go find it Yourself la'),
-(2, 4, '___ he play baseball after school', 'B', 'none', 'Has', 'Does', 'Do', 'Is', 'Does', 'Go find it Yourself la'),
-(1, 5, 'Best synonym for employer', 'M', 'none', 'legal professional', 'waitress', 'boss', 'farmer', 'C', ''),
-(2, 6, 'Please be quiet ___ the teacher is talking', 'B', 'none', 'during', 'while', 'when', 'meanwhile', 'while', '');
+
 
 -- --------------------------------------------------------
 
@@ -85,10 +79,7 @@ CREATE TABLE IF NOT EXISTS `quiz` (
 -- Dumping data for table `quiz`
 --
 
-INSERT INTO `quiz` (`quizID`, `quizTopic`, `bonus`) VALUES
-(1, 'Volcabulary', 'You know more than you think. TRUST yourself. - Dr.Benjamin Mclane Spock'),
-(2, 'Grammar', 'The best proof of love is trust. - Dr.Joyce Brothers'),
-(3, 'AngularJS', 'To succeed in your mission you must have single-minded devotion to your goal. - A.P.J. Abdul Kalam');
+
 
 -- --------------------------------------------------------
 
@@ -99,6 +90,7 @@ INSERT INTO `quiz` (`quizID`, `quizTopic`, `bonus`) VALUES
 CREATE TABLE IF NOT EXISTS `video` (
   `videoID` int(10) NOT NULL AUTO_INCREMENT,
   `videoName` varchar(100) NOT NULL,
+  `videoDesc` varchar(200) NOT NULL,
   `category` varchar(15) NOT NULL,
   `videoPath` varchar(1000) NOT NULL,
   PRIMARY KEY (`videoID`)
@@ -108,15 +100,15 @@ CREATE TABLE IF NOT EXISTS `video` (
 -- Dumping data for table `quiz`
 --
 
-INSERT INTO `video` (`videoID`, `videoName`, `category`, `videoPath`) VALUES
-(1, 'Biology Ep1', 'Biology', 'resources/vid/BiologiEp1.mp4'),
-(2, 'Biology Ep2', 'Biology', 'resources/vid/BiologiEp2.mp4'),
-(3, 'Biology Ep3', 'Biology', 'resources/vid/BiologiEp3.mp4'),
-(4, 'Acronyms', 'English', 'resources/vid/Acronyms.m4v'),
-(5, 'Exchange Contact Information', 'English', 'resources/vid/Contact.m4v'),
-(6, 'Idioms', 'English', 'resources/vid/Idioms.m4v'),
-(7, 'Words with Strange Plural Forms', 'English', 'resources/vid/StrangePluran.m4v'),
-(8, 'Words with Weird Silent Letters', 'English', 'resources/vid/WeirdSilentLetter.m4v');
+INSERT INTO `video` (`videoID`, `videoName`, `videoDesc`, `category`, `videoPath`) VALUES
+(1, 'Biology Ep1', 'What do flowers, goldfish and us have in common? What are we made up of? Watch to know more!', 'Biology', 'resources/vid/BiologiEp1.mp4'),
+(2, 'Biology Ep2', 'Why is salt used to preserved foods? What happens when some food are soaked in concentrated solution? Watch to know more!', 'Biology', 'resources/vid/BiologiEp2.mp4'),
+(3, 'Biology Ep3', 'How to remove tough stains from clothes? What does the detergent do to remove the tough stains? Watch to find out!', 'Biology', 'resources/vid/BiologiEp3.mp4'),
+(4, 'Acronyms', 'Acronyms are used widely in our daily lives. Watch to know what some acronyms mean!', 'English', 'resources/vid/Acronyms.m4v'),
+(5, 'Exchange Contact Information', 'You just met someone new, and you want to keep in touch with them. How do you do it?', 'English', 'resources/vid/Contact.m4v'),
+(6, 'Idioms', 'What are idioms? What do they mean? Let Alisa reveal some common English idioms to you!', 'English', 'resources/vid/Idioms.m4v'),
+(7, 'Words with Strange Plural Forms', 'Wonder how some words are presented in plural forms? Do you add "s" to the every word to turn it into plural form? Watch to know which words has weird plural forms!', 'English', 'resources/vid/StrangePluran.m4v'),
+(8, 'Words with Weird Silent Letters', 'Have you encountered a weirdly spelled word? How do you pronounce it? Watch to find out some words frequently wrongly pronounced!', 'English', 'resources/vid/WeirdSilentLetter.m4v');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

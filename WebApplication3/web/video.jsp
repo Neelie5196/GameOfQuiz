@@ -79,18 +79,32 @@
         <div class="row">
             <div class="col-xs-12 col-md-12 col-lg-12" data-ng-show="biology">
                 <%
-                        while(result.next() && (result.getString("category").toLowerCase().equalsIgnoreCase("biology"))) {
+                    while(result.next() && (result.getString("category").toLowerCase().equalsIgnoreCase("biology"))) {
                 %>
+                
+                <div class="row videocontainer">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-12 col-lg-12">
+                            <h2><%=result.getString("videoName") %></h2>
+                        </div>
+                    </div>
+                        
+                    <div class="row">
+                        <div class="col-xs-4 col-md-4 col-lg-4">
+                            <video width="320" height="240" controls>
+                                <source src="<%=result.getString("videoPath") %>" type="video/mp4">
+                            </video>
+                        </div>
 
-                <div class="videocontainer">
-                    <!--display videos-->
-                    <h2><%=result.getString("videoName") %></h2>
-                    <video width="320" height="240" controls>
-                        <source src="<%=result.getString("videoPath") %>" type="video/mp4">
-                    </video>
-                    <a href="index.html"><button class="btn-lg btnplay">Create quiz</button></a>
+                        <div class="col-xs-6 col-md-6 col-lg-6">
+                            <p><%=result.getString("videoDesc") %></p>
+                        </div>            
+
+                        <div class="col-xs-2 col-md-2 col-lg-2 quizbtncont">
+                            <a href="index.html"><button class="btn-lg btnplay">Create quiz</button></a>
+                        </div>
+                    </div>
                 </div>
-
                 <%
                         }
                 %>
@@ -98,18 +112,32 @@
             
             <div class="col-xs-12 col-md-12 col-lg-12" data-ng-show="english">
                 <%
-                        while(result.next() && (result.getString("category").toLowerCase().equalsIgnoreCase("english"))) {
+                    while(result.next() && (result.getString("category").toLowerCase().equalsIgnoreCase("english"))) {
                 %>
+                
+                <div class="row videocontainer">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-12 col-lg-12">
+                            <h2><%=result.getString("videoName") %></h2>
+                        </div>
+                    </div>
+                        
+                    <div class="row">
+                        <div class="col-xs-4 col-md-4 col-lg-4">
+                            <video width="320" height="240" controls>
+                                <source src="<%=result.getString("videoPath") %>" type="video/mp4">
+                            </video>
+                        </div>
 
-                <div class="videocontainer">
-                    <!--display videos-->
-                    <h2><%=result.getString("videoName") %></h2>
-                    <video width="320" height="240" controls>
-                        <source src="<%=result.getString("videoPath") %>" type="video/mp4">
-                    </video>
-                    <button class="btn-lg btnplay">Create quiz</button>
+                        <div class="col-xs-6 col-md-6 col-lg-6">
+                            <p><%=result.getString("videoDesc") %></p>
+                        </div>            
+
+                        <div class="col-xs-2 col-md-2 col-lg-2 quizbtncont">
+                            <a href="index.html"><button class="btn-lg btnplay">Create quiz</button></a>
+                        </div>
+                    </div>
                 </div>
-
                 <%
                         }
                 %>
