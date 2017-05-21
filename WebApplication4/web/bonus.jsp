@@ -98,6 +98,7 @@
         <img src="resources/img/cathungry.jpg"/>  
         <p>Pusheen the cat is blocking your reward</p>
         <button data-ng-click="cat=cat!==true">Feed</button>
+        <input type="button" value="Go Back" onclick="location.href='question.jsp?id=<%=quizID%>';"/>
     </div>   
   
     <form data-ng-show ="cat"> 
@@ -114,7 +115,7 @@
         <img id="myImage" src="resources/img/catfood.gif" />
         <p>Push Pusheen the cat to aside</p>
         <input type="button" value="Push" onclick="moveRight();" />
-         
+        <input type="button" value="Go Back" onclick="location.href='question.jsp?id=<%=quizID%>';"/>
     </form>
 
         

@@ -162,7 +162,7 @@
             
                 <div class="form-group">
                     <a class="btn btn-primary " href="updateQuestion.jsp?id=<%=result.getInt("questionID")%>&quiz=<%=result.getInt("quizID")%>">Edit</a>
-                    <button class="btn btn-primary href="deleteQuestion.jsp?id=<%=result.getInt("questionID")%>&quiz=<%=result.getInt("quizID")%>" onclick="return confirm('Once confirm, question <%=result.getString("questionID") %> will be removed. Confirm to delete?')"> Delete</button>
+                    <button class="btn btn-primary" href="deleteQuestion.jsp?id=<%=result.getInt("questionID")%>&quiz=<%=result.getInt("quizID")%>" onclick="return confirm('Once confirm, question <%=result.getString("questionID") %> will be removed. Confirm to delete?')"> Delete</button>
                     <a class="btn btn-primary" href="question.jsp?id=<%=quizID%>">Back</a>
                 </div>
             </div>   

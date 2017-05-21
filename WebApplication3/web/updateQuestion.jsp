@@ -245,16 +245,16 @@
                         <li><input type="hidden" name="hiddenId" id="hiddenId" value="<%=questionID%>"/> </li>
 
                         <li><h4>Question</h4></li>
-                        <li><textarea name="txtquestion" class="form-control" placeholder="<%=result.getString("question") %>" cols="70"></textarea></li>
+                        <li><textarea type="text" name="txtquestion" class="form-control" cols="70"><%=result.getString("question") %></textarea></li>
                         
                         <!-- Format for multiple choice -->
                         <div data-ng-if="'<%=result.getString("type")%>' === 'M'">        
                             <li><h4>Multiple choice</h4></li>
                             <li>
-                                <input type="text" class="form-control" name="txtinput1" placeholder="A. <%=result.getString("input1") %>" size="70"/>
-                                <input type="text" class="form-control" name="txtinput2" placeholder="B. <%=result.getString("input2") %>" size="70"/>
-                                <input type="text" class="form-control" name="txtinput3" placeholder="C. <%=result.getString("input3") %>" size="70"/>
-                                <input type="text" class="form-control" name="txtinput4" placeholder="D. <%=result.getString("input4") %>" size="70"/>
+                                <input type="text" class="form-control" name="txtinput1" value="<%=result.getString("input1") %>" size="70"/>
+                                <input type="text" class="form-control" name="txtinput2" value="<%=result.getString("input2") %>" size="70"/>
+                                <input type="text" class="form-control" name="txtinput3" value="<%=result.getString("input3") %>" size="70"/>
+                                <input type="text" class="form-control" name="txtinput4" value="<%=result.getString("input4") %>" size="70"/>
                             </li>
                         </div>
                     
@@ -262,10 +262,10 @@
                         <div data-ng-if="'<%=result.getString("type")%>' === 'B'">        
                             <li><h4>Choices for blank</h4></li>
                             <li >
-                                <input type="text" class="form-control" name="txtinput1" placeholder="<%=result.getString("input1") %>" size="70"/>
-                                <input type="text" class="form-control" name="txtinput2" placeholder="<%=result.getString("input2") %>" size="70"/>
-                                <input type="text" class="form-control" name="txtinput3" placeholder="<%=result.getString("input3") %>" size="70"/>
-                                <input type="text" class="form-control" name="txtinput4" placeholder="<%=result.getString("input4") %>" size="70"/>
+                                <input type="text" class="form-control" name="txtinput1" value="<%=result.getString("input1") %>" size="70"/>
+                                <input type="text" class="form-control" name="txtinput2" value="<%=result.getString("input2") %>" size="70"/>
+                                <input type="text" class="form-control" name="txtinput3" value="<%=result.getString("input3") %>" size="70"/>
+                                <input type="text" class="form-control" name="txtinput4" value="<%=result.getString("input4") %>" size="70"/>
                             </li>
                         </div>
                         
@@ -273,19 +273,19 @@
                         <div data-ng-if="'<%=result.getString("type")%>' === 'T'">        
                             <li><h4>True / False</h4></li>
                             <li> 
-                                <input type="hidden" class="form-control" name="txtinput1" placeholder="<%=result.getString("input1") %>" size="70"/>
-                                <input type="hidden" class="form-control" name="txtinput2" placeholder="<%=result.getString("input2") %>" size="70"/>
-                                <input type="hidden" class="form-control" name="txtinput3" placeholder="<%=result.getString("input3") %>" size="70"/>
-                                <input type="hidden" class="form-control" name="txtinput4" placeholder="<%=result.getString("input4") %>" size="70"/>
+                                <input type="hidden" class="form-control" name="txtinput1" value="<%=result.getString("input1") %>" size="70"/>
+                                <input type="hidden" class="form-control" name="txtinput2" value="<%=result.getString("input2") %>" size="70"/>
+                                <input type="hidden" class="form-control" name="txtinput3" value="<%=result.getString("input3") %>" size="70"/>
+                                <input type="hidden" class="form-control" name="txtinput4" value="<%=result.getString("input4") %>" size="70"/>
                             </li>
                         </div>
                             
-                        <li><h4>Hints</h4><input type="text" name="txthints" class="form-control" placeholder="<%=result.getString("hints") %>" size="70"/></li>
+                        <li><h4>Hints</h4><input type="text" name="txthints" class="form-control" value="<%=result.getString("hints") %>" size="70"/></li>
 
-                        <li><h4>Answer</h4><input type="text" name="txtchecked" class="form-control" placeholder="<%=result.getString("checked") %>" size="70"/></li>
+                        <li><h4>Answer</h4><input type="text" name="txtchecked" class="form-control" value="<%=result.getString("checked") %>" size="70"/></li>
                         
                         <li><h4>Explanation</h4></li>
-                        <li><input type="text" name="txtexplain" class="form-control" placeholder="<%=result.getString("explanation") %>" size="70"/></li>
+                        <li><input type="text" name="txtexplain" class="form-control" value="<%=result.getString("explanation") %>" size="70"/></li>
                         <div class="form-group">
                             <br/>
                             <button class="btn btn-primary" type="submit" name="btnUpd" id="btnUpd">Update Question</button>

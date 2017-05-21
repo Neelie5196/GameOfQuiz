@@ -69,10 +69,10 @@ ul{
  /*question.jsp*/
 .parallax {
     /*Background image*/
-    background-image: url('resources/img/parallexbg1.jpg');
+    background-image: url('resources/img/userbanner.png');
     /*Control height and width*/
-    min-width: 1024px; 
-    min-height: 700px; 
+    width:100%;
+    height:300px;
     
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
@@ -81,6 +81,16 @@ ul{
     background-size: cover;   
     color: #fff;
     text-align: center; 
+}
+
+.quotes{
+      
+  font-family: helvetica;
+  font-size: 18px;
+  font-style: italic;
+  line-height: 52px;
+  letter-spacing: 0.133333px;
+  word-spacing: 0.8px;
 }
 
 /*wrap up for question*/
@@ -153,8 +163,8 @@ input{
   
 .cat{
 
-    width:20%; 
-    height:20%;  
+    width:200px; 
+    height:200px;  
 }
   
 .catpawn{

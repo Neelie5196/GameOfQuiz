@@ -1,3 +1,19 @@
+body{
+    background: url('resources/img/bg.jpg') repeat fixed 0% 0%;
+    /*background-image: url('background.jpg');
+	background-repeat: repeat;
+    background-position: left top;
+    background-attachment: scroll;
+	vertical-align:text-top;
+	background-size: cover !important;
+	background-attachment: fixed !important; IN CASE A CHANGE OF A BACKGROUND IMAGE*/
+	font-family: 'Open Sans', Lato, Helvetica,Arial,sans-serif;
+	font-size: 12px;
+	line-height: 17px;
+	color: #676767;
+	overflow-x: hidden;    
+}
+
 /*topic.jsp*/
 /*control navigation bar*/
 .breadcrumb
@@ -11,11 +27,16 @@
 
 /*jumbotron */
 .jumbotron {
-    background-color: #353A49;
+    background-color: #175fb4;
+    font-family: serif;
     color: #fff;
 }
 
-.jumbotron img{
+.banner{
+    width: 100%;
+}
+
+.banner1 img{
     width: 100%;
 }
 
@@ -33,15 +54,25 @@ ul{
  
 .topic{
     font-size: 20px;
+    text-align: left;
+    width: 90%;
+}
+
+.topic a{
+    margin-left: 2%;
+}
+
+#topic{
+    font-size: 40px;
 }
 
  /*question.jsp*/
 .parallax {
     /*Background image*/
-    background-image: url('resources/img/parallexbg1.jpg');
+    background-image: url('resources/img/userbanner.png');
     /*Control height and width*/
-    min-width: 1024px; 
-    min-height: 700px; 
+    width:100%;
+    height:300px;
     
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
@@ -50,6 +81,16 @@ ul{
     background-size: cover;   
     color: #fff;
     text-align: center; 
+}
+
+.quotes{
+      
+  font-family: helvetica;
+  font-size: 18px;
+  font-style: italic;
+  line-height: 52px;
+  letter-spacing: 0.133333px;
+  word-spacing: 0.8px;
 }
 
 /*wrap up for question*/
@@ -122,8 +163,8 @@ input{
   
 .cat{
 
-    width:20%; 
-    height:20%;  
+    width:200px; 
+    height:200px;  
 }
   
 .catpawn{
@@ -208,11 +249,6 @@ input{
     width: 20%;
 }
 
-.videobanner{
-    background-color: #175fb4;
-    font-family: serif;
-}
-
 .catbuttoncontainer{
     border: solid 1px #175fb4;
     padding: 1%;
@@ -232,34 +268,20 @@ input{
     border: solid 1px rgba(53, 134, 227, 0.5);
     padding: 1%;
     margin: 2% 0;
-    position: relative;
+    font-size: 15px;
+}
+
+.videocontainer p{
+    margin-top: 5%;
 }
 
 .btnplay{
     border-width: 0;
     background-color: rgba(53, 134, 227, 0.3);
-    position: absolute;
-    bottom: 5%;
-    right: 1%;
     color: #000000;
 }
 
-body{
-    background: url('../../resources/img/bg.jpg') repeat fixed 0% 0%;
-    /*background-image: url('background.jpg');
-	background-repeat: repeat;
-    background-position: left top;
-    background-attachment: scroll;
-	vertical-align:text-top;
-	background-size: cover !important;
-	background-attachment: fixed !important; IN CASE A CHANGE OF A BACKGROUND IMAGE*/
-	font-family: 'Open Sans', Lato, Helvetica,Arial,sans-serif;
-	font-size: 12px;
-	line-height: 17px;
-	color: #676767;
-	overflow-x: hidden;    
-}
-
-img{
-    width:100%;
+.quizbtncont{
+    margin-top: 18%;
+    text-align: right;
 }

@@ -94,8 +94,8 @@
     
     <div class="row"><!--1--> 
         <div class="col-xs-12 col-md-12 col-lg-12 parallax"> <!--1.1--> 
-            <h1>PUSH YOURSELF <br/>BECAUSE <br/>NO ONE ELSE <br/>IS GOING TO <br/>DO IT FOR <br/>YOU</h1><hr/>
-            <p>SO TAKE THE QUIZ</p><br/>
+            <h3 class="quotes">"Push yourself because no one else is going to do it for you"</h3>
+ 
             <a data-toggle="modal" data-target="#myModal" >
                 <!-- image obtained from http://misstingtingwu.blogspot.my/ --> 
                 <img src="resources/img/cat.gif" class="cat" alt="click me" onClick="meowSound()"/>
@@ -166,9 +166,9 @@
                         <b>Explanation in detail:</b>
                         <p><%=result.getString("explanation")%></p>
                         <div data-ng-if="count === 5 ">
-                            <b>Congratulation!!! Here is your topic (Quote) bonus!!</b><br/>
-                            <a href="bonus.jsp?id=<%=quizID%>" data-ng-click="bonusSound()">Quote Bonus</a>
-                            <button onClick="bonusSound()">Quote Bonus</button>
+                            <b>Congratulation!!! Here is your topic (Quote) bonus!!</b><br/><br/>
+                            <a class="btn btn-default" href="bonus.jsp?id=<%=quizID%>" data-ng-click="bonusSound()">Quote Bonus</a>
+                            
                         </div> 
                     </div>
                     <!-- incorrect -->

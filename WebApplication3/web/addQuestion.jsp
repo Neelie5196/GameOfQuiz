@@ -155,10 +155,10 @@
                             <!-- Format for multiple choice -->
                             <div class="form-group" data-ng-show="show===1">   
                                 <p>Multiple Choice</p>
-                                <input class="form-control" type="text" name="txtinput1" placeholder="A"/>
-                                <input class="form-control" type="text" name="txtinput2" placeholder="B"/>
-                                <input class="form-control" type="text" name="txtinput3" placeholder="C"/>
-                                <input class="form-control" type="text" name="txtinput4" placeholder="D"/>
+                                <input class="form-control" type="text" name="txtinput1" value="A"/>
+                                <input class="form-control" type="text" name="txtinput2" value="B"/>
+                                <input class="form-control" type="text" name="txtinput3" value="C"/>
+                                <input class="form-control" type="text" name="txtinput4" value="D"/>
                             </div>
                             <!-- Format for fill in the blank -->
                             <div class="form-group" data-ng-show="show===3" > 
