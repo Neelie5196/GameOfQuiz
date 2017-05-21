@@ -66,7 +66,6 @@
             <div class="jumbotron"> 
                 <p>EQUILIBRA</p>
             </div>
-
         </div>
 
         <div class="row">
@@ -78,8 +77,18 @@
 
         <div class="row">
             <div class="col-xs-12 col-md-12 col-lg-12" data-ng-show="biology">
+                <h1>Biology</h1>
+            </div>
+            
+            <div class="col-xs-12 col-md-12 col-lg-12" data-ng-show="english">
+                <h1>English</h1>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-xs-12 col-md-12 col-lg-12" data-ng-show="biology">
                 <%
-                    while(result.next() && (result.getString("category").toLowerCase().equalsIgnoreCase("biology"))) {
+                    while(result.next() && (result.getString("category").equalsIgnoreCase("biology"))) {
                 %>
                 
                 <div class="row videocontainer">
@@ -91,7 +100,7 @@
                         
                     <div class="row">
                         <div class="col-xs-4 col-md-4 col-lg-4">
-                            <video width="320" height="240" controls>
+                            <video width="100%" height="100%" controls>
                                 <source src="<%=result.getString("videoPath") %>" type="video/mp4">
                             </video>
                         </div>
@@ -112,7 +121,7 @@
             
             <div class="col-xs-12 col-md-12 col-lg-12" data-ng-show="english">
                 <%
-                    while(result.next() && (result.getString("category").toLowerCase().equalsIgnoreCase("english"))) {
+                    while(result.next() && (result.getString("category").equalsIgnoreCase("english"))) {
                 %>
                 
                 <div class="row videocontainer">
@@ -124,7 +133,7 @@
                         
                     <div class="row">
                         <div class="col-xs-4 col-md-4 col-lg-4">
-                            <video width="320" height="240" controls>
+                            <video width="100%" height="100%" controls>
                                 <source src="<%=result.getString("videoPath") %>" type="video/mp4">
                             </video>
                         </div>
