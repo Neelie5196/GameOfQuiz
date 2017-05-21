@@ -40,13 +40,16 @@
             String qry;
             Integer questionID;
             Integer z=0;
+            Integer quizID;
         %>
         
         <%-- READ function--%>
         <%
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/quiz","root","");
  
+            
             if(request.getParameter("id") != null && request.getParameter("id")!= ""){  
+                quizID = Integer.parseInt(request.getParameter("quiz"));
                 questionID = Integer.parseInt(request.getParameter("id"));
                 try{
                 Class.forName("com.mysql.jdbc.Driver");
@@ -64,7 +67,7 @@
                 out.println("SQL Query Exception:- " + sqle);
             } 
             }else{
-                response.sendRedirect("./question.jsp");
+                response.sendRedirect("./question.jsp?id=" + quizID);
             }
         %>
         
@@ -89,7 +92,8 @@
                 pstmt.setString(8,request.getParameter("txtexplain"));
                 pstmt.setInt(9, questionID);
                 pstmt.executeUpdate();
-                response.sendRedirect("./question.jsp");
+                response.sendRedirect("./question.jsp?id=" + quizID);
+                return;
                 
             }catch(ClassNotFoundException cnfe){
                 out.println("Class not Found Execption:-" + cnfe.toString());
@@ -115,44 +119,58 @@
                 out.println("SQL Query Exception:- " + sqle);
             } 
             }else{
-                response.sendRedirect("./question.jsp");
+                response.sendRedirect("./question.jsp?id=" + quizID);
             }
         %>
         
         
     <div class="container">
         <div class="row"><!--1--> 
-            <div class="col-xs-12 col-md-12 col-lg-12 jumbotron"><!--1.1--> 
-                <img src="resources/img/banner.jpg" alt="banner"/>
-            </div>
-        </div>
-        
-        <div class="row"  id="navigationbar"> <!--2--> 
-            <div class="col-md-8 col-md-push-1" id="breadcrumb"> <!--2.1--> 
-                <a href="#home">Home</a>
+            <div class="col-xs-12"><!--1.1--> 
+                <img src="resources/img/banner.jpg" alt="banner" />
             </div>
             
-            <div class="col-md-2 col-md-push-1 col-md-pull-1" id="toequilibra"><!--2.2--> 
-                <a href="#home">back to EQUILIBRA</a>
-                
-                <!-- Code for google search engine is refered from "https://www.google.com/cse/tools/create_onthefly"-->      
-                <form id="icon" name="cse" action="http://www.google.com/search" target="_blank">
-                <table>
-                    <tr>
-                        <li>
-                            <input type="hidden" name="ie" value="uli-8">
-                            <input type="text" name="q" size="20" maxlength="255" value="Google site search">
-                            <input type="submit" value="Go!">
-                        </li>
-                    </tr>
-                </table>
-		</form>
-            </div>       
         </div>
+        
+        
+            <nav class="navbar navbar-default">
+              <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Game Of Quizs </a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav ">
+                      <li><a href="index.html">Home / </a></li>
+                      <li><a href="question.jsp?id=<%=quizID%>">Question List / </a></li>
+                    <li class="active" ><a href="#">Update Question<span class="sr-only">(current)</span></a></li>
+                    
+                    
+                  </ul>
+                  
+                  <ul class="nav navbar-nav navbar-right">
+                      <form class="navbar-form navbar-left" role="search" id="icon" name="cse" action="http://www.google.com/search" target="_blank">
+                    <table>
+                        <tr>
+                            <td>
+                                <input type="hidden" name="ie" value="utd-8">
+                                <input class="form-control" type="text" name="q" size="20" maxlength="255" placeholder="Google site search">
+                                <input type="submit" value="Go!" class="btn btn-primary">
+                            </td>
+                        </tr>
+                    </table>
+                  </form>
+                    <li><a href="video.jsp">Back to EQUILIBRA</a></li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
         <div class="row update"><!--3--> 
             <div class="col-xs-10 col-md-10 col-lg-10"><!--3.1-->
-                <i>press "Backspace" to return previous page or ctrl + <- left arrow</i>
+                
                 <h1>Update Topic <%=result.getInt("quizID")%> Question <%=result.getInt("questionID")%></h1> 
+                <i>Press "Save" to commit and "Cancel to return to previous page</i>
+                
             </div>
             <div class="col-xs-2 col-md-2 col-lg-2"><!--3.2-->    
                 <button data-toggle="modal" data-target="#note" class="pull-right btn btn-warning">Note*</button>
@@ -175,7 +193,7 @@
                     </div>
             </div>
         </div>
-
+<hr/>
         <div class="row"><!--4--> 
             <div class="col-xs-12 col-md-6 col-lg-6"><!--4.1-->
                 <p class="right">(Original)</p>
@@ -268,8 +286,12 @@
                         
                         <li><h4>Explanation</h4></li>
                         <li><input type="text" name="txtexplain" class="form-control" placeholder="<%=result.getString("explanation") %>" size="70"/></li>
+                        <div class="form-group">
+                            <br/>
+                            <button class="btn btn-primary" type="submit" name="btnUpd" id="btnUpd">Update Question</button>
+                            <a class="btn btn-primary" href="question.jsp?id=<%=quizID%>">Cancel</a>
+                        </div>
                         
-                        <li><input type="submit" name="btnUpd" value="Update Question" id="btnUpd"/></li>
                     </ul>
               <!-- maybe add reset?-->
                 </form>

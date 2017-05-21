@@ -16,8 +16,13 @@ body{
 
 /*topic.jsp*/
 /*control navigation bar*/
-#navigationbar{
-    border: solid 1px;
+.breadcrumb
+{
+    margin:0px;
+}
+
+.panel{
+    width: 80%;
 }
 
 /*jumbotron */

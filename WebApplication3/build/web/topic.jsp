@@ -17,6 +17,7 @@
             Statement stmt;
             ResultSet result;
             Integer quizID;
+            
         %>
         
         <%-- READ function--%>
@@ -46,17 +47,18 @@
                     <th id="topic" scope="col" >Topic</th>
                     <th id="bonus" scope="col" >Bonus</th>
                     <th id="edit" scope="col" >Edit</th>
-                    <th id="del" scope="col" >delete</th>
+                    <th id="del" scope="col" >Delete</th>
                 </tr>
             </thead>                      
             <tbody>
                 <%
+                    Integer quizNo = 1;
                     while(result.next()) {
                         quizID = result.getInt("quizID");
                 %>
 
                 <tr>
-                    <td headers="no"><%=quizID%></td>
+                    <td headers="no"><%=quizNo%></td>
                     <td headers="topic"><a href="question.jsp?id=<%=quizID%>"><%=result.getString("quizTopic") %></a></td>
                     <td headers="bonus"><button data-toggle="modal" data-target="#myModal" id="<%=result.getString("quizTopic") %>" value="<%=result.getString("bonus") %>">Show more</button>
                         <!-- Modal -->
@@ -68,7 +70,7 @@
                             </div>
                             <div class="modal-body">...</div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-success" data-dismiss="modal">Seen</button>
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">Back</button>
                             </div>
                         </div>
                         </div>
@@ -79,6 +81,7 @@
                 </tr>
                 
                 <%
+                    quizNo++;
                     }
                 %>
 
@@ -86,7 +89,7 @@
             <tfoot>
                 <tr>
                     <td colspan="5">
-                       <a class="glyphicon glyphicon-plus-sign" href="addTopic.jsp"> New Topic</a>
+                        <span class="glyphicon glyphicon-plus-sign"/><a href="addTopic.jsp"> New Topic</a>
                     </td>
                 </tr>
             </tfoot>

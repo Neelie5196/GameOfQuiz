@@ -96,7 +96,7 @@
                         </tr>
                     </table>
                   </form>
-                    <li><a href="#">Back to EQUILIBRA</a></li>
+                    <li><a href="video.jsp">Back to EQUILIBRA</a></li>
                   </ul>
                 </div>
               </div>
@@ -112,9 +112,12 @@
                     <li class="container2"><input type="text" name="txtName" id="txtName" size="70%"/></li>
                     <li class="questioncontainer"><h2>Topic Bonus:</h2> </li>
                     <li class="container2"><textarea name="txtBonus" id="txtBonus"></textarea></li>
+                    <div class="form-group">
+               
+                            <button class="btn btn-primary" type="submit" name="btnAdd" id="btnAdd">Add Topic</button>
+                            <a class="btn btn-primary" href="index.html">Cancel</a>
+                    </div>
                     
-                    <li><input type="submit" name="btnAdd" value="Add Topic" id="btnAdd" size="70%"/></li>
-                    <li><a class="btn btn-primary" href="index.html">Cancel</a></li>
                 </ul>
                 </form>
                 </center>

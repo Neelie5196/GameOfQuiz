@@ -18,6 +18,8 @@
 <title>JSP Page</title>
 <meta name="viewport" content="width=device-width, initialscale=1.0"/>
 <!-- Bootstrap -->
+<link href="<%=request.getContextPath()%>/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+
 <link href="frameworks/css/bootstrap.min.css" rel="stylesheet" />   
 <!-- StyleSheet -->
 <link href="frameworks/css/style.css" rel="stylesheet" />
@@ -61,33 +63,44 @@
         %>
     <div class="container">
         <div class="row"><!--1--> 
-            <div class="col-xs-12 col-md-12 col-lg-12 jumbotron"><!--1.1--> 
-                <img src="resources/img/banner.jpg" alt="banner"/>
-            </div>
-        </div>
-        
-        <div class="row"  id="navigationbar"> <!--2--> 
-            <div class="col-md-8 col-md-push-1" id="breadcrumb"> <!--2.1--> 
-                <a href="#home">Home</a>
+            <div class="col-xs-12"><!--1.1--> 
+                <img src="resources/img/banner.jpg" alt="banner" />
             </div>
             
-            <div class="col-md-2 col-md-push-1 col-md-pull-1" id="toequilibra"><!--2.2--> 
-                <a href="#home">back to EQUILIBRA</a>
-                
-                <!-- Code for google search engine is refered from "https://www.google.com/cse/tools/create_onthefly"-->      
-                <form id="icon" name="cse" action="http://www.google.com/search" target="_blank">
-                <table>
-                    <tr>
-                        <td>
-                            <input type="hidden" name="ie" value="utd-8">
-                            <input type="text" name="q" size="20" maxlength="255" value="Google site search">
-                            <input type="submit" value="Go!">
-                        </td>
-                    </tr>
-                </table>
-		</form>
-            </div>       
         </div>
+        
+        
+            <nav class="navbar navbar-default">
+              <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Game Of Quizs </a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav ">
+                    <li><a href="index.html">Home / </a></li>
+                    <li class="active" ><a href="#">Add Topic<span class="sr-only">(current)</span></a></li>
+                    
+                    
+                  </ul>
+                  
+                  <ul class="nav navbar-nav navbar-right">
+                      <form class="navbar-form navbar-left" role="search" id="icon" name="cse" action="http://www.google.com/search" target="_blank">
+                    <table>
+                        <tr>
+                            <td>
+                                <input type="hidden" name="ie" value="utd-8">
+                                <input class="form-control" type="text" name="q" size="20" maxlength="255" placeholder="Google site search">
+                                <input type="submit" value="Go!" class="btn btn-primary">
+                            </td>
+                        </tr>
+                    </table>
+                  </form>
+                    <li><a href="video.jsp">Back to EQUILIBRA</a></li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
         
         <div class="row"><!--3--> 
             <div class="col-xs-12 col-md-12 col-lg-12"><!--3.1--> 
@@ -99,8 +112,12 @@
                     <li class="container2"><input type="text" name="txtName" id="txtName" size="70%"/></li>
                     <li class="questioncontainer"><h2>Topic Bonus:</h2> </li>
                     <li class="container2"><textarea name="txtBonus" id="txtBonus"></textarea></li>
+                    <div class="form-group">
+               
+                            <button class="btn btn-primary" type="submit" name="btnAdd" id="btnAdd">Add Topic</button>
+                            <a class="btn btn-primary" href="index.html">Cancel</a>
+                    </div>
                     
-                    <li><input type="submit" name="btnAdd" value="Add Topic" id="btnAdd" size="70%"/></li>
                 </ul>
                 </form>
                 </center>

@@ -135,7 +135,7 @@
                         </tr>
                     </table>
                   </form>
-                    <li><a href="#">Back to EQUILIBRA</a></li>
+                    <li><a href="video.jsp">Back to EQUILIBRA</a></li>
                   </ul>
                 </div>
               </div>
@@ -189,9 +189,13 @@
                         </li>
                         <li><h3>Topic Bonus</h3></li>
                         <li><textarea name="txtName2" class="form-control" id="txtName" placeholder="<%=result.getString("bonus")%>" rows="3" cols="70"></textarea></li>
-                        <li colspan="2"><button class="btn btn-primary" name="btnUpd" id="btnUpd"/>Update Topic</li>
-                        <li><a class="btn btn-primary" href="index.html">Cancel</a></li>
+                        <div class="form-group">
+                            <br/>
+                            <button class="btn btn-primary" name="btnUpd" id="btnUpd">Update Topic</button>
+                            <a class="btn btn-primary" href="index.html">Cancel</a>
+                        </div>
                     </ul>
+                        
                 </form> 
             </div>
         </div>

@@ -35,12 +35,14 @@
 </head>
 
 <body>
+    
        <%!
             Connection conn;
             PreparedStatement pstmt;
             ResultSet result;
             String qry;
             Integer quizID;
+            
         %>
         
         <%-- READ function--%>
@@ -69,33 +71,45 @@
     <div class="container">
         <center>
         <div class="row"><!--1--> 
-            <div class="col-xs-12 col-md-12 col-lg-12 jumbotron"><!--1.1--> 
-                <img src="resources/img/banner.jpg" alt="banner"/>
-            </div>
-        </div>
-        
-        <div class="row"  id="navigationbar"> <!--2--> 
-            <div class="col-md-8 col-md-push-1" id="breadcrumb"> <!--2.1--> 
-                <a href="#home">Home</a>
+            <div class="col-xs-12"><!--1.1--> 
+                <img src="resources/img/banner.jpg" alt="banner" />
             </div>
             
-            <div class="col-md-2 col-md-push-1 col-md-pull-1" id="toequilibra"><!--2.2--> 
-                <a href="#home">back to EQUILIBRA</a>
-                
-                <!-- Code for google search engine is refered from "https://www.google.com/cse/tools/create_onthefly"-->      
-                <form id="icon" name="cse" action="http://www.google.com/search" target="_blank">
-                <table>
-                    <tr>
-                        <td>
-                            <input type="hidden" name="ie" value="utd-8">
-                            <input type="text" name="q" size="20" maxlength="255" value="Google site search">
-                            <input type="submit" value="Go!">
-                        </td>
-                    </tr>
-                </table>
-		</form>
-            </div>       
         </div>
+        
+        
+            <nav class="navbar navbar-default">
+              <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Game Of Quizs </a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav ">
+                      <li><a href="index.html">Home / </a></li>
+                      
+                    <li class="active" ><a href="#">Question List<span class="sr-only">(current)</span></a></li>
+                    
+                    
+                  </ul>
+                  
+                  <ul class="nav navbar-nav navbar-right">
+                      <form class="navbar-form navbar-left" role="search" id="icon" name="cse" action="http://www.google.com/search" target="_blank">
+                    <table>
+                        <tr>
+                            <td>
+                                <input type="hidden" name="ie" value="utd-8">
+                                <input class="form-control" type="text" name="q" size="20" maxlength="255" placeholder="Google site search">
+                                <input type="submit" value="Go!" class="btn btn-primary">
+                            </td>
+                        </tr>
+                    </table>
+                  </form>
+                    <li><a href="video.jsp">Back to EQUILIBRA</a></li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
         
         <div class="row"><!--3--> 
             <div class="col-xs-12 col-md-12 col-lg-12"> <!--3.1 -->
@@ -110,32 +124,34 @@
                             <th id="typeq" scope="col" >Type</th>
                             <th id="more" scope="col">Show More</th>
                             <th id="edit" scope="col" >Edit</th>
-                            <th id="delete" scope="col" >delete</th>
+                            <th id="delete" scope="col" >Delete</th>
                         </tr>
                     </thead>                      
                     <tbody>      
                         <%
+                            Integer questionNo = 1;
                             while(result.next()) {
                                 quizID = result.getInt("quizID");
                         %>
 
                         <tr>
-                            <td headers="no"><%=result.getInt("questionID") %></td>
+                            <td headers="no"><%=questionNo%></td>
                             <td headers="quez"><%=result.getString("question") %></td>
                             <td headers="typeq"><%=result.getString("type") %></td>
-                            <td headers="more"><a class="glyphicon glyphicon-eye-open" href="showQuestion.jsp?id=<%=result.getInt("questionID")%>"></a></td>
-                            <td headers="edit"><a class="glyphicon glyphicon-edit" href="updateQuestion.jsp?id=<%=result.getInt("questionID")%>"></a></td>
-                            <td headers="del"><a class="glyphicon glyphicon-trash" href="deleteQuestion.jsp?id=<%=result.getInt("questionID")%>" onclick="return confirm('Once confirm, question <%=result.getString("questionID") %> will be removed. Confirm to delete?')"></a></td>
+                            <td headers="more"><a class="glyphicon glyphicon-eye-open" href="showQuestion.jsp?id=<%=result.getInt("questionID")%>&quiz=<%=result.getInt("quizID")%>"></a></td>
+                            <td headers="edit"><a class="glyphicon glyphicon-edit" href="updateQuestion.jsp?id=<%=result.getInt("questionID")%>&quiz=<%=result.getInt("quizID")%>"></a></td>
+                            <td headers="del"><a class="glyphicon glyphicon-trash" href="deleteQuestion.jsp?id=<%=result.getInt("questionID")%>&quiz=<%=result.getInt("quizID")%>" onclick="return confirm('Once confirm, question <%=result.getString("questionID") %> will be removed. Confirm to delete?')"></a></td>
                         </tr>
 
                         <%
+                            questionNo++;
                             }
                         %>
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td colspan="6">
-                                <a class="glyphicon glyphicon-plus-sign" href="addQuestion.jsp?id=<%=quizID%>">ADD</a>
+                            <td colspan="5">
+                                <span class="glyphicon glyphicon-plus-sign" /><a style="font-family:'Open Sans', Lato, Helvetica,Arial,sans-serif" href="addQuestion.jsp?id=<%=quizID%>">New Question</a>
                             </td>
                         </tr>
                     </tfoot>
@@ -143,7 +159,7 @@
                 </div>
                 </div>
                     
-                <p><a href="index.html">Back To Topic</a></p> 
+                <p><a href="index.html" class="btn btn-primary">Back To Topic</a></p> 
             </div>
         </div>
         </center>
