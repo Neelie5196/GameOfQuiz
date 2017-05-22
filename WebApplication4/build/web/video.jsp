@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.sql.*" %>
-<%@page import="java.util.*" %>
+<%@page import="java.util.*" %>..
 <!DOCTYPE html>
 <html data-ng-app="myApp">
 <head>
@@ -103,7 +103,7 @@
                         <div class="col-xs-4 col-md-4 col-lg-4">
                             <video width="100%" height="240" controls>
                                 <source src="<%=result.getString("videoPath") %>" type="video/mp4">
-                            </video>
+                            </video>                        
                         </div>
 
                         <div class="col-xs-6 col-md-6 col-lg-6">
@@ -171,11 +171,3 @@
 <script src="frameworks/js/gameOQ.js"></script>    
 </body>
 </html>
-
-
-
-
-                            
-                
-                
-                        

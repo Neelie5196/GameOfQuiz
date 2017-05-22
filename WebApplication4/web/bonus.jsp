@@ -49,7 +49,7 @@
                
                txtObj = document.getElementById('txtObj');
                txtObj.style.position= 'relative'; 
-               txtObj.style.left = '-50%';
+               txtObj.style.left = '-100%';
             }
             
             function moveRight(){
@@ -58,7 +58,101 @@
             }
             
             window.onload =init;
-         
+            
+            
+            
+interact('.draggable')  
+  .draggable({
+    // enable inertial throwing
+    inertia: true,
+    // keep the element within the area of it's parent
+    restrict: {
+      restriction: "parent",
+      endOnly: true,
+      elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
+    },
+    // enable autoScroll
+    autoScroll: true,
+    // call this function on every dragmove event
+    onmove: dragMoveListener,
+  });
+
+  function dragMoveListener (event) {
+    var target = event.target,
+        // keep the dragged position in the data-x/data-y attributes
+        x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
+        y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+
+    // translate the element
+    target.style.webkitTransform =
+    target.style.transform =
+      'translate(' + x + 'px, ' + y + 'px)';
+
+    // update the posiion attributes
+    target.setAttribute('data-x', x);
+    target.setAttribute('data-y', y);
+  }
+
+
+
+    // Initialize Interact.js Drag & Drop
+    interact('.draggable').draggable({
+        inertia: true,
+        restrict: {
+          restriction: "#visualizer-panel",
+          endOnly: true,
+          elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
+        },
+        onmove: function (event) {
+          var target = event.target,
+              // keep the dragged position in the data-x/data-y attributes
+              x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
+              y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+    
+          // translate the element
+          target.style.webkitTransform =
+          target.style.transform =
+            'translate(' + x + 'px, ' + y + 'px)';
+    
+          // update the posiion attributes
+          target.setAttribute('data-x', x);
+          target.setAttribute('data-y', y);
+        },
+        onend: function(event) {
+            console.log(event);
+        }
+    });
+
+    interact('.dropzone').dropzone({
+        accept: '.draggable',
+        overlap: 0.01,
+
+        // add / remove dropzone feedback
+        ondropactivate: function (event) {
+            event.target.classList.add('drop-active');
+        },
+        ondropdeactivate: function (event) {
+            event.target.classList.remove('drop-active');
+        },
+
+        // add / remove dropzone feedback
+        ondragenter: function (event) {
+            var draggableElement = event.relatedTarget,
+                dropzoneElement = event.target;
+            dropzoneElement.classList.add('drop-target');
+            draggableElement.classList.add('can-drop');
+        },
+        ondragleave: function (event) {
+            event.target.classList.remove('drop-target');
+            event.relatedTarget.classList.remove('can-drop');
+        },
+
+        // drop successful
+        ondrop: function (event) {
+            console.log(event);
+        }
+    });
+
       </script>
             
     </head>
@@ -94,30 +188,69 @@
             }
         %>
 
-    <div data-ng-hide="cat=cat===true">
-        <img src="resources/img/cathungry.jpg"/>  
-        <p>Pusheen the cat is blocking your reward</p>
-        <button data-ng-click="cat=cat!==true">Feed</button>
-        <input type="button" value="Go Back" onclick="location.href='question.jsp?id=<%=quizID%>';"/>
-    </div>   
-  
-    <form data-ng-show ="cat"> 
-        <div >
-        <%
-            while(result.next() ) {
-                quizID = result.getInt("quizID");  
-        %> 
-        
-           <p id="txtObj"><%=result.getString("bonus") %></p>
+    
+    <div class="row">
+        <div class="col-xs-12 col-md-12 col-lg-12">
+            <center data-ng-hide="cat=cat===true" class="hungry">
+                <img src="resources/img/cathungry.jpg"/>  
+                <p>Pusheen the cat is blocking your reward</p>
+                <button data-ng-click="cat=cat!==true">Feed</button>
+                <input type="button" value="Go Back" onclick="location.href='question.jsp?id=<%=quizID%>';"/>
+            </center>
+            
+            <form data-ng-show ="cat"> 
+             
+                <%
+                    while(result.next() ) {
+                        quizID = result.getInt("quizID");  
+                %> 
+                <div class="row">
+                    <div class="col-xs-4 col-md-4 col-lg-4">
+                       <p id="txtObj" class="bo"><%=result.getString("bonus") %></p>
+                    </div>
+                    <div class="col-xs-8 col-md-8 col-lg-8">
+                       <img id="myImage" src="resources/img/catfood.gif" />
+                    </div>
+                </div>
+                <% } %>
+              
+                <center>
+                    <p>Push Pusheen the cat to aside</p>
+                    <input type="button" value="Push" onclick="moveRight();" />
+                    <input type="button" value="Go Back" onclick="location.href='question.jsp?id=<%=quizID%>';"/>
+                </center>
+            </form>
+        </div>        
+    </div>
                 
-        <% } %>
-        </div>
-        <img id="myImage" src="resources/img/catfood.gif" />
-        <p>Push Pusheen the cat to aside</p>
-        <input type="button" value="Push" onclick="moveRight();" />
-        <input type="button" value="Go Back" onclick="location.href='question.jsp?id=<%=quizID%>';"/>
-    </form>
 
+                
+                
+                
+<div id="visualizer-panel">
+    <div class="leftStuff panel">
+        <div class="panel-heading">
+            <h4 class="panel-title">Draggables</h4>
+        </div>
+        <div class="panel-body">
+            <ul class="list-group">
+                <li class="list-group-item draggable">asdf</li>
+                <li class="list-group-item draggable">bbq</li>
+            </ul>
+        </div>
+    </div>
+    <div class="rightStuff panel">
+        <div class="panel-heading">
+            <h4 class="panel-title">Drop Areas</h4>
+        </div>
+        <div class="panel-body">
+            <div class="dropzone">drop stuff here</div>
+            <div class="dropzone">drop more stuff here</div>
+        </div>
+    </div>
+</div>
+
+                
         
         
 <!-- jQuery – required for Bootstrap's JavaScript plugins) -->
@@ -133,8 +266,18 @@
 <script src="frameworks/js/angular-route.min.js"></script>   
 
 <!-- Configuration-->
-<script src="frameworks/js/gameOQ.js"></script>        
+<script src="frameworks/js/gameOQ.js"></script>    
+
+
+
+<!-- Configuration-->
+<script src="frameworks/js/interact.min.js"></script>     
+
+<!-- Configuration-->
+<script src="frameworks/js/interact.js"></script>     
+
+
+
+
     </body>
 </html>
-
-

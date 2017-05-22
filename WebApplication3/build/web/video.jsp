@@ -62,54 +62,57 @@
         %>
         
     <div class="container">
-        <div class="row"> 
-            <div class="jumbotron"> 
+        <div class="row"> <!--1-->
+            <div class="col-xs-12 col-md-12 col-lg-12 jumbotron"> <!--1.1-->
                 <p>EQUILIBRA</p>
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-xs-12 col-md-12 col-lg-12 catbuttoncontainer">
+        <div class="row"><!--2-->
+            <div class="col-xs-12 col-md-12 col-lg-12 catbuttoncontainer"> <!--2.1-->
                 <button data-ng-click="biology=true; english=false" class="catbtn btn-lg">Biology</button>
                 <button data-ng-click="english=true; biology=false" class="catbtn btn-lg">English</button>
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-xs-12 col-md-12 col-lg-12" data-ng-show="biology">
-                <h1>Biology</h1>
-            </div>
-            
-            <div class="col-xs-12 col-md-12 col-lg-12" data-ng-show="english">
-                <h1>English</h1>
+        <div class="row"><!--3-->
+            <div class="col-xs-12 col-md-12 col-lg-12"><!--3.1-->
+                <div data-ng-show="biology">
+                    <h1>Biology</h1>
+                </div>
+
+                <div data-ng-show="english">
+                    <h1>English</h1>
+                </div>
             </div>
         </div>
         
-        <div class="row">
-            <div class="col-xs-12 col-md-12 col-lg-12" data-ng-show="biology">
+        <div class="row"><!--4-->
+            <div class="col-xs-12 col-md-12 col-lg-12"><!--4.1-->
+            <div data-ng-show="biology">
                 <%
                     while(result.next() && (result.getString("category").equalsIgnoreCase("biology"))) {
                 %>
                 
-                <div class="row videocontainer">
-                    <div class="row">
-                        <div class="col-xs-12 col-md-12 col-lg-12">
+                <div class="videocontainer">
+                    <div class="row"><!--4.1.1-->
+                        <div class="col-xs-12 col-md-12 col-lg-12"><!--4.1.1.1-->
                             <h2><%=result.getString("videoName") %></h2>
                         </div>
                     </div>
                         
-                    <div class="row">
-                        <div class="col-xs-4 col-md-4 col-lg-4">
+                    <div class="row"><!--4.1.2-->
+                        <div class="col-xs-4 col-md-4 col-lg-4"><!--4.1.2.1-->
                             <video width="100%" height="100%" controls>
-                                <source src="<%=result.getString("videoPath") %>" type="video/mp4">
+                                <source src="<%=result.getString("videoPath")%>" type="video/wmv">
                             </video>
                         </div>
 
-                        <div class="col-xs-6 col-md-6 col-lg-6">
+                        <div class="col-xs-6 col-md-6 col-lg-6"><!--4.1.2.2-->
                             <p><%=result.getString("videoDesc") %></p>
                         </div>            
 
-                        <div class="col-xs-2 col-md-2 col-lg-2 quizbtncont">
+                        <div class="col-xs-2 col-md-2 col-lg-2 quizbtncont"> <!--4.1.2.3-->
                             <a href="index.html"><button class="btn-lg btnplay">Create quiz</button></a>
                         </div>
                     </div>
@@ -119,30 +122,30 @@
                 %>
             </div>
             
-            <div class="col-xs-12 col-md-12 col-lg-12" data-ng-show="english">
+            <div data-ng-show="english">
                 <%
                     while(result.next() && (result.getString("category").equalsIgnoreCase("english"))) {
                 %>
                 
-                <div class="row videocontainer">
-                    <div class="row">
-                        <div class="col-xs-12 col-md-12 col-lg-12">
+                <div class="videocontainer">
+                    <div class="row"> <!--4.1.1-->
+                        <div class="col-xs-12 col-md-12 col-lg-12"><!--4.1.1.1-->
                             <h2><%=result.getString("videoName") %></h2>
                         </div>
                     </div>
                         
-                    <div class="row">
-                        <div class="col-xs-4 col-md-4 col-lg-4">
+                    <div class="row"><!--4.1.2-->
+                        <div class="col-xs-4 col-md-4 col-lg-4"><!--4.1.2.1-->
                             <video width="100%" height="100%" controls>
-                                <source src="<%=result.getString("videoPath") %>" type="video/mp4">
+                                <source src="<%=result.getString("videoPath") %>" type="video/wmv">
                             </video>
                         </div>
 
-                        <div class="col-xs-6 col-md-6 col-lg-6">
+                        <div class="col-xs-6 col-md-6 col-lg-6"><!--4.1.2.2-->
                             <p><%=result.getString("videoDesc") %></p>
                         </div>            
 
-                        <div class="col-xs-2 col-md-2 col-lg-2 quizbtncont">
+                        <div class="col-xs-2 col-md-2 col-lg-2 quizbtncont"><!--4.1.2.3-->
                             <a href="index.html"><button class="btn-lg btnplay">Create quiz</button></a>
                         </div>
                     </div>
@@ -150,6 +153,7 @@
                 <%
                         }
                 %>
+            </div>
             </div>
         </div>
     </div>
@@ -170,11 +174,3 @@
 <script src="frameworks/js/gameOQ.js"></script>    
 </body>
 </html>
-
-
-
-
-                            
-                
-                
-                        

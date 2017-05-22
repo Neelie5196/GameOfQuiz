@@ -50,7 +50,6 @@
                 
                 try{
                 Class.forName("com.mysql.jdbc.Driver");
-
                 qry = "SELECT * FROM question WHERE questionID = ?";
                 pstmt = conn.prepareStatement(qry);
                 pstmt.setInt(1,questionID);
@@ -72,11 +71,7 @@
         <div class="row"><!--1--> 
             <div class="col-xs-12"><!--1.1--> 
                 <img src="resources/img/banner.jpg" alt="banner" />
-            </div>
-            
-        </div>
-        
-        
+
             <nav class="navbar navbar-default">
               <div class="container-fluid">
                 <div class="navbar-header">
@@ -85,15 +80,13 @@
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav ">
-                      <li><a href="index.html">Home / </a></li>
-                      <li><a href="index.html">Topic List / </a></li>
-                    <li class="active" ><a href="#">Show Question<span class="sr-only">(current)</span></a></li>
-                    
-                    
+                        <li><a href="index.html">Home / </a></li>
+                        <li><a href="index.html">Topic List / </a></li>
+                        <li class="active" ><a href="#">Show Question<span class="sr-only">(current)</span></a></li>
                   </ul>
                   
                   <ul class="nav navbar-nav navbar-right">
-                      <form class="navbar-form navbar-left" role="search" id="icon" name="cse" action="http://www.google.com/search" target="_blank">
+                    <form class="navbar-form navbar-left" role="search" id="icon" name="cse" action="http://www.google.com/search" target="_blank">
                     <table>
                         <tr>
                             <td>
@@ -103,25 +96,20 @@
                             </td>
                         </tr>
                     </table>
-                  </form>
-                    <li><a href="video.jsp">Back to EQUILIBRA</a></li>
+                    </form>
+                        <li><a href="video.jsp">Back to EQUILIBRA</a></li>
                   </ul>
                 </div>
               </div>
             </nav>
+            </div>
+        </div>
       
-        <div class="row"><!--3--> 
-            <div class="col-xs-10 col-md-10 col-lg-10"><!--3.1-->
-                
+        <div class="row"><!--2--> 
+            <div class="col-xs-12 col-md-12 col-lg-12"><!--2.1 -->  
                 <h1>Update Topic <%=result.getInt("quizID")%> Question <%=result.getInt("questionID")%></h1> 
                 <i>Press "Save" to commit and "Cancel to return to previous page</i>
-                
-            </div>
-            
-           
-        </div><hr/>
-        <div class="row"><!--4--> 
-            <div class="col-xs-12 col-md-12 col-lg-12"><!--4.1 -->
+                <hr/>
             <!--display quiz question-->
             <div id="<%=result.getInt("questionID") %>" class="questioncontainer">
                 <h2> Question <% out.println(z); %></h2> <hr/>
@@ -166,8 +154,6 @@
                     <a class="btn btn-primary" href="question.jsp?id=<%=quizID%>">Back</a>
                 </div>
             </div>   
-            
-            
         </div>
     </div> 
                            

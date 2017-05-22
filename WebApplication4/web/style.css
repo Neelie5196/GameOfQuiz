@@ -58,6 +58,25 @@ ul{
     text-align: center; 
 }
 
+
+
+ /*question.jsp*/
+.bo {
+    /*Background image*/
+    background-image: url('resources/img/userbanner.png');
+    /*Control height and width*/
+    height:200px;
+
+    color: #fff;
+    font-size: 20px;
+    text-align: center; 
+}
+
+
+.hungry{
+    margin-top: 10%;
+}
+
 .quotes{
       
   font-family: helvetica;
@@ -220,9 +239,7 @@ input{
    background-color: #FDEFE6;
 }
 
-#txtObj{
-    width: 20%;
-}
+
 
 .videobanner{
     background-color: #175fb4;
@@ -276,6 +293,22 @@ body{
 	overflow-x: hidden;    
 }
 
-img{
-    width:100%;
+#visualizer-panel .leftStuff {
+    float: left;
 }
+#visualizer-panel .rightStuff {
+    float: right;
+}
+
+#visualizer-panel .draggable:hover {
+    cursor: move;
+}
+
+/* Drag & Drop */
+#visualizer-panel .draggable {
+    -webkit-transform: translate(0px, 0px);
+    transform: translate(0px, 0px);
+}
+#visualizer-panel .drop-active { border-color: red; }
+#visualizer-panel .drag-drop.can-drop { background-color: #4e4; }
+#visualizer-panel .drop-target {  background-color: #29e;  }

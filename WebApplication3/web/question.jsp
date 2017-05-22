@@ -52,7 +52,6 @@
                 quizID = Integer.parseInt(request.getParameter("id"));
                 try{
                 Class.forName("com.mysql.jdbc.Driver");
-
                 qry = "SELECT * FROM question WHERE quizID = ?";
                 pstmt = conn.prepareStatement(qry);
                 pstmt.setInt(1,quizID);
@@ -73,11 +72,7 @@
         <div class="row"><!--1--> 
             <div class="col-xs-12"><!--1.1--> 
                 <img src="resources/img/banner.jpg" alt="banner" />
-            </div>
-            
-        </div>
-        
-        
+
             <nav class="navbar navbar-default">
               <div class="container-fluid">
                 <div class="navbar-header">
@@ -86,15 +81,12 @@
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav ">
-                      <li><a href="index.html">Home / </a></li>
-                      
-                    <li class="active" ><a href="#">Question List<span class="sr-only">(current)</span></a></li>
-                    
-                    
+                        <li><a href="index.html">Home / </a></li>
+                        <li class="active" ><a href="#">Question List<span class="sr-only">(current)</span></a></li>
                   </ul>
                   
                   <ul class="nav navbar-nav navbar-right">
-                      <form class="navbar-form navbar-left" role="search" id="icon" name="cse" action="http://www.google.com/search" target="_blank">
+                    <form class="navbar-form navbar-left" role="search" id="icon" name="cse" action="http://www.google.com/search" target="_blank">
                     <table>
                         <tr>
                             <td>
@@ -104,15 +96,17 @@
                             </td>
                         </tr>
                     </table>
-                  </form>
-                    <li><a href="video.jsp">Back to EQUILIBRA</a></li>
+                    </form>
+                        <li><a href="video.jsp">Back to EQUILIBRA</a></li>
                   </ul>
                 </div>
               </div>
             </nav>
+            </div>
+        </div>
         
-        <div class="row"><!--3--> 
-            <div class="col-xs-12 col-md-12 col-lg-12"> <!--3.1 -->
+        <div class="row"><!--2--> 
+            <div class="col-xs-12 col-md-12 col-lg-12"> <!--2.1 -->
                 <div class="panel panel-default">
                 <div class="panel-heading"> <h1>Question List</h1></div>
                 <div class="table-responsive">

@@ -75,7 +75,6 @@
             if(request.getParameter("btnAdd") != null){
                 try{
                     Class.forName("com.mysql.jdbc.Driver");
-
                     qry = "INSERT INTO feedback(quizID, select, feedback) VALUES(?,?,?)";
                     pstmt = conn.prepareStatement(qry);
                     pstmt.setInt(1, quizID);
@@ -167,8 +166,7 @@
                         <p><%=result.getString("explanation")%></p>
                         <div data-ng-if="count === 5 ">
                             <b>Congratulation!!! Here is your topic (Quote) bonus!!</b><br/><br/>
-                            <a class="btn btn-default" href="bonus.jsp?id=<%=quizID%>" data-ng-click="bonusSound()">Quote Bonus</a>
-                            
+                            <a class="btn btn-default" href="bonus.jsp?id=<%=quizID%>" data-ng-click="bonusSound()">Quote Bonus</a> 
                         </div> 
                     </div>
                     <!-- incorrect -->
@@ -298,11 +296,3 @@
 <script src="frameworks/js/gameOQ.js"></script>    
 </body>
 </html>
-
-
-
-
-                            
-                
-                
-                        

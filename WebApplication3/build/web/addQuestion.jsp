@@ -50,7 +50,6 @@
                 if(request.getParameter("btnAdd") != null){
                     try{
                         Class.forName("com.mysql.jdbc.Driver");
-
                         qry = "INSERT INTO question(quizID, question, type,hints, input1, input2, input3, input4, checked, explanation) VALUES(?,?,?,?,?,?,?,?,?,?)";
                         pstmt = conn.prepareStatement(qry);
                         pstmt.setInt(1, quizID);
@@ -81,11 +80,7 @@
        <div class="row"><!--1--> 
             <div class="col-xs-12"><!--1.1--> 
                 <img src="resources/img/banner.jpg" alt="banner" />
-            </div>
-            
-        </div>
-        
-        
+
             <nav class="navbar navbar-default">
               <div class="container-fluid">
                 <div class="navbar-header">
@@ -94,15 +89,13 @@
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav ">
-                      <li><a href="index.html">Home / </a></li>
-                      <li><a href="question.jsp?id=<%=quizID%>">Question List / </a></li>
-                    <li class="active" ><a href="#">Add Question<span class="sr-only">(current)</span></a></li>
-                    
-                    
+                        <li><a href="index.html">Home / </a></li>
+                        <li><a href="question.jsp?id=<%=quizID%>">Question List / </a></li>
+                        <li class="active" ><a href="#">Add Question<span class="sr-only">(current)</span></a></li>
                   </ul>
                   
                   <ul class="nav navbar-nav navbar-right">
-                      <form class="navbar-form navbar-left" role="search" id="icon" name="cse" action="http://www.google.com/search" target="_blank">
+                    <form class="navbar-form navbar-left" role="search" id="icon" name="cse" action="http://www.google.com/search" target="_blank">
                     <table>
                         <tr>
                             <td>
@@ -112,16 +105,17 @@
                             </td>
                         </tr>
                     </table>
-                  </form>
-                    <li><a href="video.jsp">Back to EQUILIBRA</a></li>
+                    </form>
+                        <li><a href="video.jsp">Back to EQUILIBRA</a></li>
                   </ul>
                 </div>
               </div>
             </nav>
+            </div>
+        </div>
         
-        <div class="row"><!--3--> 
-            <div class="col-xs-12 col-md-12 col-lg-12"><!--3.1--> 
-                
+        <div class="row"><!--2--> 
+            <div class="col-xs-12 col-md-12 col-lg-12"><!--2.1--> 
                 <h3 class="modal-title">Add New Question</h3>
                 <i>Press "Save" to commit and "Cancel to return to previous page</i>
                 <hr/>
@@ -129,19 +123,19 @@
 
                     <!--quiz question add here-->
                     <div class="questioncontainer">
-                        <div class="row">
-                        <div class="col-xs-4 col-md-4 col-lg-4 question">
+                        <div class="row"><!--2.1.1--> 
+                        <div class="col-xs-4 col-md-4 col-lg-4 question"><!--2.1.1.1--> 
                             <b>Question:</b>  
                         </div>
-                        <div class="col-xs-8 col-md-8 col-lg-8">
+                        <div class="col-xs-8 col-md-8 col-lg-8"><!--2.1.1.2--> 
                             <textarea name="txtquestion" class="form-control" placeholder="question" required></textarea>
                         </div>
                         </div>
                     </div>
 
                 <div class="container2">
-                    <div class="row">
-                        <div class="col-xs-12 col-md-12 col-lg-12">
+                    <div class="row"><!--2.1.2--> 
+                        <div class="col-xs-12 col-md-12 col-lg-12"><!--2.1.2.1--> 
                             <em>Select a type for question and continue</em>
                             <ul>
                                 <li>
@@ -150,8 +144,7 @@
                                     <span class="tab"><input type="radio" name="txttype" value="B" data-ng-click="show = 3" />Fill in Blank</span>
                                 </li>
                             </ul> 
-                        </div>
-                        <div class="col-xs-12 col-md-12 col-lg-12">
+
                             <!-- Format for multiple choice -->
                             <div class="form-group" data-ng-show="show===1">   
                                 <p>Multiple Choice</p>
@@ -172,31 +165,31 @@
                     </div>
 
                     <!-- hint-->
-                    <div class="row">
-                        <div class="col-xs-4 col-md-4 col-lg-4">
+                    <div class="row"><!--2.1.3--> 
+                        <div class="col-xs-4 col-md-4 col-lg-4"><!--2.1.3.1--> 
                             <span class="hinticon glyphicon glyphicon-search"></span><b>Hint:</b>  
                         </div>
-                        <div class="col-xs-8 col-md-8 col-lg-8">
+                        <div class="col-xs-8 col-md-8 col-lg-8"><!--2.1.3.2--> 
                             <input type="text" name="txthints" class="form-control" required/>
                         </div>
                     </div>
 
                     <!-- answer -->
-                    <div class="row">
-                        <div class="col-xs-4 col-md-4 col-lg-4">
+                    <div class="row"><!--2.1.4--> 
+                        <div class="col-xs-4 col-md-4 col-lg-4"><!--2.1.4.1--> 
                             <b>Answer:</b>  
                         </div>
-                        <div class="col-xs-8 col-md-8 col-lg-8">
+                        <div class="col-xs-8 col-md-8 col-lg-8"><!--2.1.4.2--> 
                             <input class="form-control" type="text" name="txtchecked" required/>
                         </div>
                     </div>
   
                     <!-- explanation -->
-                    <div class="row">
-                        <div class="col-xs-4 col-md-4 col-lg-4">
+                    <div class="row"><!--2.1.5-->
+                        <div class="col-xs-4 col-md-4 col-lg-4"><!--2.1.5.1--> 
                             <b>Explanation:</b>  
                         </div>
-                        <div class="col-xs-8 col-md-8 col-lg-8">
+                        <div class="col-xs-8 col-md-8 col-lg-8"><!--2.1.5.2--> 
                             <textarea name="txtexplain" class="form-control" required></textarea>
                         </div>
                     </div><br/>

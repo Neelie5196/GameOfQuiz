@@ -53,7 +53,6 @@
                 questionID = Integer.parseInt(request.getParameter("id"));
                 try{
                 Class.forName("com.mysql.jdbc.Driver");
-
                 qry = "SELECT * FROM question WHERE questionID = ?";
                 pstmt = conn.prepareStatement(qry);
                 pstmt.setInt(1,questionID);
@@ -79,7 +78,6 @@
                 
                 try{
                 Class.forName("com.mysql.jdbc.Driver");
-
                 qry = "UPDATE question SET question = ?, hints= ?, input1= ?, input2= ?, input3= ?, input4= ?, checked= ?, explanation= ? WHERE questionID = ?";
                 pstmt = conn.prepareStatement(qry);
                 pstmt.setString(1,request.getParameter("txtquestion"));
@@ -106,7 +104,6 @@
                 questionID = Integer.parseInt(request.getParameter("id"));
                 try{
                 Class.forName("com.mysql.jdbc.Driver");
-
                 qry = "SELECT * FROM question WHERE questionID = ?";
                 pstmt = conn.prepareStatement(qry);
                 pstmt.setInt(1,questionID);
@@ -128,11 +125,7 @@
         <div class="row"><!--1--> 
             <div class="col-xs-12"><!--1.1--> 
                 <img src="resources/img/banner.jpg" alt="banner" />
-            </div>
-            
-        </div>
-        
-        
+
             <nav class="navbar navbar-default">
               <div class="container-fluid">
                 <div class="navbar-header">
@@ -143,13 +136,11 @@
                   <ul class="nav navbar-nav ">
                       <li><a href="index.html">Home / </a></li>
                       <li><a href="question.jsp?id=<%=quizID%>">Question List / </a></li>
-                    <li class="active" ><a href="#">Update Question<span class="sr-only">(current)</span></a></li>
-                    
-                    
+                      <li class="active" ><a href="#">Update Question<span class="sr-only">(current)</span></a></li>
                   </ul>
                   
                   <ul class="nav navbar-nav navbar-right">
-                      <form class="navbar-form navbar-left" role="search" id="icon" name="cse" action="http://www.google.com/search" target="_blank">
+                    <form class="navbar-form navbar-left" role="search" id="icon" name="cse" action="http://www.google.com/search" target="_blank">
                     <table>
                         <tr>
                             <td>
@@ -159,48 +150,30 @@
                             </td>
                         </tr>
                     </table>
-                  </form>
-                    <li><a href="video.jsp">Back to EQUILIBRA</a></li>
+                    </form>
+                        <li><a href="video.jsp">Back to EQUILIBRA</a></li>
                   </ul>
                 </div>
               </div>
             </nav>
-        <div class="row update"><!--3--> 
-            <div class="col-xs-10 col-md-10 col-lg-10"><!--3.1-->
-                
-                <h1>Update Topic <%=result.getInt("quizID")%> Question <%=result.getInt("questionID")%></h1> 
-                <i>Press "Save" to commit and "Cancel to return to previous page</i>
-                
-            </div>
-            <div class="col-xs-2 col-md-2 col-lg-2"><!--3.2-->    
-                <button data-toggle="modal" data-target="#note" class="pull-right btn btn-warning">Note*</button>
-                    <!-- Modal -->
-                    <div class="modal fade" id="note" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title">Rules</h4>
-                        </div>
-                        <div class="modal-body">
-                            <p>I) This question will remain same format.</p><br/>
-                            <p>II) It is compulsory to fill in all the blank if any changes made else do not click UPDATE button</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Understood</button>
-                        </div>
-                    </div>
-                    </div>
-                    </div>
             </div>
         </div>
-<hr/>
-        <div class="row"><!--4--> 
-            <div class="col-xs-12 col-md-6 col-lg-6"><!--4.1-->
+        <div class="row update"><!--2--> 
+            <div class="col-xs-12 col-md-12 col-lg-12"><!--2.1-->
+                
+                <h1>Update Topic <%=result.getInt("quizID")%> Question <%=result.getInt("questionID")+1%></h1> 
+                <i>Press "Save" to commit and "Cancel to return to previous page</i>
+                <hr/>
+            </div>
+        </div>
+
+        <div class="row"><!--3--> 
+            <div class="col-xs-12 col-md-6 col-lg-6"><!--3.1-->
                 <p class="right">(Original)</p>
 
                 <!--display quiz question-->
                 <div id="<%=result.getInt("questionID") %>" class="questioncontainer">
-                    <h2> Question <% out.println(z); %></h2> <hr/>
+                    <h2> Question <%=result.getInt("questionID")+1%></h2> <hr/>
                     <h3><%=result.getString("question") %></h3>
                 </div>
 
@@ -238,7 +211,7 @@
                 </div>         
                 </div>
             
-            <div class="col-xs-6 col-md-6 col-lg-6 border"><!--4.2-->
+            <div class="col-xs-6 col-md-6 col-lg-6 border"><!--3.2-->
                 <p>(Update here)</p>
                 <form id="updForm" action="" method="POST">
                     <ul>

@@ -62,7 +62,6 @@
                 quizID = Integer.parseInt(request.getParameter("hiddenId"));
                 try{
                 Class.forName("com.mysql.jdbc.Driver");
-
                 qry = "UPDATE quiz SET quizTopic = ?, bonus = ? WHERE quizID = ?";
                 pstmt = conn.prepareStatement(qry);
                 pstmt.setString(1, request.getParameter("txtName1"));
@@ -82,7 +81,6 @@
                 quizID = Integer.parseInt(request.getParameter("id"));
                 try{
                 Class.forName("com.mysql.jdbc.Driver");
-
                 qry = "SELECT * FROM quiz WHERE quizID = ?";
                 pstmt = conn.prepareStatement(qry);
                 pstmt.setInt(1,quizID);
@@ -103,11 +101,7 @@
         <div class="row"><!--1--> 
             <div class="col-xs-12"><!--1.1--> 
                 <img src="resources/img/banner.jpg" alt="banner" />
-            </div>
-            
-        </div>
-        
-        
+
             <nav class="navbar navbar-default">
               <div class="container-fluid">
                 <div class="navbar-header">
@@ -118,13 +112,11 @@
                   <ul class="nav navbar-nav ">
                       <li><a href="index.html">Home / </a></li>
                       <li><a href="index.html">Topic List / </a></li>
-                    <li class="active" ><a href="#">Update Topic<span class="sr-only">(current)</span></a></li>
-                    
-                    
+                      <li class="active" ><a href="#">Update Topic<span class="sr-only">(current)</span></a></li>
                   </ul>
                   
                   <ul class="nav navbar-nav navbar-right">
-                      <form class="navbar-form navbar-left" role="search" id="icon" name="cse" action="http://www.google.com/search" target="_blank">
+                    <form class="navbar-form navbar-left" role="search" id="icon" name="cse" action="http://www.google.com/search" target="_blank">
                     <table>
                         <tr>
                             <td>
@@ -134,41 +126,24 @@
                             </td>
                         </tr>
                     </table>
-                  </form>
+                    </form>
                     <li><a href="video.jsp">Back to EQUILIBRA</a></li>
                   </ul>
                 </div>
               </div>
             </nav>
-        <div class="row"><!--3--> 
-            <div class="col-xs-10 col-md-10 col-lg-10"><!--3.1--> 
-                
+            </div> 
+        </div>
+        <div class="row"><!--2--> 
+            <div class="col-xs-12 col-md-12 col-lg-12"><!--2.1--> 
                 <h1>Update Topic & Topic Bonus</h1>  
                 <i>Press "Save" to commit and "Cancel to return to previous page</i>
-            </div>
-            <div class="col-xs-2 col-md-2 col-lg-2"><!--3.2-->
-                 <button data-toggle="modal" data-target="#note" class="pull-right btn btn-warning">Note*</button> 
-                    <!-- Modal -->
-                    <div class="modal fade" id="note" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title">Rules</h4>
-                        </div>
-                        <div class="modal-body">
-                            <p>It is compulsory to fill in all the blank if any changes made else do not click UPDATE button</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Understood</button>
-                        </div>
-                    </div>
-                    </div>
-                    </div>
+                <hr/>
             </div>
         </div>
-        <hr/>
-        <div class="row update"><!--4--> 
-            <div class="col-xs-12 col-md-6 col-lg-6"><!--4.1-->
+        
+        <div class="row update"><!--3--> 
+            <div class="col-xs-12 col-md-6 col-lg-6"><!--3.1-->
                 <p class="right">(Original)</p>
                 <ul>
                     <li class="questioncontainer"><h2>Topic:</h2> </li>
@@ -177,7 +152,7 @@
                     <li class="container2"><%=result.getString("bonus")%></li>
                 </ul>
             </div>
-            <div class="col-xs-12 col-md-6 col-lg-6 border"><!--4.2-->
+            <div class="col-xs-12 col-md-6 col-lg-6 border"><!--3.2-->
                 <p>(Update here)</p>
                 <form id="updForm" action="" method="POST">
                     <ul>
@@ -185,17 +160,16 @@
                         <li>
                             <input type="hidden" name="hiddenId" id="hiddenId" value="<%=quizID%>"/>
 
-                            <input type="text" name="txtName1" class="form-control" id="txtName" placeholder="<%=result.getString("quizTopic")%>" size="70"/>
+                            <input type="text" name="txtName1" class="form-control" id="txtName" value="<%=result.getString("quizTopic")%>" size="70"/>
                         </li>
                         <li><h3>Topic Bonus</h3></li>
-                        <li><textarea name="txtName2" class="form-control" id="txtName" placeholder="<%=result.getString("bonus")%>" rows="3" cols="70"></textarea></li>
+                        <li><textarea type="text" name="txtName2" class="form-control" id="txtName" rows="3" cols="70"><%=result.getString("bonus")%></textarea></li>
                         <div class="form-group">
                             <br/>
                             <button class="btn btn-primary" name="btnUpd" id="btnUpd">Update Topic</button>
                             <a class="btn btn-primary" href="index.html">Cancel</a>
                         </div>
-                    </ul>
-                        
+                    </ul>  
                 </form> 
             </div>
         </div>

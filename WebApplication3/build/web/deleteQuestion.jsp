@@ -28,7 +28,6 @@
                 try{
                     Class.forName("com.mysql.jdbc.Driver");
                     conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/quiz","root","");
-
                     qry = "DELETE FROM question WHERE questionID = ?";
                     pstmt = conn.prepareStatement(qry);
                     pstmt.setInt(1, questionID);
@@ -44,7 +43,3 @@
         %>
     </body>
 </html>
-
-
-
-

@@ -1,5 +1,3 @@
-
-
 var app = angular.module("myApp", ["ngRoute"]);
 app.config(["$routeProvider", function ($routeProvider) {
     'use strict';
@@ -29,5 +27,3 @@ function meowSound(){
     var audio = new Audio('sound/Cat-meow-sound-2.mp3');
     audio.play();
 }
-
-

@@ -65,13 +65,9 @@
         <div class="row"><!--1--> 
             <div class="col-xs-12"><!--1.1--> 
                 <img src="resources/img/banner.jpg" alt="banner" />
-            </div>
-            
-        </div>
-        
-        
+
             <nav class="navbar navbar-default">
-              <div class="container-fluid">
+                <div class="container-fluid">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#">Game Of Quizs </a>
                 </div>
@@ -80,12 +76,10 @@
                   <ul class="nav navbar-nav ">
                     <li><a href="index.html">Home / </a></li>
                     <li class="active" ><a href="#">Add Topic<span class="sr-only">(current)</span></a></li>
-                    
-                    
                   </ul>
                   
                   <ul class="nav navbar-nav navbar-right">
-                      <form class="navbar-form navbar-left" role="search" id="icon" name="cse" action="http://www.google.com/search" target="_blank">
+                    <form class="navbar-form navbar-left" role="search" id="icon" name="cse" action="http://www.google.com/search" target="_blank">
                     <table>
                         <tr>
                             <td>
@@ -95,29 +89,30 @@
                             </td>
                         </tr>
                     </table>
-                  </form>
-                    <li><a href="video.jsp">Back to EQUILIBRA</a></li>
+                    </form>
+                        <li><a href="video.jsp">Back to EQUILIBRA</a></li>
                   </ul>
                 </div>
-              </div>
+                </div>
             </nav>
+            </div>
+        </div>
         
-        <div class="row"><!--3--> 
-            <div class="col-xs-12 col-md-12 col-lg-12"><!--3.1--> 
+        <div class="row"><!--2--> 
+            <div class="col-xs-12 col-md-12 col-lg-12"><!--2.1--> 
                 <center>
                 <h1>Add New Topic</h1>
+                <hr/>
                 <form id="addForm" action="" method="POST">  
                 <ul>
                     <li class="questioncontainer"><h2>New Topic:</h2> </li>
-                    <li class="container2"><input type="text" name="txtName" id="txtName" size="70%"/></li>
+                    <li class="container2"><input type="text" name="txtName" id="txtName" size="100%"/></li>
                     <li class="questioncontainer"><h2>Topic Bonus:</h2> </li>
-                    <li class="container2"><textarea name="txtBonus" id="txtBonus"></textarea></li>
+                    <li class="container2"><textarea name="txtBonus" id="txtBonus" cols="100"></textarea></li>
                     <div class="form-group">
-               
-                            <button class="btn btn-primary" type="submit" name="btnAdd" id="btnAdd">Add Topic</button>
-                            <a class="btn btn-primary" href="index.html">Cancel</a>
+                        <button class="btn btn-primary" type="submit" name="btnAdd" id="btnAdd">Add Topic</button>
+                        <a class="btn btn-primary" href="index.html">Cancel</a>
                     </div>
-                    
                 </ul>
                 </form>
                 </center>
