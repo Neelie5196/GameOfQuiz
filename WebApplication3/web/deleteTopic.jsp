@@ -30,7 +30,7 @@
                     pstmt = conn.prepareStatement(qry);
                     pstmt.setInt(1, quizID);
                     pstmt.executeUpdate();
-                    response.sendRedirect("./index.html");
+
                 }catch(ClassNotFoundException cnfe){
                     out.println("Class not Found Execption:-" + cnfe.toString());
                 }catch(SQLException sqle){

@@ -1,4 +1,20 @@
 /*general control*/
+body{
+    background: url('../../resources/img/bg.jpg') repeat fixed 0% 0%;
+    /*background-image: url('background.jpg');
+	background-repeat: repeat;
+    background-position: left top;
+    background-attachment: scroll;
+	vertical-align:text-top;
+	background-size: cover !important;
+	background-attachment: fixed !important; IN CASE A CHANGE OF A BACKGROUND IMAGE*/
+	font-family: 'Open Sans', Lato, Helvetica,Arial,sans-serif;
+	font-size: 14px;
+	line-height: 17px;
+	color: #676767;
+	overflow-x: hidden;    
+}
+
 .breadcrumb
 {
     margin:0px;
@@ -13,9 +29,6 @@
     font-family: serif;
     color: #fff;
 }
-.jumbotron img{
-    width: 100%;
-}
 
 #toequilibra{
     text-align: right;
@@ -29,6 +42,10 @@ ul{
 .modal-header{
     background-color: #3d5998;
     color: #fff;
+}
+
+.tdcenter{
+    text-align: center;
 }
 
 /*updateQuestion.jsp*/
@@ -54,6 +71,7 @@ ul{
     background-color: #3d5998;
     border: solid #3d5998;
     margin: 5% auto 0% auto;
+    padding: 0 2%;
     width: 80%;
     color: #fff;
 }
@@ -120,22 +138,6 @@ ul{
     margin-top: 1%;
 }
 
-body{
-    background: url('../../resources/img/bg.jpg') repeat fixed 0% 0%;
-    /*background-image: url('background.jpg');
-	background-repeat: repeat;
-    background-position: left top;
-    background-attachment: scroll;
-	vertical-align:text-top;
-	background-size: cover !important;
-	background-attachment: fixed !important; IN CASE A CHANGE OF A BACKGROUND IMAGE*/
-	font-family: 'Open Sans', Lato, Helvetica,Arial,sans-serif;
-	font-size: 12px;
-	line-height: 17px;
-	color: #676767;
-	overflow-x: hidden;    
-}
-
 img{
     width:100%;
 }
@@ -144,9 +146,12 @@ hr {
     border-color: #a5a5a5;
 }
 
-.catbuttoncontainer{
+
+/*video.jsp*/
+.topicwrap{
     border: solid 1px #175fb4;
     padding: 1%;
+  
 }
 
 .catbtn{
@@ -159,24 +164,128 @@ hr {
     background-color: rgba(53, 134, 227, 0.3);
 }
 
-.videocontainer{
+.videowrap{
     border: solid 1px rgba(53, 134, 227, 0.5);
     padding: 1%;
     margin: 2% 0;
     font-size: 15px;
+    width: 95%;
 }
 
-.videocontainer p{
+.videowrap p{
     margin-top: 5%;
 }
 
-.btnplay{
+.btncreate, .btnlog, .btngoq{
     border-width: 0;
     background-color: rgba(53, 134, 227, 0.3);
     color: #000000;
 }
 
-.quizbtncont{
+.quizbtn{
     margin-top: 18%;
     text-align: right;
 }
+
+/* Sortable tables */
+table.sortable thead {
+    background-color:#eee;
+    color:#666666;
+    font-weight: bold;
+    cursor: default;
+}
+
+
+
+.landing{
+    opacity: 0.9;
+    height: 768px;
+    background: url("../../resources/img/lan.jpg"); /*This image is edited*/
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.loginwrap{
+    margin-top: 25%;
+}
+
+.login, .btnlog{
+    padding: 4%;
+    margin: 2%;
+    width:65%;
+}
+
+
+
+.signupa{
+    color: #3d5998;
+    font-size:12px;
+}
+
+.signup{
+   padding: 2%;
+   margin: 2%;
+   width:65%; 
+}
+
+
+
+
+
+/* Style the tab */
+.tab {
+    padding: 1%;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+.tabselect {
+    display: block;
+    padding: 20%;
+}
+
+/* Change background color of tab on hover */
+.tabselect:hover {
+    background-color: #ddd;
+}
+
+
+/* Style the tab content */
+.tabcontent {
+    border: 1px solid #ccc;
+    border-left: none;
+}
+
+
+
+.ag{
+    margin-bottom: 1%;
+}
+
+
+
+
+
+
+#circle {
+  position: relative;
+  background-color: #3d5998;
+  margin: 20px auto;
+  width: 100px;
+  height: 100px;
+  border-radius: 200px;
+}
+#profile{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+}
+
+#profile:hover{
+    text-decoration: none;
+    font-size: 20px;
+}
+
+

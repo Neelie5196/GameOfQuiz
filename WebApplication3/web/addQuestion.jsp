@@ -15,7 +15,7 @@
 <!-- Last update: 2017-->
     
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>JSP Page</title>
+<title>Add Question</title>
 <meta name="viewport" content="width=device-width, initialscale=1.0"/>
 <!-- Bootstrap -->
 <link href="<%=request.getContextPath()%>/frameworks/css/bootstrap.min.css" rel="stylesheet" media="screen">
@@ -78,13 +78,13 @@
         
     <div class="container">
        <div class="row"><!--1--> 
-            <div class="col-xs-12"><!--1.1--> 
+            <div class="col-xs-12 col-md-12 col-lg-12"><!--1.1--> 
                 <img src="resources/img/banner.jpg" alt="banner" />
 
             <nav class="navbar navbar-default">
               <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">Game Of Quizs </a>
+                    <a class="navbar-brand" href="#">Game Of Quiz</a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -139,27 +139,27 @@
                             <em>Select a type for question and continue</em>
                             <ul>
                                 <li>
-                                    <span><input type="radio" name="txttype" value="M" data-ng-click="show = 1" required/>Multiple choice</span>
-                                    <span class="tab"><input type="radio" name="txttype" value="T" data-ng-click="show = 2" />True and false</span>
-                                    <span class="tab"><input type="radio" name="txttype" value="B" data-ng-click="show = 3" />Fill in Blank</span>
+                                    <span><input type="radio" name="txttype" value="M" data-ng-click="show = 1" required/> Multiple choice</span>
+                                    <span class="tab"><input type="radio" name="txttype" value="T" data-ng-click="show = 2" /> True and false</span>
+                                    <span class="tab"><input type="radio" name="txttype" value="B" data-ng-click="show = 3" /> Fill in Blank</span>
                                 </li>
                             </ul> 
 
                             <!-- Format for multiple choice -->
                             <div class="form-group" data-ng-show="show===1">   
                                 <p>Multiple Choice</p>
-                                <input class="form-control" type="text" name="txtinput1" value="A"/>
-                                <input class="form-control" type="text" name="txtinput2" value="B"/>
-                                <input class="form-control" type="text" name="txtinput3" value="C"/>
-                                <input class="form-control" type="text" name="txtinput4" value="D"/>
+                                <p><input class="form-control" type="text" name="txtinput1" placeholder="A"/>
+                                <input class="form-control" type="text" name="txtinput2" placeholder="B"/>
+                                <input class="form-control" type="text" name="txtinput3" placeholder="C"/>
+                                <input class="form-control" type="text" name="txtinput4" placeholder="D"/></p>
                             </div>
                             <!-- Format for fill in the blank -->
                             <div class="form-group" data-ng-show="show===3" > 
                                 <p>Choices</p>
-                                <input class="form-control" type="text" name="txtinput1" placeholder="Choice 1"/>
+                                <p><input class="form-control" type="text" name="txtinput1" placeholder="Choice 1"/>
                                 <input class="form-control" type="text" name="txtinput2" placeholder="Choice 2"/>
                                 <input class="form-control" type="text" name="txtinput3" placeholder="Choice 3"/>
-                                <input class="form-control" type="text" name="txtinput4" placeholder="Choice 4"/>
+                                <input class="form-control" type="text" name="txtinput4" placeholder="Choice 4"/></p>
                             </div>
                         </div>
                     </div>
@@ -167,30 +167,30 @@
                     <!-- hint-->
                     <div class="row"><!--2.1.3--> 
                         <div class="col-xs-4 col-md-4 col-lg-4"><!--2.1.3.1--> 
-                            <span class="hinticon glyphicon glyphicon-search"></span><b>Hint:</b>  
+                            <p><span class="hinticon glyphicon glyphicon-search"></span><b>Hint:</b></p>  
                         </div>
                         <div class="col-xs-8 col-md-8 col-lg-8"><!--2.1.3.2--> 
-                            <input type="text" name="txthints" class="form-control" required/>
+                            <p><input type="text" name="txthints" class="form-control" required/></p>
                         </div>
                     </div>
 
                     <!-- answer -->
                     <div class="row"><!--2.1.4--> 
                         <div class="col-xs-4 col-md-4 col-lg-4"><!--2.1.4.1--> 
-                            <b>Answer:</b>  
+                            <p><b>Answer:</b></p> 
                         </div>
                         <div class="col-xs-8 col-md-8 col-lg-8"><!--2.1.4.2--> 
-                            <input class="form-control" type="text" name="txtchecked" required/>
+                            <p><input class="form-control" type="text" name="txtchecked" required/></p>
                         </div>
                     </div>
   
                     <!-- explanation -->
                     <div class="row"><!--2.1.5-->
-                        <div class="col-xs-4 col-md-4 col-lg-4"><!--2.1.5.1--> 
-                            <b>Explanation:</b>  
+                        <p><div class="col-xs-4 col-md-4 col-lg-4"><!--2.1.5.1--> 
+                            <p><b>Explanation:</b></p>  
                         </div>
                         <div class="col-xs-8 col-md-8 col-lg-8"><!--2.1.5.2--> 
-                            <textarea name="txtexplain" class="form-control" required></textarea>
+                            <p><textarea name="txtexplain" class="form-control" required></textarea></p>
                         </div>
                     </div><br/>
                     <button type="submit" name="btnAdd" class="btn btn-primary" data-ng-disabled="addForm.$invalid">Save</button>

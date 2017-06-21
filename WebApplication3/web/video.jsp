@@ -9,168 +9,111 @@
 <%@page import="java.util.*" %>
 <!DOCTYPE html>
 <html data-ng-app="myApp">
-<head>
-                
-<!-- Description: Game of Quiz -->
-<!-- Author: Eileen Kho, Leslie Ling, Ting Lee Ting -->
-<!-- Last update: 2017-->
-    
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>JSP Page</title>
-<meta name="viewport" content="width=device-width, initialscale=1.0"/>
-<!-- Bootstrap -->
-<link href="frameworks/css/bootstrap.min.css" rel="stylesheet" />
-<!-- StyleSheet -->
-<link href="frameworks/css/style.css" rel="stylesheet" />
-<!-- StyleSheet -->
-<link href="languages.min.css" rel="stylesheet" />
-
-
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-<script src="js/html5shiv.js"></script>
-<script src="js/respond.min.js"></script>
-<![endif]-->
-
-</head>
 
 <body>
     <%!
-            Connection conn,conn1;
-            PreparedStatement pstmt,pstmt1;
-            Statement stmt;
-            ResultSet result;
-            String qry,qry1;
-            Integer videoID;
-            Integer z = 0;  
-        %>
+        Connection conn;
+        Statement stmt;
+        ResultSet result;
+        String qry;
+    %>
 
-        <%-- READ function for videos--%>
+    <%-- READ function for videos--%>
+    <%
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/quiz","root","");
+            stmt=conn.createStatement();
+            qry = "SELECT * FROM video";
+            result = stmt.executeQuery(qry);
+        }catch(ClassNotFoundException cnfe){
+            out.println("Class not Found Execption:-" + cnfe.toString());
+        }catch(SQLException sqle){
+            out.println("SQL Query Exception:- " + sqle);
+        }
+    %>
+        
+
+    <div data-ng-init="biology=true">
+        <div class="row"><!--3.1-->
+            <div class="col-xs-12 col-md-12 col-lg-12 "> <!--3.1.1-->
+                <b>Topic:</b> 
+                <a data-ng-click="biology=true; english=false" class="">Biology |</a>
+                <a data-ng-click="english=true; biology=false" class="">English |</a>
+            </div>
+        </div>
+
+        <div class="row"><!--3.2-->
+            <div class="col-xs-12 col-md-12 col-lg-12"><!--3.2.1-->
+                <div data-ng-show="biology">
+                <h3>Biology</h3>
         <%
-           try{
-                Class.forName("com.mysql.jdbc.Driver");
-                conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/quiz","root","");
-                stmt=conn.createStatement();
-                qry = "SELECT * FROM video";
-                result = stmt.executeQuery(qry);
-            }catch(ClassNotFoundException cnfe){
-                out.println("Class not Found Execption:-" + cnfe.toString());
-            }catch(SQLException sqle){
-                out.println("SQL Query Exception:- " + sqle);
+            while(result.next() && (result.getString("category").equalsIgnoreCase("biology"))) {          
+        %>
+                <div class="videowrap">
+                    <h4><%=result.getString("videoName") %></h4>       
+                    <div class="row"><!--3.2.1.1-->
+                        <div class="col-xs-4 col-md-4 col-lg-4"><!--3.2.1.1.1-->
+                            <video width="100%" controls>
+                                <source src="<%=result.getString("videoPath")%>" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <div class="col-xs-6 col-md-6 col-lg-6"><!--3.2.1.2-->
+                            <p><%=result.getString("videoDesc") %></p>
+                        </div>            
+                        
+                        <!-- this ned discuss-->
+                        <!--3.2.1.3
+                        <div class="col-xs-2 col-md-2 col-lg-2 quizbtn"> 
+                            <a href="topic.jsp"><button class="btn-lg btncreate">Create quiz</button></a>
+                        </div>-->
+                    </div>
+                </div>
+        <%
             }
         %>
-        
-    <div class="container">
-        <div class="row"> <!--1-->
-            <div class="col-xs-12 col-md-12 col-lg-12 jumbotron"> <!--1.1-->
-                <p>EQUILIBRA</p>
-            </div>
-        </div>
-
-        <div class="row"><!--2-->
-            <div class="col-xs-12 col-md-12 col-lg-12 catbuttoncontainer"> <!--2.1-->
-                <button data-ng-click="biology=true; english=false" class="catbtn btn-lg">Biology</button>
-                <button data-ng-click="english=true; biology=false" class="catbtn btn-lg">English</button>
-            </div>
-        </div>
-
-        <div class="row"><!--3-->
-            <div class="col-xs-12 col-md-12 col-lg-12"><!--3.1-->
-                <div data-ng-show="biology">
-                    <h1>Biology</h1>
                 </div>
-
-                <div data-ng-show="english">
-                    <h1>English</h1>
-                </div>
-            </div>
-        </div>
-        
-        <div class="row"><!--4-->
-            <div class="col-xs-12 col-md-12 col-lg-12"><!--4.1-->
-            <div data-ng-show="biology">
-                <%
-                    while(result.next() && (result.getString("category").equalsIgnoreCase("biology"))) {
-                %>
-                
-                <div class="videocontainer">
-                    <div class="row"><!--4.1.1-->
-                        <div class="col-xs-12 col-md-12 col-lg-12"><!--4.1.1.1-->
-                            <h2><%=result.getString("videoName") %></h2>
-                        </div>
-                    </div>
-                        
-                    <div class="row"><!--4.1.2-->
-                        <div class="col-xs-4 col-md-4 col-lg-4"><!--4.1.2.1-->
-                            <video width="100%" height="100%" controls>
-                                <source src="<%=result.getString("videoPath")%>" type="video/wmv">
-                            </video>
-                        </div>
-
-                        <div class="col-xs-6 col-md-6 col-lg-6"><!--4.1.2.2-->
-                            <p><%=result.getString("videoDesc") %></p>
-                        </div>            
-
-                        <div class="col-xs-2 col-md-2 col-lg-2 quizbtncont"> <!--4.1.2.3-->
-                            <a href="index.html"><button class="btn-lg btnplay">Create quiz</button></a>
-                        </div>
-                    </div>
-                </div>
-                <%
-                        }
-                %>
-            </div>
             
-            <div data-ng-show="english">
-                <%
-                    while(result.next() && (result.getString("category").equalsIgnoreCase("english"))) {
-                %>
-                
-                <div class="videocontainer">
-                    <div class="row"> <!--4.1.1-->
-                        <div class="col-xs-12 col-md-12 col-lg-12"><!--4.1.1.1-->
-                            <h2><%=result.getString("videoName") %></h2>
-                        </div>
-                    </div>
-                        
-                    <div class="row"><!--4.1.2-->
-                        <div class="col-xs-4 col-md-4 col-lg-4"><!--4.1.2.1-->
-                            <video width="100%" height="100%" controls>
-                                <source src="<%=result.getString("videoPath") %>" type="video/wmv">
+                <div data-ng-show="english">
+                <h3>English</h3>
+        <%
+            while(result.next() && (result.getString("category").equalsIgnoreCase("english"))) {
+        %>
+                <div class="videowrap">
+                    <h4><%=result.getString("videoName") %></h4> 
+                    <div class="row"><!--3.2.1.2-->
+                        <div class="col-xs-4 col-md-4 col-lg-4"><!--3.2.1.2.1-->
+                            <video width="100%" controls>
+                                <source src="<%=result.getString("videoPath") %>" type="video/mp4">
                             </video>
                         </div>
 
-                        <div class="col-xs-6 col-md-6 col-lg-6"><!--4.1.2.2-->
+                        <div class="col-xs-6 col-md-6 col-lg-6"><!--3.2.1.2.2-->
                             <p><%=result.getString("videoDesc") %></p>
                         </div>            
 
-                        <div class="col-xs-2 col-md-2 col-lg-2 quizbtncont"><!--4.1.2.3-->
-                            <a href="index.html"><button class="btn-lg btnplay">Create quiz</button></a>
-                        </div>
+                        <!-- this ned discuss-->
+                        <!--3.2.1.3
+                        <div class="col-xs-2 col-md-2 col-lg-2 quizbtn"> 
+                            <a href="topic.jsp"><button class="btn-lg btncreate">Create quiz</button></a>
+                        </div>-->
                     </div>
                 </div>
-                <%
-                        }
-                %>
+        <%
+            }
+        %>
             </div>
             </div>
         </div>
     </div>
 
-<!-- jQuery – required for Bootstrap's JavaScript plugins) -->
-<script src="frameworks/js/jquery.min.js"></script>
-
-<!-- All Bootstrap plug-ins file -->
-<script src="frameworks/js/bootstrap.min.js"></script>
-    
-<!-- Basic AngularJS-->
-<script src="frameworks/js/angular.js"></script>
-        
-<!-- Angular-route-->
-<script src="frameworks/js/angular-route.min.js"></script>   
-
-<!-- Configuration-->
-<script src="frameworks/js/gameOQ.js"></script>    
+            
+            
+           
+            
 </body>
 </html>
+
+
+

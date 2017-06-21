@@ -15,7 +15,7 @@
 <!-- Author: Eileen Kho, Leslie Ling, Ting Lee Ting -->
 <!-- Last update: 2017-->
     
-<title>JSP Page</title>
+<title>Add Topic</title>
 <meta name="viewport" content="width=device-width, initialscale=1.0"/>
 <!-- Bootstrap -->
 <link href="<%=request.getContextPath()%>/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
@@ -48,12 +48,10 @@
                 Class.forName("com.mysql.jdbc.Driver");
                 conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/quiz","root","");
                
-                qry = "INSERT INTO quiz(quizTopic, bonus) VALUES(?,?)";
+                qry = "INSERT INTO quiz(quizTopic, cdate, udate) VALUES(?, NOW(), NOW())";
                 pstmt = conn.prepareStatement(qry);
                 pstmt.setString(1,request.getParameter("txtName"));
-                pstmt.setString(2,request.getParameter("txtBonus"));
                 pstmt.executeUpdate();
-                response.sendRedirect("./index.html");
                 }catch(ClassNotFoundException cnfe){
                     out.println("Class not Found Execption:-" + cnfe.toString());
                 }catch(SQLException sqle){
@@ -61,64 +59,7 @@
                 }  
             }
         %>
-    <div class="container">
-        <div class="row"><!--1--> 
-            <div class="col-xs-12"><!--1.1--> 
-                <img src="resources/img/banner.jpg" alt="banner" />
 
-            <nav class="navbar navbar-default">
-                <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#">Game Of Quizs </a>
-                </div>
-
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                  <ul class="nav navbar-nav ">
-                    <li><a href="index.html">Home / </a></li>
-                    <li class="active" ><a href="#">Add Topic<span class="sr-only">(current)</span></a></li>
-                  </ul>
-                  
-                  <ul class="nav navbar-nav navbar-right">
-                    <form class="navbar-form navbar-left" role="search" id="icon" name="cse" action="http://www.google.com/search" target="_blank">
-                    <table>
-                        <tr>
-                            <td>
-                                <input type="hidden" name="ie" value="utd-8">
-                                <input class="form-control" type="text" name="q" size="20" maxlength="255" placeholder="Google site search">
-                                <input type="submit" value="Go!" class="btn btn-primary">
-                            </td>
-                        </tr>
-                    </table>
-                    </form>
-                        <li><a href="video.jsp">Back to EQUILIBRA</a></li>
-                  </ul>
-                </div>
-                </div>
-            </nav>
-            </div>
-        </div>
-        
-        <div class="row"><!--2--> 
-            <div class="col-xs-12 col-md-12 col-lg-12"><!--2.1--> 
-                <center>
-                <h1>Add New Topic</h1>
-                <hr/>
-                <form id="addForm" action="" method="POST">  
-                <ul>
-                    <li class="questioncontainer"><h2>New Topic:</h2> </li>
-                    <li class="container2"><input type="text" name="txtName" id="txtName" size="100%"/></li>
-                    <li class="questioncontainer"><h2>Topic Bonus:</h2> </li>
-                    <li class="container2"><textarea name="txtBonus" id="txtBonus" cols="100"></textarea></li>
-                    <div class="form-group">
-                        <button class="btn btn-primary" type="submit" name="btnAdd" id="btnAdd">Add Topic</button>
-                        <a class="btn btn-primary" href="index.html">Cancel</a>
-                    </div>
-                </ul>
-                </form>
-                </center>
-            </div>
-        </div>
-    </div>
 <!-- jQuery – required for Bootstrap's JavaScript plugins -->
 <script src="frameworks/js/jquery.min.js"></script>
 

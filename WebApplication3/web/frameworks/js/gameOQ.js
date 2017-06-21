@@ -4,13 +4,13 @@ app.config(["$routeProvider", function ($routeProvider) {
     //for $routeprovider
     $routeProvider
         /*Page link*/
-        .when("/", {templateUrl: "topic.jsp"});
+.when("/", {templateUrl: "topic.jsp"})
+.when("/video", {templateUrl: "video.jsp"})
+.when("/quiz", {templateUrl: "topic.jsp"})
+.when("/reward", {templateUrl: "reward.jsp"});
+
+
+
+    
 }]);
 
-
-app.controller("more", function(){"use strict";
-    $('#myModal').on('show.bs.modal', function (e) {
-        $(this).find('.modal-title').html(e.relatedTarget.id);
-        $(this).find('.modal-body').html("Topic Bonus: <br/>" + e.relatedTarget.value);
-    });
-    });

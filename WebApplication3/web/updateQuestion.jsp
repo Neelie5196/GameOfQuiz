@@ -15,7 +15,7 @@
 <!-- Author: Eileen Kho, Leslie Ling, Ting Lee Ting -->
 <!-- Last update: 2017-->
     
-<title>JSP Page</title>
+<title>Update Question</title>
 <meta name="viewport" content="width=device-width, initialscale=1.0"/>
 <!-- Bootstrap -->
 <link href="frameworks/css/bootstrap.min.css" rel="stylesheet" />   
@@ -123,13 +123,13 @@
         
     <div class="container">
         <div class="row"><!--1--> 
-            <div class="col-xs-12"><!--1.1--> 
+            <div class="col-xs-12 col-md-12 col-lg-12"><!--1.1--> 
                 <img src="resources/img/banner.jpg" alt="banner" />
 
             <nav class="navbar navbar-default">
               <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">Game Of Quizs </a>
+                    <a class="navbar-brand" href="#">Game Of Quiz</a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -201,12 +201,12 @@
                 </div>
 
                 <!-- Show hint-->
-                <span class="hinticon glyphicon glyphicon-search"></span><b>Hint:</b> <%=result.getString("hints") %>           
+                <p><span class="hinticon glyphicon glyphicon-search"></span><b>Hint:</b> <%=result.getString("hints") %></p>
 
                 <!-- Show answer -->
                 <div class="checkshowanswer">
-                    <b>Answer: </b> <%=result.getString("checked")%><br/>
-                    <b>Explanation in detail:</b> <%=result.getString("explanation")%>
+                    <p><b>Answer: </b> <%=result.getString("checked")%><br/></p>
+                    <p><b>Explanation in detail:</b> <%=result.getString("explanation")%></p>
                 </div>
                 </div>         
                 </div>
